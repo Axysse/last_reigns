@@ -1,0 +1,30 @@
+{
+  "biomes": [
+    {
+      "name": "plaine",
+      "color": "bg-lime-400",
+      "spreadChance": 0.6
+    },
+    {
+      "name": "eau",
+      "color": "bg-blue-800",
+      "spreadChance": 0.5
+    },
+    {
+      "name": "montagne",
+      "color": "bg-gray-300",
+      "spreadChance": 0.4
+    },
+    {
+      "name": "desert",
+      "color": "bg-yellow-300",
+      "spreadChance": 0.2
+    }
+    ,
+    {
+      "name": "foret",
+      "color": "bg-green-700",
+      "spreadChance": 0.3
+    }
+  ]
+}

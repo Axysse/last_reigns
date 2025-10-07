@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>  </head>
+    <title>The last reigns</title>
+  </head>
+  <body class="bg-[#4C3219] flex flex-col items-center">
+    <header></header>
+    <main class="flex flex-col justify-center items-center mt-6 gap-8">
+      <section class="bg-[#7A5A50] w-[80vw] h-[15vh] border-4 border-[#E48F45] rounded-lg flex flex-row">
+        <div class="bg-[#DBAF82] w-[15%] flex items-center justify-center h-16 text-2xl font-bold">ROYAUME</div>
+        <article class="w-[80%] ml-5 flex flex-row items-center justify-center gap-24">
+          <div class="flex flex-col items-center">
+            <p class="text-xl font-bold">Nourriture</p>
+            <img src="../public/img/apple.png" class="w-18"/>
+            <p id="nourritureDisplay">0</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <p class="text-xl font-bold">Bonheur</p>
+            <img src="../public/img/happy.png" class="w-18"/>
+            <p id="bonheurDisplay">0</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <p class="text-xl font-bold">Armée</p>
+            <img src="../public/img/sword.png" class="w-18"/>
+            <p id="armeeDisplay">0</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <p class="text-xl font-bold">Argent</p>
+            <img src="../public/img/dollar.png" class="w-18"/>
+            <p id="argentDisplay">0</p>
+          </div>
+        </article>
+      </section>
+      <section id="grid" class="w-[750px] h-[750px] border-4 border-[#E48F45] rounded-lg flex flex-wrap"></section>
+      <section class="bg-[#7A5A50] w-[80vw] h-[15vh] border-4 border-[#E48F45] rounded-lg"></section>
+    </main>
+    <footer></footer>
+    <!-- <div id="app"></div> -->
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
