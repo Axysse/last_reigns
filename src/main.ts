@@ -1,5 +1,6 @@
 import "./style.css";
 import { changeTurnPermission } from "./time"
+import { fetchEvents  } from "./events";
 
 let grid: HTMLDivElement | null = document.getElementById(
   "grid"
@@ -152,11 +153,12 @@ function placeCity(cell: HTMLDivElement) {
   cell.setAttribute("type", "capitale")
 }
 
-function getRandomInt(max: number) {
+export function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
   await fetchBiomes();
+  await fetchEvents();
   createGrid();
 });

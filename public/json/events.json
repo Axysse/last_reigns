@@ -1,0 +1,54 @@
+{
+    "events" : [
+        {
+            "id" : 0,
+            "name" : "INVASION",
+            "text" : "Messire, les nouvelles sont alarmantes! L'ennemi est n'est pkus très loin!",
+            "choice" : [
+                {
+                    "text": "Alarme! Etat d'urgence! Tous aux abris! Moi d'abord! La garde!!!",
+                    "effects" : [
+                        {
+                            "type" : "stats",
+                            "modif" : "nourriture",
+                            "value" : 2
+                        },
+                        {
+                            "type" : "stats",
+                            "modif": "bonheur",
+                            "value" : -1
+                        },
+                        {
+                            "type" : "stats",
+                            "modif": "armee",
+                            "value": 1
+                        },
+                        {
+                            "type" : "activate",
+                            "target": "invasionDisplay"
+                        }
+                    ]
+                },
+                {
+                    "text" : "Il reste du grain?",
+                    "effects": [
+                        {
+                            "type": "stats",
+                            "modif": "nourriture",
+                            "value": 1
+                        },
+                        {
+                            "type" :"stats",
+                            "modif": "bonheur",
+                            "value": 1
+                        },
+                        {
+                            "type" : "activate",
+                            "target": "invasionDisplay"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

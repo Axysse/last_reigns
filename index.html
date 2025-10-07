@@ -16,22 +16,22 @@
           <div class="flex flex-col items-center">
             <p class="text-xl font-bold">Nourriture</p>
             <img src="../public/img/apple.png" class="w-18"/>
-            <p id="nourritureDisplay">0</p>
+            <p class="text-3xl font-bold text-green-600" id="nourritureDisplay">0</p>
           </div>
           <div class="flex flex-col items-center">
             <p class="text-xl font-bold">Bonheur</p>
             <img src="../public/img/happy.png" class="w-18"/>
-            <p id="bonheurDisplay">0</p>
+            <p class="text-3xl font-bold text-amber-600" id="bonheurDisplay">0</p>
           </div>
           <div class="flex flex-col items-center">
             <p class="text-xl font-bold">Armée</p>
             <img src="../public/img/sword.png" class="w-18"/>
-            <p id="armeeDisplay">0</p>
+            <p class="text-3xl font-bold text-red-600" id="armeeDisplay">0</p>
           </div>
           <div class="flex flex-col items-center">
             <p class="text-xl font-bold">Argent</p>
             <img src="../public/img/dollar.png" class="w-18"/>
-            <p id="argentDisplay">0</p>
+            <p class="text-3xl font-bold text-yellow-300" id="argentDisplay">0</p>
           </div>
         </article>
       </section>
@@ -40,13 +40,14 @@
         <article class="flex flex-col items-center justify-center gap-8 h-[100%]">
           <button class="button" id="timeBttn"> TOUR SUIVANT</button>
           <p class="text-2xl font-bold">TOUR : <span id="turnNbr">0</span></p>
+          <p class="text-2xl font-bold hidden" id="invasionDisplay">TOUR : <span id="invasionNbr">0</span></p>
         </article>
       </section>
     </main>
     <footer></footer>
-    <!-- <div id="app"></div> -->
     <script type="module" src="/src/main.ts"></script>
     <script  type ="module" src="/src/stats.ts"></script>
+    <script  type ="module" src="/src/events.ts"></script>
     <script  type ="module" src="/src/time.ts"></script>
   </body>
 </html>
