@@ -10,9 +10,9 @@ interface Biome {
   spreadChance: number;
 }
 
-interface BiomeData {
-  biomes: Biome[];
-}
+// interface BiomeData {
+//   biomes: Biome[];
+// }
 
 interface FrontierCell {
   x: number;
