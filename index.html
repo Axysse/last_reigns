@@ -36,10 +36,17 @@
         </article>
       </section>
       <section id="grid" class="w-[750px] h-[750px] border-4 border-[#E48F45] rounded-lg flex flex-wrap"></section>
-      <section class="bg-[#7A5A50] w-[80vw] h-[15vh] border-4 border-[#E48F45] rounded-lg"></section>
+      <section class="bg-[#7A5A50] w-[80vw] h-[15vh] border-4 border-[#E48F45] rounded-lg">
+        <article class="flex flex-col items-center justify-center gap-8 h-[100%]">
+          <button class="button" id="timeBttn"> TOUR SUIVANT</button>
+          <p class="text-2xl font-bold">TOUR : <span id="turnNbr">0</span></p>
+        </article>
+      </section>
     </main>
     <footer></footer>
     <!-- <div id="app"></div> -->
     <script type="module" src="/src/main.ts"></script>
+    <script  type ="module" src="/src/stats.ts"></script>
+    <script  type ="module" src="/src/time.ts"></script>
   </body>
 </html>

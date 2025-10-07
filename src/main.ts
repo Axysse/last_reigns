@@ -1,4 +1,5 @@
 import "./style.css";
+import { changeTurnPermission } from "./time"
 
 let grid: HTMLDivElement | null = document.getElementById(
   "grid"
@@ -126,6 +127,7 @@ async function createGrid() {
             } else {
               placeCity(newCell);
               newGame = false;
+              changeTurnPermission()
             }
           }
         });
