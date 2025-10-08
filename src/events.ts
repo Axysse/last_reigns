@@ -1,29 +1,46 @@
 import { getRandomInt } from "./main";
+import { updateNourriture } from "./stats";
+import { updateBonheur } from "./stats";
+import { updateArmee } from "./stats";
+import { updateArgent } from "./stats";
+import { updateStats } from "./stats";
+import { changeTurnPermission } from "./time";
+import { canEndTurn } from "./time";
+import { invasionDisplay } from "./time";
 
 interface Effect {
-    type: string;
-    modif?: string;
-    value?: number;
-    target?: string;
+  type: string;
+  modif?: string;
+  value?: number;
+  target?: string;
 }
 interface Choice {
-    text: string;
-    effects: Effect[];
+  text: string;
+  effects: Effect[];
 }
-interface Event{
-    id : number;
-    name : string;
-    text : string;
-    img : string;
-    choice : Choice[];
+interface Event {
+  id: number;
+  name: string;
+  text: string;
+  img: string;
+  choice: Choice[];
 }
 
-const eventModal : HTMLDivElement | null = document.getElementById("eventModal") as HTMLDivElement;
-const choice1 : HTMLDivElement | null = document.getElementById("choice1") as HTMLDivElement;
-const choice2 : HTMLDivElement | null = document.getElementById("choice2") as HTMLDivElement;
-const dialog : HTMLDivElement | null = document.getElementById("dialog") as HTMLDivElement;
+const eventModal: HTMLDivElement | null = document.getElementById(
+  "eventModal"
+) as HTMLDivElement;
+let choice1: HTMLDivElement | null = document.getElementById(
+  "choice1"
+) as HTMLDivElement;
+let choice2: HTMLDivElement | null = document.getElementById(
+  "choice2"
+) as HTMLDivElement;
+const dialog: HTMLDivElement | null = document.getElementById(
+  "dialog"
+) as HTMLDivElement;
 
 let allEvents: Event[] = [];
+let cleanEvents : Event[] = []
 
 export async function fetchEvents() {
   try {
@@ -48,49 +65,241 @@ export async function fetchEvents() {
   }
 }
 
-export function callEvent(){
-    console.log("évenement appelé : " + allEvents[getRandomInt(allEvents.length)].name)
-    const chosenEvent = allEvents[getRandomInt(allEvents.length)]
-    if(eventModal){
-        eventModal.style.display = "flex"
-        if(dialog){
-            setupDialog(chosenEvent)
-            setupChoice1(chosenEvent)
-            setupChoice2(chosenEvent)
+export function callEvent() {
+  if (allEvents.length === 0) {
+    console.log("Tous les événements ont été joués !");
+    return;
+  }
+
+  const randomIndex = getRandomInt(allEvents.length);
+  const chosenEvent = allEvents[randomIndex];
+
+  console.log("Événement appelé :", chosenEvent.name);
+
+  if (eventModal) {
+    eventModal.style.display = "flex";
+    if (dialog) {
+      setupDialog(chosenEvent);
+      setupChoice1(chosenEvent);
+      setupChoice2(chosenEvent);
+    }
+  }
+}
+
+function setupDialog(chosenEvent: Event) {
+  if(dialog){
+    dialog.innerHTML = " "
+  }
+  const dialogTitle = document.createElement("h2");
+  dialogTitle.classList.add("font-bold", "mb-4");
+  dialogTitle.textContent = chosenEvent.name;
+
+  const dialogText = document.createElement("p");
+  dialogText.textContent = chosenEvent.text;
+
+  const dialogImg = document.createElement("img");
+  dialogImg.src = chosenEvent.img;
+  dialogImg.classList.add("mt-12", "w-[90%]", "h-[60%]");
+
+  if (dialog) {
+    dialog.appendChild(dialogTitle);
+    dialog.appendChild(dialogText);
+    dialog.appendChild(dialogImg);
+  }
+}
+
+function setupChoice1(chosenEvent: Event) {
+  console.log(chosenEvent.choice[0]);
+  if (!choice1) return;
+
+
+ choice1.innerHTML = "";
+  const newChoice1 = choice1.cloneNode(false) as HTMLDivElement;
+  choice1.parentNode?.replaceChild(newChoice1, choice1);
+
+  newChoice1.innerHTML = "";
+
+  const choiceText = document.createElement("p");
+  choiceText.classList.add("h-[15%]");
+  choiceText.textContent = chosenEvent.choice[0].text;
+
+  const effectsDiv = document.createElement("div");
+  effectsDiv.classList.add("mt-8", "h-[65%]");
+
+  const suppText = document.createElement("p");
+  suppText.classList.add("h-[10%");
+  suppText.innerHTML = " ";
+
+  const allEffects = document.createElement("div");
+  allEffects.classList.add(
+    "flex",
+    "flex-col",
+    "items-center",
+    "justify-center",
+    "h-[80%]"
+  );
+  chosenEvent.choice[0].effects.forEach((effect: Effect) => {
+    console.log(effect);
+    if (effect.type == "stats" && effect.modif) {
+      const effectDiv = document.createElement("div");
+      effectDiv.classList.add("flex", "flex-row", "items-center", "gap-8");
+      const effectImg = document.createElement("img");
+      effectImg.src = returnStatImg(effect.modif);
+      effectImg.classList.add("w-12");
+      const effectDisplay = document.createElement("p");
+      effectDisplay.innerHTML = effect.modif + "  " + effect.value?.toString();
+
+      effectDiv.appendChild(effectImg);
+      effectDiv.appendChild(effectDisplay);
+      allEffects.appendChild(effectDiv);
+    }
+    effectsDiv.appendChild(allEffects);
+    if (effect.type == "activate" && effect.target == "invasionDisplay") {
+      suppText.innerHTML = "Tour de l'attaque connu.";
+    }
+  });
+
+
+  newChoice1.appendChild(choiceText);
+  newChoice1.appendChild(effectsDiv);
+  newChoice1.appendChild(suppText);
+
+   choice1 = newChoice1;
+
+    newChoice1.addEventListener("click", () => {
+      console.log("coucou");
+      resolveEvent(chosenEvent.choice[0].effects, chosenEvent);
+    });
+  
+}
+
+function setupChoice2(chosenEvent: Event) {
+  console.log(chosenEvent.choice[1]);
+  if (!choice2) return;
+
+
+  choice2.innerHTML = "";
+  const newChoice2 = choice2.cloneNode(false) as HTMLDivElement;
+  choice2.parentNode?.replaceChild(newChoice2, choice2);
+
+  newChoice2.innerHTML = "";
+
+  const choiceText = document.createElement("p");
+  choiceText.classList.add("h-[15%]");
+  choiceText.textContent = chosenEvent.choice[1].text;
+
+  const effectsDiv = document.createElement("div");
+  effectsDiv.classList.add("mt-8", "h-[65%]");
+
+  const suppText = document.createElement("p");
+  suppText.classList.add("h-[10%");
+  suppText.innerHTML = " ";
+
+  const allEffects = document.createElement("div");
+  allEffects.classList.add(
+    "flex",
+    "flex-col",
+    "items-center",
+    "justify-center",
+    "h-[80%]"
+  );
+  chosenEvent.choice[1].effects.forEach((effect: Effect) => {
+    console.log(effect);
+    if (effect.type == "stats" && effect.modif) {
+      const effectDiv = document.createElement("div");
+      effectDiv.classList.add("flex", "flex-row", "items-center", "gap-8");
+      const effectImg = document.createElement("img");
+      effectImg.src = returnStatImg(effect.modif);
+      effectImg.classList.add("w-12");
+      const effectDisplay = document.createElement("p");
+      effectDisplay.innerHTML = effect.modif + "  " + effect.value?.toString();
+
+      effectDiv.appendChild(effectImg);
+      effectDiv.appendChild(effectDisplay);
+      allEffects.appendChild(effectDiv);
+    }
+    effectsDiv.appendChild(allEffects);
+    if (effect.type == "activate" && effect.target == "invasionDisplay") {
+      suppText.innerHTML = "Tour de l'attaque connu.";
+    }
+  });
+
+
+  newChoice2.appendChild(choiceText);
+  newChoice2.appendChild(effectsDiv);
+  newChoice2.appendChild(suppText);
+
+  choice2 = newChoice2;
+
+    newChoice2.addEventListener("click", () => {
+      console.log("coucou");
+      resolveEvent(chosenEvent.choice[1].effects, chosenEvent);
+    });
+  (window as any).choice2 = newChoice2;
+}
+
+function returnStatImg(modif: string): string {
+  switch (modif) {
+    case "nourriture":
+      return "/img/apple.png";
+    case "bonheur":
+      return "/img/happy.png";
+    case "armee":
+      return "/img/sword.png";
+    case "argent":
+      return "/img/dollar.png";
+    default:
+      return "img/ecaireur.jpg";
+  }
+}
+
+function resolveEvent(effects: Effect[], chosenEvent?: Event) {
+  effects.forEach((effect) => {
+    switch (effect.type) {
+      case "stats":
+        switch (effect.modif) {
+          case "nourriture":
+            updateNourriture(effect.value ?? 0);
+            break;
+          case "bonheur":
+            updateBonheur(effect.value ?? 0);
+            break;
+          case "argent":
+            updateArgent(effect.value ?? 0);
+            break;
+          case "armee":
+            updateArmee(effect.value ?? 0);
+            break;
+          default:
+            console.log("rien");
+            break;
         }
+        break;
+
+      case "activate":
+        if(effect.target == "invasionDisplay"){
+          invasionDisplay?.classList.remove("hidden")
+        }
+        break;
+      default:
+        console.log("encore plus tard");
+        break;
     }
+  });
+   if (chosenEvent) {
+    moveEventToClean(chosenEvent);
+  }
+  updateStats();
+  if (eventModal) {
+    eventModal.style.display = "none";
+  }
+  changeTurnPermission();
+  console.log(canEndTurn)
 }
 
-function setupDialog(chosenEvent: Event){
-    const dialogTitle  = document.createElement("h2")
-    dialogTitle.classList.add("font-bold", "mb-4")
-    dialogTitle.textContent = chosenEvent.name
-
-    const dialogText = document.createElement("p")
-    dialogText.textContent = chosenEvent.text
-
-    const dialogImg = document.createElement("img")
-    dialogImg.src = chosenEvent.img
-    dialogImg.classList.add("mt-12", "w-[90%]", "h-[60%]")
-
-    if(dialog){
-        dialog.appendChild(dialogTitle)
-        dialog.appendChild(dialogText)
-        dialog.appendChild(dialogImg)
-    }
-}
-
-function setupChoice1(chosenEvent : Event){
-    console.log(chosenEvent.choice[0])
-
-    const choiceText = document.createElement("p")
-    choiceText.textContent = chosenEvent.choice[0].text
-
-    if(choice1){
-        choice1.appendChild(choiceText)
-    }
-}
-
-function setupChoice2(chosenEvent: Event){
-    console.log(chosenEvent.choice[1])
+function moveEventToClean(chosenEvent: Event) {
+  allEvents = allEvents.filter(event => event.id !== chosenEvent.id);
+  if (!cleanEvents.some(event => event.id === chosenEvent.id)) {
+    cleanEvents.push(chosenEvent);
+  }
 }

@@ -1,6 +1,14 @@
 import "./style.css";
 import { changeTurnPermission } from "./time"
 import { fetchEvents  } from "./events";
+import { fetchBuildings } from "./buildings";
+import { selectedBuilding } from "./buildings";
+import { checkBuildCondition } from "./buildings";
+import { placeBuilding } from "./buildings";
+import { reinitializeSelectedBuilding } from "./buildings";
+import { currentProd, updateCurrentProd, updateStats } from "./stats";
+import { checkBiomeCondition } from "./placement";
+import { applyBuildingEffetcs } from "./buildings";
 
 let grid: HTMLDivElement | null = document.getElementById(
   "grid"
@@ -22,7 +30,7 @@ interface FrontierCell {
   biome: Biome;
 }
 
-let allCells: HTMLDivElement[] = [];
+export let allCells: HTMLDivElement[] = [];
 let allBiomes: Biome[] = [];
 let newGame: boolean = true;
 
@@ -50,8 +58,8 @@ async function fetchBiomes() {
 }
 
 async function createGrid() {
-  let columnNbr: number = 15;
-  let rowNbr: number = 15;
+  let columnNbr: number = 10;
+  let rowNbr: number = 10;
 
   let cellIdCounter: number = 0;
 
@@ -65,7 +73,7 @@ async function createGrid() {
   allBiomes.forEach((b) => (biomeCounts[b.name] = 0));
 
   //  Placer des seeds
-  let seeds = 12;
+  let seeds = 8;
   for (let i = 0; i < seeds; i++) {
     let x = getRandomInt(columnNbr);
     let y = getRandomInt(rowNbr);
@@ -131,7 +139,32 @@ async function createGrid() {
               changeTurnPermission()
             }
           }
+          if(!selectedBuilding){
+            return;
+          } else {
+            if(checkBuildCondition(selectedBuilding) == true && checkBiomeCondition(newCell, selectedBuilding )){
+              placeBuilding(newCell, selectedBuilding);
+              applyBuildingEffetcs(selectedBuilding)
+              reinitializeSelectedBuilding();
+              updateCurrentProd(-1)
+              updateStats();
+            }
+          }
         });
+
+        newCell.addEventListener("mouseenter", () => {
+        if (selectedBuilding) {
+            const previewImg = document.createElement("img");
+            previewImg.src = selectedBuilding.sprite;
+            previewImg.classList.add("building-preview");
+            newCell.appendChild(previewImg);
+        }
+    });
+
+        newCell.addEventListener("mouseleave", () => {
+        const preview = newCell.querySelector(".building-preview");
+        if (preview) preview.remove();
+    });
       
       if (grid) {
         grid.appendChild(newCell);
@@ -160,5 +193,6 @@ export function getRandomInt(max: number) {
 document.addEventListener("DOMContentLoaded", async () => {
   await fetchBiomes();
   await fetchEvents();
+  await fetchBuildings();
   createGrid();
 });

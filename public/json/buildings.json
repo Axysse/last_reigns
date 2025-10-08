@@ -1,0 +1,32 @@
+{
+    "buildings" : [
+        {
+            "id" : 0,
+            "name" : "scierie",
+            "sprite" : "../img/saw.png",
+            "cost" : 15,
+            "condition" : "foret",
+            "effects" : [
+                {
+                    "type" : "stats",
+                    "modif": "production",
+                    "value": 2
+                }
+            ]
+        },
+            {
+            "id" : 0,
+            "name" : "ferme",
+            "sprite" : "../img/farm.png",
+            "cost" : 5,
+            "condition" : "plaine",
+            "effects" : [
+                {
+                    "type" : "stats",
+                    "modif": "nourriture",
+                    "value": 2
+                }
+            ]
+        }
+    ]
+}

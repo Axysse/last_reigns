@@ -1,12 +1,14 @@
-import { updateStats } from './stats'
+import { updateStats } from './stats';
 import { callEvent } from './events';
+import { refreshBuildings } from './buildings';
+import { resetProd } from './stats';
 
 const timeBttn : HTMLButtonElement | null = document.getElementById(
   "timeBttn"
 ) as HTMLButtonElement;
 let turnNbr : HTMLSpanElement | null = document.getElementById("turnNbr") as HTMLSpanElement;
 
-const invasionDisplay: HTMLParagraphElement | null = document.getElementById(
+export const invasionDisplay: HTMLParagraphElement | null = document.getElementById(
   "invasionDisplay"
 ) as HTMLParagraphElement;
 let invasionNbr : HTMLSpanElement | null = document.getElementById("invasionNbr") as HTMLSpanElement;
@@ -14,7 +16,7 @@ let invasionNbr : HTMLSpanElement | null = document.getElementById("invasionNbr"
 
 let turn : number = 0
 let invasionTurn : number = 10
-let canEndTurn : boolean = false
+export let canEndTurn : boolean = false
 
 export function changeTurnPermission(){
     if(canEndTurn == true){
@@ -34,11 +36,18 @@ function addTurn(){
 
 if(timeBttn){
     timeBttn.addEventListener("click", () => {
-        if (canEndTurn) { 
+        if (canEndTurn == true) { 
         addTurn()
         callEvent()
+        resetProd()
         updateStats()
         changeTurnPermission()
+        refreshBuildings()
+        console.log(canEndTurn)
         }
     })
+}
+
+if(invasionDisplay){
+    invasionNbr.innerHTML = invasionTurn.toString()
 }

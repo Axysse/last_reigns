@@ -1,55 +1,141 @@
 {
-    "events" : [
+  "events": [
+    {
+      "id": 0,
+      "name": "INVASION",
+      "text": "Messire, les nouvelles sont alarmantes! L'ennemi n'est plus très loin!",
+      "img": "../img/eclaireur.jpg",
+      "choice": [
         {
-            "id" : 0,
-            "name" : "INVASION",
-            "text" : "Messire, les nouvelles sont alarmantes! L'ennemi n'est plus très loin!",
-            "img" : "/img/eclaireur.jpg",
-            "choice" : [
-                {
-                    "text": "Alarme! Etat d'urgence! Tous aux abris! Moi d'abord! La garde!!!",
-                    "effects" : [
-                        {
-                            "type" : "stats",
-                            "modif" : "nourriture",
-                            "value" : 2
-                        },
-                        {
-                            "type" : "stats",
-                            "modif": "bonheur",
-                            "value" : -1
-                        },
-                        {
-                            "type" : "stats",
-                            "modif": "armee",
-                            "value": 1
-                        },
-                        {
-                            "type" : "activate",
-                            "target": "invasionDisplay"
-                        }
-                    ]
-                },
-                {
-                    "text" : "Il reste du grain?",
-                    "effects": [
-                        {
-                            "type": "stats",
-                            "modif": "nourriture",
-                            "value": 1
-                        },
-                        {
-                            "type" :"stats",
-                            "modif": "bonheur",
-                            "value": 1
-                        },
-                        {
-                            "type" : "activate",
-                            "target": "invasionDisplay"
-                        }
-                    ]
-                }
-            ]
+          "text": "Alarme! Etat d'urgence! Tous aux abris! Moi d'abord! La garde!!!",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": 1
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -2
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 1
+            },
+            {
+              "type": "activate",
+              "target": "invasionDisplay"
+            }
+          ]
+        },
+        {
+          "text": "Il reste du grain?",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": 1
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 1
+            },
+            {
+              "type": "activate",
+              "target": "invasionDisplay"
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Confiscation des biens",
+      "text": "A temps désespérés, mesures désespérées ! Si le peuple est décimé par l’invasion, il apparaît logique que son gouvernement lui survive. Prenons dans les réserves de quoi nous sustenter dans ces temps de crise.",
+      "img": "../img/noble.jpg",
+      "choice": [
+        {
+          "text": "Ma foi ce n’est que de la piétaille…",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": -3
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -2
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 3
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "text": "Qu’est-ce qu’un souverain sans ses sujet !? Jamais !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 1
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": -1
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mobilisation de la garde",
+      "text": "Il nous faut plus d’hommes dans cet Ost de fainéant ! Piochons dans les forces du guet municipal ! Les rues sont sûres, ces gueux ne manqueront à personne.",
+      "img": "../img/noble.jpg",
+      "choice": [
+        {
+          "text": "Espérons qu’il n’arrive rien aux petites gens…",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 3
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -2
+            }
+          ]
+        },
+        {
+          "text": "Et pourquoi pas vider les rues de nos gardes tant qu’on y est !? Non !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

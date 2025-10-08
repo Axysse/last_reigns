@@ -83,17 +83,17 @@ button:focus-visible {
 }
 
 .cell{
-    height: 49.5px;
-    width: 49.4px;
+    height: 74.2px;
+    width: 74.2px;
     position: relative;
     border: solid;
     border-width: 1px;
-    border-color: black;
+    border-color: rgba(39, 39, 39, 0.815);
 }
 
 .cell:hover{
     cursor: pointer;
-    background-color: rgba(85, 80, 80, 0.2);
+    opacity: 0.6;
 }
 
 .choice{
@@ -107,4 +107,24 @@ button:focus-visible {
 
 .modal_text{
   color:black
+}
+
+.building-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5; /* transparence */
+    pointer-events: none; /* évite d'interférer avec le hover */
+    object-fit: contain; /* garde les proportions de l’image */
+}
+
+.building-placed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
