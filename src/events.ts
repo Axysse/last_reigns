@@ -14,8 +14,14 @@ interface Event{
     id : number;
     name : string;
     text : string;
+    img : string;
     choice : Choice[];
 }
+
+const eventModal : HTMLDivElement | null = document.getElementById("eventModal") as HTMLDivElement;
+const choice1 : HTMLDivElement | null = document.getElementById("choice1") as HTMLDivElement;
+const choice2 : HTMLDivElement | null = document.getElementById("choice2") as HTMLDivElement;
+const dialog : HTMLDivElement | null = document.getElementById("dialog") as HTMLDivElement;
 
 let allEvents: Event[] = [];
 
@@ -43,5 +49,48 @@ export async function fetchEvents() {
 }
 
 export function callEvent(){
-    console.log("evenement appelé : " + allEvents[getRandomInt(allEvents.length)].name)
+    console.log("évenement appelé : " + allEvents[getRandomInt(allEvents.length)].name)
+    const chosenEvent = allEvents[getRandomInt(allEvents.length)]
+    if(eventModal){
+        eventModal.style.display = "flex"
+        if(dialog){
+            setupDialog(chosenEvent)
+            setupChoice1(chosenEvent)
+            setupChoice2(chosenEvent)
+        }
+    }
+}
+
+function setupDialog(chosenEvent: Event){
+    const dialogTitle  = document.createElement("h2")
+    dialogTitle.classList.add("font-bold", "mb-4")
+    dialogTitle.textContent = chosenEvent.name
+
+    const dialogText = document.createElement("p")
+    dialogText.textContent = chosenEvent.text
+
+    const dialogImg = document.createElement("img")
+    dialogImg.src = chosenEvent.img
+    dialogImg.classList.add("mt-12", "w-[90%]", "h-[60%]")
+
+    if(dialog){
+        dialog.appendChild(dialogTitle)
+        dialog.appendChild(dialogText)
+        dialog.appendChild(dialogImg)
+    }
+}
+
+function setupChoice1(chosenEvent : Event){
+    console.log(chosenEvent.choice[0])
+
+    const choiceText = document.createElement("p")
+    choiceText.textContent = chosenEvent.choice[0].text
+
+    if(choice1){
+        choice1.appendChild(choiceText)
+    }
+}
+
+function setupChoice2(chosenEvent: Event){
+    console.log(chosenEvent.choice[1])
 }

@@ -95,3 +95,16 @@ button:focus-visible {
     cursor: pointer;
     background-color: rgba(85, 80, 80, 0.2);
 }
+
+.choice{
+  transition: transform .5s;
+}
+
+.choice:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.modal_text{
+  color:black
+}

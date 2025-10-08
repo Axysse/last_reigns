@@ -3,7 +3,8 @@
         {
             "id" : 0,
             "name" : "INVASION",
-            "text" : "Messire, les nouvelles sont alarmantes! L'ennemi est n'est pkus très loin!",
+            "text" : "Messire, les nouvelles sont alarmantes! L'ennemi n'est plus très loin!",
+            "img" : "/img/eclaireur.jpg",
             "choice" : [
                 {
                     "text": "Alarme! Etat d'urgence! Tous aux abris! Moi d'abord! La garde!!!",

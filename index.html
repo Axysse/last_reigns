@@ -15,22 +15,22 @@
         <article class="w-[80%] ml-5 flex flex-row items-center justify-center gap-24">
           <div class="flex flex-col items-center">
             <p class="text-xl font-bold">Nourriture</p>
-            <img src="../public/img/apple.png" class="w-18"/>
+            <img src="img/apple.png" class="w-18"/>
             <p class="text-3xl font-bold text-green-600" id="nourritureDisplay">0</p>
           </div>
           <div class="flex flex-col items-center">
             <p class="text-xl font-bold">Bonheur</p>
-            <img src="../public/img/happy.png" class="w-18"/>
+            <img src="/img/happy.png" class="w-18"/>
             <p class="text-3xl font-bold text-amber-600" id="bonheurDisplay">0</p>
           </div>
           <div class="flex flex-col items-center">
             <p class="text-xl font-bold">Armée</p>
-            <img src="../public/img/sword.png" class="w-18"/>
+            <img src="/img/sword.png" class="w-18"/>
             <p class="text-3xl font-bold text-red-600" id="armeeDisplay">0</p>
           </div>
           <div class="flex flex-col items-center">
             <p class="text-xl font-bold">Argent</p>
-            <img src="../public/img/dollar.png" class="w-18"/>
+            <img src="/img/dollar.png" class="w-18"/>
             <p class="text-3xl font-bold text-yellow-300" id="argentDisplay">0</p>
           </div>
         </article>
@@ -45,6 +45,11 @@
       </section>
     </main>
     <footer></footer>
+    <div id="eventModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="flex-row justify-center items-center gap-22">
+      <div id="choice1" class="bg-white w-[20%] h-[35%] rounded-lg choice modal_text "></div>
+      <div id="dialog" class="bg-white w-[20%] h-[45%] rounded-lg modal_text flex flex-col items-center text-center p-4"></div>
+      <div id="choice2" class="bg-white w-[20%] h-[35%] rounded-lg choice modal_text "></div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
     <script  type ="module" src="/src/stats.ts"></script>
     <script  type ="module" src="/src/events.ts"></script>
