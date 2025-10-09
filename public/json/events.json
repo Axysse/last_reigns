@@ -12,7 +12,7 @@
             {
               "type": "stats",
               "modif": "nourriture",
-              "value": 1
+              "value": -1
             },
             {
               "type": "stats",
@@ -178,7 +178,7 @@
     {
       "id": 4,
       "name": "L'art de la fourbe",
-      "text": " Messire, nous avons reperé le campement de l’armée de l’outre-monde. Ces chiens ont montés un campement pour piller nos campagnes! Profitons de leur repos, alors qu’ils se seront enivrés de leur prétendue victoire pour mener une attaque surprise ! Bien sûr cela veut dire laisser nos campagnes à leur merci...",
+      "text": " Messire, nous avons reperé le campement de l’armée de l’outre-monde. Ces chiens ont montés un campement pour piller nos campagnes! Profitons de leur repos, alors qu’ils se seront enivrés de leur prétendue victoire, pour mener une attaque surprise ! Bien sûr cela veut dire laisser nos campagnes à leur merci...",
       "img": "../img/eclaireur.jpg",
       "choice": [
         {
@@ -216,7 +216,7 @@
             {
               "type": "stats",
               "modif": "nourriture",
-              "value": -2
+              "value": -3
             },
             {
               "type": "stats",
@@ -264,6 +264,92 @@
               "type": "stats",
               "modif": "armee",
               "value": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Justice rustique",
+      "text": "Les tribunaux c’est bien, mais ça coûte cher. Surtout ceux à disposition du peuple. Laissons-les se débrouiller entre eux comme au bon vieux temps. Si ils sont toujours là c’est que ça devait pas si mal marcher à l'époque.",
+      "img": "../img/juge.jpeg",
+      "choice": [
+        {
+          "text": "Scandaleux ! Et notre mission civilisatrice ?",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -1
+            }
+          ]
+        },
+        {
+          "text": "Une bonne dose de justice populaire ! Comme c’est délicieusement rustique !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -2
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Fin d'année pour le bon roi",
+      "text": " La fin de l’année approche et il est de coutume lors des vœux du roi de faire montre de ses bonnes grâces envers son bon peuple. Cependant ce n’est pas tout les ans qu’une menace existentielle inter-dimensionnelle menaçant toute vie d’extinction  pointe le bout de son nez! Passons l’éponge pour ce coup-ci, les gens seront compréhensifs.",
+      "img": "../img/juge.jpeg",
+      "choice": [
+        {
+          "text": "On ne lâche rien ! Je veux qu’on m’aime et qu’on m’admire ! Même au fin fond des plus profondes des abysses !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -4
+            }
+          ]
+        },
+        {
+          "text": "Mes bons et fidèles sujets… Avez vous entendu parler du concept de « contexte » ?",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -3
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": -4
             }
           ]
         }

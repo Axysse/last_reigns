@@ -5,7 +5,7 @@
       "name": "scierie",
       "text": "A placer dans une case fôret. Augmente de façon permanente la limite de production de 1, permettant ainsi d'accroitre le nombre de bâtiments construisible par tour.",
       "sprite": "../img/saw.png",
-      "cost": 15,
+      "cost": 14,
       "condition": "foret",
       "effects": [
         {
@@ -72,6 +72,21 @@
           "type": "stats",
           "modif": "argent",
           "value": 12
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Académie des fonctionnaires",
+      "text": "A placer dans une case de prairie. Augmente la statistique argent de 1 à la construction. Ne rapporte pas grand chose et occupe une case pour peu de bénefice, à utiliser en cas d'urgence.",
+      "sprite": "../img/student.png",
+      "cost": 0,
+      "condition": "plaine",
+      "effects": [
+        {
+          "type": "stats",
+          "modif": "argent",
+          "value": 1
         }
       ]
     }
