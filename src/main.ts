@@ -1,5 +1,5 @@
 import "./style.css";
-import { changeTurnPermission } from "./time"
+// import { changeTurnPermission } from "./time"
 import { fetchEvents  } from "./events";
 import { fetchBuildings } from "./buildings";
 import { selectedBuilding } from "./buildings";

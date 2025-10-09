@@ -2,7 +2,7 @@ import { checkDefeatConditions, updateStats } from './stats';
 import { callEvent } from './events';
 import { refreshBuildings } from './buildings';
 import { resetProd } from './stats';
-import { newGame } from './main';
+// import { newGame } from './main';
 
 const timeBttn : HTMLButtonElement | null = document.getElementById(
   "timeBttn"

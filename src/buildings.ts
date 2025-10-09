@@ -129,7 +129,7 @@ function selectTile(building: Building) {
 
 export function checkBuildCondition(building: Building) {
   const cost: number = building.cost;
-  const condition: string = building.condition;
+  // const condition: string = building.condition;
   if (currentProd > 0 && argentNbr >= cost) {
     return true;
   } else {
