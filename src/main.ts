@@ -191,7 +191,7 @@ async function createGrid() {
 
 function placeCity(cell: HTMLDivElement) {
   let cityImg: HTMLImageElement = document.createElement("img");
-  cityImg.src = "../public/img/castle.png";
+  cityImg.src = "/img/castle.png";
   cell.appendChild(cityImg);
   cell.setAttribute("type", "capitale")
 }
