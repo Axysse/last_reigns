@@ -1,3 +1,5 @@
+import { getAdjacentCells } from "./main";
+
 const nourritureDisplay: HTMLParagraphElement | null = document.getElementById(
   "nourritureDisplay"
 ) as HTMLParagraphElement;
@@ -13,13 +15,18 @@ const argentDisplay: HTMLParagraphElement | null = document.getElementById(
 const productionDisplay: HTMLParagraphElement | null = document.getElementById(
   "productionDisplay"
 ) as HTMLParagraphElement;
+const maxProductionDisplay: HTMLParagraphElement | null =
+  document.getElementById("maxProductionDisplay") as HTMLParagraphElement;
 
- let nourritureNbr: number = 5;
- let bonheurNbr: number = 10;
- let armeeNbr: number = 5;
- let argentNbr: number = 10;
- let maxProd : number = 1
- export let currentProd : number = maxProd
+let statMaxLimit: number = 20;
+let statMinLimit: number = 0;
+
+let nourritureNbr: number = 3;
+let bonheurNbr: number = 5;
+let armeeNbr: number = 5;
+export let argentNbr: number = 8;
+let maxProd: number = 1;
+export let currentProd: number = maxProd;
 
 export function updateStats() {
   if (nourritureDisplay) {
@@ -38,10 +45,14 @@ export function updateStats() {
     argentDisplay.innerHTML = "";
     argentDisplay.innerHTML = argentNbr.toString();
   }
-  if(productionDisplay){
+  if (productionDisplay) {
     // currentProd = maxProd
     productionDisplay.innerHTML = "";
-    productionDisplay.innerHTML = currentProd.toString()
+    productionDisplay.innerHTML = currentProd.toString();
+  }
+  if (maxProductionDisplay) {
+    maxProductionDisplay.innerHTML = "";
+    maxProductionDisplay.innerHTML = maxProd.toString();
   }
 }
 
@@ -69,7 +80,56 @@ export function updateCurrentProd(value: number) {
   currentProd += value;
 }
 
-export function resetProd(){
-  currentProd = maxProd
+export function resetProd() {
+  currentProd = maxProd;
 }
 
+export function setStartingStats(cell: HTMLDivElement) {
+  console.log(getAdjacentCells(cell.id));
+  const adjacentCells: (HTMLDivElement | null)[] = getAdjacentCells(cell.id);
+  adjacentCells.forEach((adj) => {
+    const cellType: string = adj?.getAttribute("type")?.toString()!;
+    switch (cellType) {
+      case "plaine":
+        updateNourriture(1);
+        break;
+      case "montagne":
+        updateArmee(1);
+        break;
+      case "desert":
+        updateArgent(1);
+        break;
+      case "eau":
+        updateNourriture(1);
+        break;
+      case "foret":
+        updateBonheur(1);
+        break;
+      default:
+        break;
+    }
+    adj?.classList.add("territory");
+  });
+}
+
+export function checkDefeatConditions() {
+  if (nourritureNbr <= statMinLimit || nourritureNbr >= statMaxLimit) {
+    alert("PERDU");
+    window.location.reload();
+    return false;
+  } else if (bonheurNbr <= statMinLimit || bonheurNbr >= statMaxLimit) {
+    alert("PERDU");
+    window.location.reload();
+    return false;
+  } else if (armeeNbr <= statMinLimit || armeeNbr >= statMaxLimit) {
+    alert("PERDU");
+    window.location.reload();
+    return false;
+  } else if (argentNbr <= statMinLimit || argentNbr >= statMaxLimit) {
+    alert("PERDU");
+    window.location.reload();
+    return false;
+  } else {
+    return true;
+  }
+}

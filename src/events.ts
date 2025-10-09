@@ -1,12 +1,14 @@
 import { getRandomInt } from "./main";
-import { updateNourriture } from "./stats";
+import { checkDefeatConditions, updateNourriture } from "./stats";
 import { updateBonheur } from "./stats";
 import { updateArmee } from "./stats";
 import { updateArgent } from "./stats";
 import { updateStats } from "./stats";
-import { changeTurnPermission } from "./time";
+import { changeTurnPermission, updateinvasion } from "./time";
 import { canEndTurn } from "./time";
 import { invasionDisplay } from "./time";
+import { showModal } from "./main";
+import { hideModal } from "./main";
 
 interface Effect {
   type: string;
@@ -77,7 +79,7 @@ export function callEvent() {
   console.log("Événement appelé :", chosenEvent.name);
 
   if (eventModal) {
-    eventModal.style.display = "flex";
+    showModal("eventModal")
     if (dialog) {
       setupDialog(chosenEvent);
       setupChoice1(chosenEvent);
@@ -156,6 +158,8 @@ function setupChoice1(chosenEvent: Event) {
     effectsDiv.appendChild(allEffects);
     if (effect.type == "activate" && effect.target == "invasionDisplay") {
       suppText.innerHTML = "Tour de l'attaque connu.";
+    } else if(effect.type == "activate" && effect.target == "invasionNbrRecul"){
+      suppText.innerHTML = "Tour de l'attaque reculé.";
     }
   });
 
@@ -176,7 +180,6 @@ function setupChoice1(chosenEvent: Event) {
 function setupChoice2(chosenEvent: Event) {
   console.log(chosenEvent.choice[1]);
   if (!choice2) return;
-
 
   choice2.innerHTML = "";
   const newChoice2 = choice2.cloneNode(false) as HTMLDivElement;
@@ -221,6 +224,8 @@ function setupChoice2(chosenEvent: Event) {
     effectsDiv.appendChild(allEffects);
     if (effect.type == "activate" && effect.target == "invasionDisplay") {
       suppText.innerHTML = "Tour de l'attaque connu.";
+    } else if(effect.type == "activate" && effect.target == "invasionNbrRecul"){
+      suppText.innerHTML = "Tour de l'attaque reculé.";
     }
   });
 
@@ -269,7 +274,7 @@ function resolveEvent(effects: Effect[], chosenEvent?: Event) {
             break;
           case "armee":
             updateArmee(effect.value ?? 0);
-            break;
+            break;  
           default:
             console.log("rien");
             break;
@@ -279,6 +284,10 @@ function resolveEvent(effects: Effect[], chosenEvent?: Event) {
       case "activate":
         if(effect.target == "invasionDisplay"){
           invasionDisplay?.classList.remove("hidden")
+        } else if(effect.target = "invasionNbrRecul"){
+          updateinvasion(1);
+        } else if(effect.target = "invasionNbrAvance"){
+          updateinvasion(-1);
         }
         break;
       default:
@@ -291,8 +300,9 @@ function resolveEvent(effects: Effect[], chosenEvent?: Event) {
   }
   updateStats();
   if (eventModal) {
-    eventModal.style.display = "none";
+    hideModal("eventModal")
   }
+  checkDefeatConditions();
   changeTurnPermission();
   console.log(canEndTurn)
 }

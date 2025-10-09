@@ -126,12 +126,144 @@
           ]
         },
         {
-          "text": "Et pourquoi pas vider les rues de nos gardes tant qu’on y est !? Non !",
+          "text": "Et pourquoi pas vider les rues de nos gardes tant qu’on y est !? Non !!!",
           "effects": [
             {
               "type": "stats",
               "modif": "bonheur",
               "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Du pain et des jeux",
+      "text": "Messire, entre les famines, les récoltes désatreuses et les menaces existentielles de type outre-mondesque, le peuple est quelque peu moribond. Organisons une grande célébration pour le distraire des vrais prob… Je veux dire pour alléger le fardeau de ces pauvres hères.",
+      "img": "../img/noble.jpg",
+      "choice": [
+        {
+          "text": "Du pain et des jeux !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 3
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -3
+            }
+          ]
+        },
+        {
+          "text": "C’est mon compte offshore qui est moribond oui ! A la diète les gueux !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -1
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "L'art de la fourbe",
+      "text": " Messire, nous avons reperé le campement de l’armée de l’outre-monde. Ces chiens ont montés un campement pour piller nos campagnes! Profitons de leur repos, alors qu’ils se seront enivrés de leur prétendue victoire pour mener une attaque surprise ! Bien sûr cela veut dire laisser nos campagnes à leur merci...",
+      "img": "../img/eclaireur.jpg",
+      "choice": [
+        {
+          "text": "Et qu’ils s’emparent de MON pain ? Non, envoyez des troupes TOUT DE SUITE !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 3
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": 1
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": -2
+            },
+            {
+              "type": "activate",
+              "target": "invasionNbrRecul"
+            }
+          ]
+        },
+        {
+          "text": "Aussi fourbe qu’ingénieux ! J’aime ce style.",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -2
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": -2
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 3
+            },
+            {
+              "type": "activate",
+              "target": "invasionNbrRecul"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Quelque chose en toi",
+      "text": "Les rues seraient presque tranquille la nuit si on faisait abstraction de cette jeunesse aussi insouciante que bruyante. Pourquoi ne se contentent-ils pas de névroser gentiment dans leur coin en attendant la horde d’outre-monde ? Je pense qu’un couvre-feu devrait rétablir un peu d’ordre.",
+      "img": "../img/juge.jpeg",
+      "choice": [
+        {
+          "text": "Comment ? Des jeunes ? Est-ce que je suis à jour de mon vaccin ? Ha, j'ai peur!",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -1
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "text": "De toute façon je suis déjà sourd.",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": -1
             }
           ]
         }

@@ -37,11 +37,13 @@
       </section>
       <section class="flex flex-row justify-center gap-28 w-[100%]">
         <article class="bg-[#7A5A50] w-[25%] h-[750px] border-4 border-[#E48F45] rounded-lg flex flex-col p-4">
-          <div class="flex flex-col items-center gap-4">
+          <div class="flex flex-col items-center justify-center gap-4">
             <p class="text-xl font-bold">production :</p>
-            <div class="flex flex-row itmes-center justify-center gap-8">
+            <div class="flex flex-row items-center justify-center gap-8">
               <img src="/img/hammer.png" class="w-18"/>
               <p class="text-3xl font-bold text-purple-300" id="productionDisplay">0</p>
+              <p>/</p>
+              <p class="text-3xl font-bold text-purple-300" id="maxProductionDisplay">0</p>
             </div>
           </div>
           <div id="buildings" class="h-[80%]">
@@ -53,16 +55,24 @@
       <section class="bg-[#7A5A50] w-[80vw] h-[15vh] border-4 border-[#E48F45] rounded-lg">
         <article class="flex flex-col items-center justify-center gap-8 h-[100%]">
           <button class="button" id="timeBttn"> TOUR SUIVANT</button>
-          <p class="text-2xl font-bold">TOUR : <span id="turnNbr">0</span></p>
-          <p class="text-2xl font-bold hidden" id="invasionDisplay">INVASION AU TOUR : <span id="invasionNbr">0</span></p>
+          <div class="flex flex-row justify-center">
+          <p class="text-2xl font-bold">TOUR : <span id="turnNbr">Veuillez choisir l'emplacement de votre château pour lancer la partie.</span></p>
+          <p class="text-2xl font-bold hidden" id="invasionDisplay"> / <span id="invasionNbr">0</span></p>
+          </div>
         </article>
       </section>
     </main>
     <footer></footer>
-    <div id="eventModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="flex-row justify-center items-center gap-22">
+    <div id="eventModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="flex-row justify-center items-center gap-22 modal">
       <div id="choice1" class="bg-white w-[20%] h-[35%] rounded-lg choice modal_text flex flex-col items-center text-center p-4"></div>
       <div id="dialog" class="bg-white w-[20%] h-[45%] rounded-lg modal_text flex flex-col items-center text-center p-4"></div>
       <div id="choice2" class="bg-white w-[20%] h-[35%] rounded-lg choice modal_text flex flex-col items-center text-center p-4"></div>
+    </div>
+    <div id="buildModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="bg-white w-[35%] h-[45%] rounded-lg  modal_text flex flex-col items-center text-center p-4 modal">
+      <div id="buildModalContent" class="bg-white w-[25%] h-[45%] rounded-lg  modal_text flex flex-col items-center text-center p-4"></div>
+    </div>
+    <div id="invasionModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="bg-white w-[35%] h-[45%] rounded-lg  modal_text flex flex-col items-center text-center p-4 modal">
+      <div id="invasionModalContent" class="bg-white w-[25%] h-[45%] rounded-lg  modal_text flex flex-col items-center text-center p-4"></div>
     </div>
     <script type="module" src="/src/main.ts"></script>
     <script  type ="module" src="/src/stats.ts"></script>

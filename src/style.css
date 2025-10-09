@@ -128,3 +128,32 @@ button:focus-visible {
     height: 100%;
     object-fit: contain;
 }
+
+.territory{
+    border: 2mm ridge;
+    border-color: rgba(177, 0, 0, 0.781); 
+    opacity: 0.7;
+}
+
+.modal {
+  display: flex;              /* l'élément est déjà flex, pas besoin de toucher style inline */
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  transform: translateY(-100px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s linear 0.4s;
+}
+
+/* classe qui représente l'état ouvert */
+.modal.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+

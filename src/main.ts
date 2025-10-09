@@ -6,9 +6,13 @@ import { selectedBuilding } from "./buildings";
 import { checkBuildCondition } from "./buildings";
 import { placeBuilding } from "./buildings";
 import { reinitializeSelectedBuilding } from "./buildings";
-import { currentProd, updateCurrentProd, updateStats } from "./stats";
+import { updateCurrentProd, updateStats } from "./stats";
 import { checkBiomeCondition } from "./placement";
 import { applyBuildingEffetcs } from "./buildings";
+import { setStartingStats } from "./stats";
+import { addTurn } from "./time";
+import { callEvent } from "./events";
+import { refreshBuildings } from "./buildings";
 
 let grid: HTMLDivElement | null = document.getElementById(
   "grid"
@@ -32,7 +36,7 @@ interface FrontierCell {
 
 export let allCells: HTMLDivElement[] = [];
 let allBiomes: Biome[] = [];
-let newGame: boolean = true;
+export let newGame: boolean = true;
 
 async function fetchBiomes() {
   try {
@@ -73,7 +77,7 @@ async function createGrid() {
   allBiomes.forEach((b) => (biomeCounts[b.name] = 0));
 
   //  Placer des seeds
-  let seeds = 8;
+  let seeds = 10;
   for (let i = 0; i < seeds; i++) {
     let x = getRandomInt(columnNbr);
     let y = getRandomInt(rowNbr);
@@ -135,8 +139,14 @@ async function createGrid() {
               alert("non! pas ici!")
             } else {
               placeCity(newCell);
+              setStartingStats(newCell);
+              updateStats()
+              refreshBuildings()
+              addTurn()
+              callEvent()
+              // changeTurnPermission()
               newGame = false;
-              changeTurnPermission()
+              
             }
           }
           if(!selectedBuilding){
@@ -144,7 +154,7 @@ async function createGrid() {
           } else {
             if(checkBuildCondition(selectedBuilding) == true && checkBiomeCondition(newCell, selectedBuilding )){
               placeBuilding(newCell, selectedBuilding);
-              applyBuildingEffetcs(selectedBuilding)
+              applyBuildingEffetcs(selectedBuilding, newCell )
               reinitializeSelectedBuilding();
               updateCurrentProd(-1)
               updateStats();
@@ -189,6 +199,88 @@ function placeCity(cell: HTMLDivElement) {
 export function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
+
+export function getAdjacentCells(cellId: string): (HTMLDivElement | null)[] {
+  const casesAdjacentes: (HTMLDivElement | null)[] = [];
+  let x: number | null = null;
+  let y: number | null = null;
+
+ 
+  allCells.forEach((cell) => {
+    if (cell.id === cellId) {
+      x = parseInt(cell.getAttribute("x") || "0", 10);
+      y = parseInt(cell.getAttribute("y") || "0", 10);
+    }
+  });
+
+
+  if (x === null || y === null) {
+    console.warn(`Cellule ${cellId} introuvable`);
+    return [];
+  }
+
+
+  const directions = [
+    { dx: 0, dy: -1 },  // haut
+    { dx: 1, dy: -1 },  // haut-droite
+    { dx: -1, dy: -1 }, // haut-gauche
+    { dx: 1, dy: 0 },   // droite
+    { dx: -1, dy: 0 },  // gauche
+    { dx: 0, dy: 1 },   // bas
+    { dx: 1, dy: 1 },   // bas-droite
+    { dx: -1, dy: 1 }   // bas-gauche
+  ];
+
+  
+  directions.forEach(({ dx, dy }) => {
+    const newX = x! + dx;
+    const newY = y! + dy;
+
+ 
+    if (newX < 0 || newX > 10 || newY < 0 || newY > 10) {
+      casesAdjacentes.push(null);
+      return;
+    }
+
+    const adjacentCell = allCells.find(
+      (cell) =>
+        parseInt(cell.getAttribute("x") || "-1", 10) === newX &&
+        parseInt(cell.getAttribute("y") || "-1", 10) === newY
+    );
+
+    casesAdjacentes.push(adjacentCell || null);
+  });
+  casesAdjacentes.forEach((cell) => {
+    if (cell) { 
+      cell.setAttribute("owned", "true"); 
+    }
+  });
+  return casesAdjacentes;
+}
+
+export function showModal(id: string): void {
+  const m = document.getElementById(id) as HTMLElement | null;
+  if (!m) return;
+
+  m.style.display = 'flex'; // rend visible
+  m.offsetHeight;           // FORCE le reflow → la transition va se déclencher
+  m.classList.add('is-open'); 
+}
+
+export function hideModal(id: string): void {
+  const m = document.getElementById(id) as HTMLElement | null;
+  if (!m) return; 
+
+  m.classList.remove('is-open');
+
+  const onTransitionEnd = (): void => {
+    m.style.display = 'none';
+    m.removeEventListener('transitionend', onTransitionEnd);
+  };
+
+  m.addEventListener('transitionend', onTransitionEnd, { once: true });
+}
+
 
 document.addEventListener("DOMContentLoaded", async () => {
   await fetchBiomes();
