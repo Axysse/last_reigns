@@ -354,6 +354,125 @@
           ]
         }
       ]
+    },
+    {
+      "id": 8,
+      "name": "un pont trop loin",
+      "text": "Le guet de la rivière a subi les affres de la dernière crue hivernale ! L’endroit est impraticable et plus personne ne peux franchir le cours d’eau en sécurité. Il nous faut un nouveau pont ou a défaut assainir la rivière.",
+      "img": "../img/bourgmestre.jpg",
+      "choice": [
+        {
+          "text": "Un pont ? Des semelles trempées n’ont jamais tuées personne.",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -1
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -1
+            }
+          ]
+        },
+        {
+          "text": "Ce pont sera à mon humble image, un lien entre les peuples !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 3
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -3
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Guilde dans le besoin",
+      "text": "Une nouvelle guilde de marchands veut s’installer dans notre belle cité. Cependant elle manque d’effectifs et nous demande un « prêt » en capacité militaire pour défendre ses caravanes. Elle nous promet un retour sur investissement en échange.",
+      "img": "../img/bourgmestre.jpg",
+      "choice": [
+        {
+          "text": "Ces maudits usuriers n’auront jamais mon aide ! ",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 1
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -2
+            }
+          ]
+        },
+        {
+          "text": "Un prêté pour un rendu, que j’aime le libre-échange !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": 4
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": -3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "J'ai glissé chef!",
+      "text": "Ces mous du genoux de la caserne ne se contentent pas seulement d’être des incapables, ils ont aussi la fâcheuse tendance à mourir prématurément. Nous avons un besoin de nouvelles recrues urgent. Augmentons le budget de l’armée !",
+      "img": "../img/eclaireur.jpg",
+      "choice": [
+        {
+          "text": "Les temps sont durs pour tout le monde. Get good noobz.",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": -1
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "text": "Tenez ! C’est moi qui régale. Et qu’ils soient choyés surtout !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -2
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 3
+            }
+          ]
+        }
+      ]
     }
   ]
 }

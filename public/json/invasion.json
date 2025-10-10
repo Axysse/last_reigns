@@ -4,6 +4,7 @@
             "id" : 0,
             "difficulty" : 0,
             "name" : "Messagers du chaos",
+            "img" : "../img/skeletor.jpg",
             "stats": [
                 {
                     "modif" : "armee",

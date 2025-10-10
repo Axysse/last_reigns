@@ -171,7 +171,6 @@ function setupChoice1(chosenEvent: Event) {
    choice1 = newChoice1;
 
     newChoice1.addEventListener("click", () => {
-      console.log("coucou");
       resolveEvent(chosenEvent.choice[0].effects, chosenEvent);
     });
   

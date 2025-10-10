@@ -13,7 +13,7 @@ import { setStartingStats } from "./stats";
 import { addTurn } from "./time";
 import { callEvent } from "./events";
 import { refreshBuildings } from "./buildings";
-import { fetchInvasion } from "./invasion";
+import { fetchInvasion, getInvader } from "./invasion";
 
 let grid: HTMLDivElement | null = document.getElementById(
   "grid"
@@ -142,6 +142,7 @@ async function createGrid() {
               placeCity(newCell);
               setStartingStats(newCell);
               updateStats()
+              getInvader()
               refreshBuildings()
               addTurn()
               callEvent()
