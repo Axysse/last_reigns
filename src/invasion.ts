@@ -1,6 +1,6 @@
 import { turn, invasionTurn } from "./time";
 import { loop } from "./time";
-import { showModal, hideModal } from "./main";
+import { showModal } from "./main";
 
 interface Stats {
   modif: string;
