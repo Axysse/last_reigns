@@ -2,6 +2,7 @@ import { checkDefeatConditions, updateStats } from './stats';
 import { callEvent } from './events';
 import { refreshBuildings } from './buildings';
 import { resetProd } from './stats';
+import { checkInvasionTrigger } from './invasion';
 // import { newGame } from './main';
 
 const timeBttn : HTMLButtonElement | null = document.getElementById(
@@ -16,7 +17,7 @@ export const invasionDisplay: HTMLParagraphElement | null = document.getElementB
 let invasionNbr : HTMLSpanElement | null = document.getElementById("invasionNbr") as HTMLSpanElement;
 
 
-let turn : number = 0
+export let turn : number = 0
 export let invasionTurn : number = 10
 export let canEndTurn : boolean = false
 
@@ -40,6 +41,9 @@ if(timeBttn){
     timeBttn.addEventListener("click", () => {
         if (canEndTurn == true) { 
         checkDefeatConditions()
+        if(checkInvasionTrigger()){
+          // callInvasionEvent()
+        }
         addTurn()
         callEvent()
         resetProd()

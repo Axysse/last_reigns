@@ -1,7 +1,29 @@
 {
     "invasion" : [
         {
-            
+            "id" : 0,
+            "difficulty" : 0,
+            "name" : "Messagers du chaos",
+            "stats": [
+                {
+                    "modif" : "armee",
+                    "value" : 10
+                }
+            ],
+            "text" : [
+                {
+                    "condition" : "intro",
+                    "value" : "Nous sommes les messager du chaos, apôtres du néant et héraut du grand vide. Il est venu le temps de vous fumer vos races."
+                },
+                {
+                    "condition" : "victoire",
+                    "value" : "Ce n’est que retarder l’inévitable."
+                },
+                {
+                    "condition" : "defaite",
+                    "value" : "L’oblitération est ma religion. Le massacre le plus saint des cantiques. Mais la dîme la plus précieuse des doctrines. Pour une modique somme, la vie vous sera accordée… pour le moment."
+                }
+            ]
         }
     ]
 }

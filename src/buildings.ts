@@ -139,14 +139,17 @@ export function checkBuildCondition(building: Building) {
 }
 
 export function placeBuilding(cell: HTMLDivElement, building: Building) {
+  if(building.name == "Démolition" || building.name == "Bannière"){
+    updateArgent(-building.cost);
+  } else {
+  updateArgent(-building.cost);
   const buildImg = document.createElement("img");
   buildImg.src = building.sprite;
   buildImg.classList.add("building-placed");
 
   cell.appendChild(buildImg);
   cell.dataset.building = building.name;
-
-  updateArgent(-building.cost);
+  }
 }
 
 export function applyBuildingEffetcs(
@@ -200,6 +203,10 @@ export function applyBuildingEffetcs(
           console.log("Aucun effet correspondant");
           break;
       }
+    } else if(effect.type == "destroy"){
+      destroyBuilding(cell)
+    } else if(effect.type == "add"){
+      addToFief(cell)
     }
   });
   updateStats();
@@ -253,4 +260,20 @@ function showBuildModal(building: Building) {
 
     buildModalContent.appendChild(buildEffectDiv);
   }
+}
+
+function destroyBuilding(cell : HTMLDivElement){
+  const cellImg : HTMLImageElement | null = cell.querySelector("img") as HTMLImageElement
+  if(cellImg){
+    cell.removeChild(cellImg)
+    delete cell.dataset.building
+  }
+}
+
+function addToFief(cell : HTMLDivElement){
+  if(!cell.getAttribute("owned")){
+    cell.setAttribute("owned", "true");
+    cell.classList.add("territory")
+  }
+  
 }

@@ -89,6 +89,36 @@
           "value": 1
         }
       ]
+    },
+    {
+      "id": 6,
+      "name": "Démolition",
+      "text": "Démoli un bâtiment pour libérer la case.",
+      "sprite": "../img/eraser.png",
+      "cost": 2,
+      "condition" : "all",
+      "effects": [
+        {
+          "type": "destroy",
+          "modif": "argent",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Bannière",
+      "text": "Rajoute la case selectionnée à votre fief, augmentant son potentiel de production. Une case doit-être libre avant d epouvoir l'ajouter au fief.",
+      "sprite": "../img/banner.png",
+      "cost": 12,
+      "condition" : "any",
+      "effects": [
+        {
+          "type": "add",
+          "modif": "argent",
+          "value": 0
+        }
+      ]
     }
   ]
 }

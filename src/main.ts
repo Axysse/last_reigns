@@ -13,6 +13,7 @@ import { setStartingStats } from "./stats";
 import { addTurn } from "./time";
 import { callEvent } from "./events";
 import { refreshBuildings } from "./buildings";
+import { fetchInvasion } from "./invasion";
 
 let grid: HTMLDivElement | null = document.getElementById(
   "grid"
@@ -286,5 +287,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   await fetchBiomes();
   await fetchEvents();
   await fetchBuildings();
+  await fetchInvasion();
   createGrid();
 });
