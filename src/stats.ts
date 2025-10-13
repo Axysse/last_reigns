@@ -21,9 +21,9 @@ const maxProductionDisplay: HTMLParagraphElement | null =
 let statMaxLimit: number = 20;
 let statMinLimit: number = 0;
 
-let nourritureNbr: number = 3;
-let bonheurNbr: number = 5;
-let armeeNbr: number = 5;
+export let nourritureNbr: number = 3;
+export let bonheurNbr: number = 5;
+export let armeeNbr: number = 5;
 export let argentNbr: number = 8;
 let maxProd: number = 1;
 export let currentProd: number = maxProd;

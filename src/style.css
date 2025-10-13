@@ -136,7 +136,7 @@ button:focus-visible {
 }
 
 .modal {
-  display: flex;              /* l'élément est déjà flex, pas besoin de toucher style inline */
+  display: flex;              
   justify-content: center;
   align-items: center;
 
@@ -147,7 +147,7 @@ button:focus-visible {
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s linear 0.4s;
 }
 
-/* classe qui représente l'état ouvert */
+
 .modal.is-open {
   opacity: 1;
   transform: translateY(0);

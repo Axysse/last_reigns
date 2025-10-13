@@ -50,7 +50,7 @@
       "name": "Poste de garde",
       "text": "A placer dans une case prairie. Augmente la statistique armée de 2 à la construction.",
       "sprite": "../img/tower.png",
-      "cost": 10,
+      "cost": 8,
       "condition": "plaine",
       "effects": [
         {
