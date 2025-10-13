@@ -18,7 +18,7 @@ interface Defeat {
   img: string;
   text: Text[];
 }
-
+// lala
 let allDefeats: Defeat[] = [];
 
 export async function fetchDefeats() {
