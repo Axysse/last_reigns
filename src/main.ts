@@ -14,6 +14,7 @@ import { addTurn } from "./time";
 import { callEvent } from "./events";
 import { refreshBuildings } from "./buildings";
 import { fetchInvasion, getInvader } from "./invasion";
+import { fetchDefeats } from "./gameOver";
 
 let grid: HTMLDivElement | null = document.getElementById(
   "grid"
@@ -289,5 +290,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   await fetchEvents();
   await fetchBuildings();
   await fetchInvasion();
+  await fetchDefeats();
   createGrid();
 });

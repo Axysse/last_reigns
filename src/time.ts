@@ -72,3 +72,7 @@ export function updateinvasion(value: number) {
     invasionNbr.innerHTML = invasionTurn.toString();
   }
 }
+
+export function updateLoop(value : number){
+  loop += value;
+}

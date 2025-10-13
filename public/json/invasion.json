@@ -22,7 +22,8 @@
                 },
                 {
                     "condition" : "defaite",
-                    "value" : "L’oblitération est ma religion. Le massacre le plus saint des cantiques. Mais la dîme la plus précieuse des doctrines. Pour une modique somme, la vie vous sera accordée… pour le moment."
+                    "value" : "L’oblitération est ma religion. Le massacre le plus saint des cantiques. Mais la dîme la plus précieuse des doctrines. Pour une modique somme, la vie vous sera accordée… pour le moment.",
+                    "modif" : "argent"
                 }
             ]
         }

@@ -1,0 +1,64 @@
+{
+    "defeat" : [
+        {
+            "id" : 0,
+            "type" : "nourriture",
+            "img" : "../img/behead.jpg",
+            "text" : [
+                {
+                    "condition" : "+",
+                    "text" : "Un lobby de l'agro-alimentaire s'est emparé des marchés de votre royaume. Du dernier Conseil Administratif a découlé l'idée que la monarchie était superflue, et vous aussi."
+                },
+                {
+                    "condition" : "-",
+                    "text" : "Une foule affamée mais surtout en colère envahit votre château. Vous n’avez pas le temps de finir de souper que la foule s’empare de vous et décide d’en finir avec la « grasse » monarchie, définitivement."
+                }
+            ]
+        },
+        {
+            "id" : 1,
+            "type" : "bonheur",
+            "img" : "../img/behead.jpg",
+            "text" : [
+                {
+                    "condition" : "+",
+                    "text" : "Alors que vous faites une apparition à une fête populaire en votre honneur, la foule, ivre d'admiration se jette sur vous. C'est attendrissant. Cependant on aura du mal à reconnaitre votre cadavre derrière cette grotesque grimace de suffocation qui recouvre votre visage."
+                },
+                {
+                    "condition" : "-",
+                    "text" : "'Le bien-être du peuple? Mais quelle idée?! Pourquoi y penserais-je?' Vos propres paroles vous reviennet en tête alors que vous vous préparez à vous en séparer pour de bon. Comme quoi même au fond du gouffre, ils ont quand même de la créativité. Fascinante trouvaille que cette 'guillotine'."
+                }
+            ]
+        },
+        {
+            "id" : 2,
+            "type" : "armee",
+            "img" : "../img/behead.jpg",
+            "text" : [
+                {
+                    "condition" : "+",
+                    "text" : "Une armée forte c'est bien, mais des géneraux fidèles c'est peut-être encore mieux. Cette pensée vous effleure quand, sur le billot, vos anciens officiers s'apprétent à vous raccourcir de quelques centimètres."
+                },
+                {
+                    "condition" : "-",
+                    "text" : "Le gros émissaire avec un drôle d'accent à l'air de se délecter de la situation. Vous entendez son rire gras alors que ses hommes vous entourent, la pointe de leurs armes en avant sur le point de vous embrocher. Si seulement il y avait au moins eu une garnison pour vous défendre..."
+                }
+            ]
+        },
+        {
+            "id" : 3,
+            "type" : "argent",
+            "img" : "../img/behead.jpg",
+            "text" : [
+                {
+                    "condition" : "+",
+                    "text" : "'Ce n'est pas une petite bulle qui va faire trembler mon royaume!' Si seulement à l'époque vous aviez essayé de comprendre ce qu'était la fameuse 'bulle spéculative' dont vos conseillers tentaient de vous parler sans cesse... "
+                },
+                {
+                    "condition" : "-",
+                    "text" : "'Un gueux régnant sur les gueux'. C'est en ces mots qu'on parle de vous, puisqu'après tout vous n'êtes pas beaucoup plus riche que les plus modestes représentant de votre royaume. Et puis de toute façon plus personne ne vous écoute, vous portez les mêmes haillons misérables que tout les autres."
+                }
+            ]
+        }
+    ]
+}

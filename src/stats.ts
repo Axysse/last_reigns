@@ -1,4 +1,5 @@
 import { getAdjacentCells } from "./main";
+import { defeat } from "./gameOver";
 
 const nourritureDisplay: HTMLParagraphElement | null = document.getElementById(
   "nourritureDisplay"
@@ -114,20 +115,16 @@ export function setStartingStats(cell: HTMLDivElement) {
 
 export function checkDefeatConditions() {
   if (nourritureNbr <= statMinLimit || nourritureNbr >= statMaxLimit) {
-    alert("PERDU");
-    window.location.reload();
+    defeat("nourriture", nourritureNbr)
     return false;
   } else if (bonheurNbr <= statMinLimit || bonheurNbr >= statMaxLimit) {
-    alert("PERDU");
-    window.location.reload();
+    defeat("bonheur", bonheurNbr)
     return false;
   } else if (armeeNbr <= statMinLimit || armeeNbr >= statMaxLimit) {
-    alert("PERDU");
-    window.location.reload();
+    defeat("armee", armeeNbr)
     return false;
   } else if (argentNbr <= statMinLimit || argentNbr >= statMaxLimit) {
-    alert("PERDU");
-    window.location.reload();
+    defeat("argent", argentNbr)
     return false;
   } else {
     return true;

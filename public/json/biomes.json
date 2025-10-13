@@ -3,7 +3,7 @@
     {
       "name": "plaine",
       "color": "bg-lime-400",
-      "spreadChance": 0.5
+      "spreadChance": 0.3
     },
     {
       "name": "eau",

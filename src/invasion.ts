@@ -1,7 +1,8 @@
-import { turn, invasionTurn } from "./time";
+import { turn, invasionTurn, updateinvasion, updateLoop } from "./time";
 import { loop } from "./time";
 import { hideModal, showModal } from "./main";
 import { argentNbr, armeeNbr, bonheurNbr, nourritureNbr } from "./stats";
+import { invasionDisplay } from "./time";
 
 interface Stats {
   modif: string;
@@ -10,6 +11,7 @@ interface Stats {
 interface Text {
   condition: string;
   value: string;
+  modif: string;
 }
 interface Invasion {
   id: number;
@@ -204,6 +206,14 @@ function victory(invasion: Invasion) {
 
     nextBttn.addEventListener("click", () => {
       hideModal("invasionModal");
+      if (invasionDisplay) {
+        if (!invasionDisplay?.classList.contains("hidden")) {
+          invasionDisplay.classList.add("hidden");
+        }
+      }
+      updateinvasion(10);
+      updateLoop(1)
+      console.log( "boucle de jeu :" + " " + loop )
     });
   }
 }
@@ -228,7 +238,7 @@ function defeat(invasion: Invasion) {
     invasionModalContent.appendChild(invasionImg);
 
     const nextBttn = document.createElement("button");
-    nextBttn.textContent = "La journée avait pourtoant si bien commencée...";
+    nextBttn.textContent = "La journée avait pourtant si bien commencée...";
     nextBttn.classList.add("button", "mt-12", "text-white");
     invasionModalContent.appendChild(nextBttn);
 

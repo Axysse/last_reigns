@@ -79,7 +79,7 @@ export function refreshBuildings() {
 
     const buildImg = document.createElement("img");
     buildImg.src = building.sprite;
-    buildImg.classList.add("w-14");
+    buildImg.classList.add("w-10");
 
     const buildName = document.createElement("p");
     buildName.textContent = building.name;
@@ -96,11 +96,11 @@ export function refreshBuildings() {
 
     const buildDollarImg = document.createElement("img");
     buildDollarImg.src = "/img/dollar.png";
-    buildDollarImg.classList.add("w-8", "ml-2");
+    buildDollarImg.classList.add("w-4", "ml-2");
 
     const buyBttn = document.createElement("button");
     buyBttn.textContent = "ACHETER";
-    buyBttn.classList.add("button", "ml-18");
+    buyBttn.classList.add("button", "ml-10");
 
     buildDivChild.appendChild(buildImg);
     buildDivChild.appendChild(buildName);
