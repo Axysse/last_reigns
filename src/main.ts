@@ -14,7 +14,7 @@ import { addTurn } from "./time";
 import { callEvent } from "./events";
 import { refreshBuildings } from "./buildings";
 import { fetchInvasion, getInvader } from "./invasion";
-import { fetchDefeats } from "./gameOver.ts";
+import { fetchDefeats } from "./gameOver";
 
 let grid: HTMLDivElement | null = document.getElementById(
   "grid"
