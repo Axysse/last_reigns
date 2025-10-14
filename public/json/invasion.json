@@ -84,6 +84,37 @@
                     "modif" : "argent"
                 }
             ]
+        },
+        {
+            "id" : 3,
+            "difficulty" : 2,
+            "name" : "Hippies vampires",
+            "img" : "../img/hippie.png",
+            "stats": [
+                {
+                    "modif" : "bonheur",
+                    "value" : 15
+                },
+                {
+                    "modif" : "nourriture",
+                    "value" : 13
+                }
+            ],
+            "text" : [
+                {
+                    "condition" : "intro",
+                    "value" : "Imagine tout les gens du monde, vivants dans la paiiiiix… hou hou. C’est sympa ici ! On mange bien ?"
+                },
+                {
+                    "condition" : "victoire",
+                    "value" : " Cool man ! T’es un brother du love. On reprends la route l’esprit tranquille man. Peace !"
+                },
+                {
+                    "condition" : "defaite",
+                    "value" : "Ordure capitaliste fascisante ! Être un working class hero est préférable au mépris du capital ! Meurs mec pas cool !",
+                    "modif" : "argent"
+                }
+            ]
         }
     ]
 }
