@@ -11,7 +11,7 @@
     <header></header>
  <main class="flex flex-col justify-center items-center mt-6 gap-8 w-full px-4">
 
-      <section class="bg-[#7A5A50] w-full max-w-6xl border-4 border-[#E48F45] rounded-lg flex flex-col sm:flex-row items-center sm:items-stretch p-2 sm:p-4 gap-4 sm:gap-0">
+      <section class="bg-[#7A5A50] w-[85%] border-4 border-[#E48F45] rounded-lg flex flex-col sm:flex-row items-center sm:items-stretch p-2 sm:p-4 gap-4 sm:gap-0">
         <div class="bg-[#DBAF82] sm:w-[15%] w-full flex items-center justify-center py-2 sm:py-0 text-xl sm:text-2xl font-bold">
           ROYAUME
         </div>
@@ -40,7 +40,7 @@
       </section>
 
       <section class="flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-16 w-full max-w-7xl">
-        <article class="bg-[#7A5A50] w-full lg:w-[45%] border-4 border-[#E48F45] rounded-lg flex flex-col p-4 h-[60vh] lg:h-[750px]">
+        <article class="bg-[#7A5A50] w-full lg:w-[55%] border-4 border-[#E48F45] rounded-lg flex flex-col p-4 h-[60vh] lg:h-[750px]">
           <div class="flex flex-col items-center justify-center gap-4">
             <p class="text-lg sm:text-xl font-bold">Production :</p>
             <div class="flex flex-row items-center justify-center gap-4 sm:gap-8">
@@ -50,7 +50,16 @@
               <p class="text-2xl sm:text-3xl font-bold text-purple-300" id="maxProductionDisplay">0</p>
             </div>
           </div>
-          <div id="buildings" class="overflow-y-auto mt-4 h-full"></div>
+          <div id="buildings" class="overflow-y-auto mt-4 h-full">
+            <p class="mt-4 text-xl text-center">Veuillez choisir l'emplacement de votre château pour lancer la partie.</p>
+            <p class="mt-4 text-xl text-center">La quantitée de ressources de départ dépent de l'emplacement choisi.</p>
+            <ul>
+              <li class="mt-4 text-xl text-center">Plaine ET eau : + 1 Nourriture</li>
+              <li class="mt-4 text-xl text-center">Montagne : + 1 Armée</li>
+              <li class="mt-4 text-xl text-center">Désert : + 1 Or</li>
+              <li class="mt-4 text-xl text-center">Fôret : + 1 Bonheur</li>
+            </ul>
+          </div>
         </article>
 
         <article id="grid" class="w-full lg:w-[750px] aspect-square border-4 border-[#E48F45] rounded-lg grid"></article>
@@ -63,7 +72,7 @@
           </button>
           <div class="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 text-center">
             <p class="text-lg sm:text-2xl font-bold">
-              Année : <span id="turnNbr">Veuillez choisir l'emplacement de votre château pour lancer la partie.</span>
+              Année : <span id="turnNbr"></span>
             </p>
             <p class="text-lg sm:text-2xl font-bold hidden" id="invasionDisplay">
               / <span id="invasionNbr">0</span>
@@ -74,9 +83,9 @@
     </main>
     <footer></footer>
     <div id="eventModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="flex-row justify-center items-center gap-22 modal">
-      <div id="choice1" class="bg-white w-[20%] h-[35%] rounded-lg choice modal_text flex flex-col items-center text-center p-4"></div>
-      <div id="dialog" class="bg-white w-[20%] h-[45%] rounded-lg modal_text flex flex-col items-center text-center p-4"></div>
-      <div id="choice2" class="bg-white w-[20%] h-[35%] rounded-lg choice modal_text flex flex-col items-center text-center p-4"></div>
+      <div id="choice1" class="bg-white w-[25%] h-[35%] rounded-lg choice modal_text flex flex-col items-center text-center p-4"></div>
+      <div id="dialog" class="bg-white w-[30%] h-[55%] rounded-lg modal_text flex flex-col items-center text-center p-4"></div>
+      <div id="choice2" class="bg-white w-[25%] h-[35%] rounded-lg choice modal_text flex flex-col items-center text-center p-4"></div>
     </div>
     <div id="buildModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="bg-white w-[35%] h-[45%] rounded-lg  modal_text flex flex-col items-center text-center p-4 modal">
       <div id="buildModalContent" class="bg-white w-[25vw] max-2xl:h-[75vh] h-[45vh] rounded-lg  modal_text flex flex-col items-center text-center p-4"></div>
