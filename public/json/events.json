@@ -477,7 +477,7 @@
     {
       "id": 11,
       "name": "TON NOMMMMMMM!",
-      "text": " Messire ! Nous avons interceptés des trainards de l’armée de l’envahisseur. Les soumettre à la question nous permettrait de glaner de précieuses informations !",
+      "text": " Messire ! Nous avons interceptés des traînards de l’armée de l’envahisseur. Les soumettre à la question nous permettrait de glaner de précieuses informations !",
       "img": "../img/eclaireur.jpg",
       "choice": [
         {
@@ -501,6 +501,150 @@
               "type": "stats",
               "modif": "bonheur",
               "value": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "De blésotto en moisi.",
+      "text": "Une étrange moisissure a frappé les champs de blé. Les paysans hurlent au maléfice, les érudits parlent d’un simple champignon. Que faire ? ",
+      "img": "../img/gueux.jpg",
+      "choice": [
+        {
+          "text": "Brûlez tout !  Pas de sorcellerie chez moi, ça file des maladies !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -1
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": -2
+            }
+          ]
+        },
+        {
+          "text": "Attendez ! J’ai une idée… Et si on… « traitait » les champs ? Quoique ça veuille dire ?",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 1
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": 1
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "la lice des mendiants.",
+      "text": "Les chevaliers réclament un grand tournoi pour montrer leur bravoure. Mais organiser cela coûte cher... ",
+      "img": "../img/eclaireur.jpg",
+      "choice": [
+        {
+          "text": "Faites sonnez les trompettes ! J’adore les fêtes ! Du pain et des jeux !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 1
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": -1
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -2
+            }
+          ]
+        },
+        {
+          "text": "J'ai mieux à faire de MON argent!",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -2
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": -1
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Aya yayaaaaaaa",
+      "text": "Des guerriers du Sud offrent leurs services en tant que mercenaires. Ce sont des guerriers et des stratèges redoutables, mais leur loyauté n’est pas donnée.",
+      "img": "../img/eclaireur.jpg",
+      "choice": [
+        {
+          "text": "On ne peux se passer d’hommes compétents, ça nous changeras !!",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 4
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -3
+            }
+          ]
+        },
+        {
+          "text": "Des étrangers ? Dans MON armée ? Et ce sera quoi ensuite !? Et pourquoi pas un étranger sur le trône tant qu’on y-est ?",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 1
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": -3
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": 1
             }
           ]
         }
