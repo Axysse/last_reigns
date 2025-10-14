@@ -134,35 +134,45 @@ resolution.textContent = "Résolution en cours...";
 resolution.classList.add("text-center", "mt-6", "italic");
 invasionModalContent.appendChild(resolution);
 
+// Boucle sur les stats
 invasion.stats.forEach((stat) => {
   const statContainer = document.createElement("div");
-  statContainer.classList.add("flex", "flex-col", "items-center");
+  statContainer.classList.add("flex", "flex-col", "items-center", "gap-1");
 
   let iconSrc = "";
+  let playerValue = 0;
+
+  // Sélection de l’icône et de la valeur du joueur
   switch (stat.modif) {
     case "armee":
       iconSrc = "img/sword.png";
+      playerValue = armeeNbr;
       break;
     case "argent":
       iconSrc = "img/dollar.png";
+      playerValue = argentNbr;
       break;
     default:
       console.log("Cas non prévu :", stat.modif);
       return;
   }
 
+  // Image de la stat
   const statImg = document.createElement("img");
   statImg.src = iconSrc;
-  statImg.classList.add("w-20", "mb-2");
+  statImg.classList.add("w-16", "mb-1");
 
+  // Valeurs comparées
   const vs = document.createElement("p");
-  vs.textContent = `${armeeNbr} VS ${stat.value}`;
-  vs.classList.add("font-semibold");
+  vs.textContent = `${playerValue} VS ${stat.value}`;
+  vs.classList.add("font-semibold", "text-center");
 
+  // Ajout à la modale
   statContainer.appendChild(statImg);
   statContainer.appendChild(vs);
   statsDiv.appendChild(statContainer);
 });
+
 
               setTimeout(() => {
               if (resolveInvasion(invasion.stats)) {
