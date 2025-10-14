@@ -4,6 +4,7 @@ import { hideModal, showModal } from "./ui";
 import { argentNbr, armeeNbr, bonheurNbr, nourritureNbr } from "./stats";
 import { invasionDisplay } from "./time";
 import { defeat } from "./gameover";
+import { getRandomInt } from "./main";
 
 interface Stats {
   modif: string;
@@ -61,12 +62,19 @@ export function checkInvasionTrigger() {
 }
 
 export function getInvader() {
+  let possibleInvasion: Invasion[] = [];
   allInvasion.forEach((invasion) => {
     if (invasion.difficulty == loop) {
-      currentInvasion = invasion;
-      console.log("invasion choisie : " + invasion.name);
+      possibleInvasion.push(invasion);
     }
   });
+  if (possibleInvasion.length > 1) {
+    let index = getRandomInt(possibleInvasion.length);
+    currentInvasion = possibleInvasion[index];
+  } else {
+    currentInvasion = possibleInvasion[0];
+  }
+  console.log("invasion choisie : " + currentInvasion.name);
 }
 
 export function callInvasionEvent(invasion: Invasion) {
@@ -213,8 +221,9 @@ function victory(invasion: Invasion) {
         }
       }
       updateinvasion(10);
-      updateLoop(1)
-      console.log( "boucle de jeu :" + " " + loop )
+      updateLoop(1);
+      getInvader();
+      console.log("boucle de jeu :" + " " + loop);
     });
   }
 }
@@ -245,7 +254,7 @@ function lost(invasion: Invasion) {
 
     nextBttn.addEventListener("click", () => {
       hideModal("invasionModal");
-      defeat("invasion", 0)
+      defeat("invasion", 0);
     });
   }
 }

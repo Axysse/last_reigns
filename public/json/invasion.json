@@ -26,6 +26,33 @@
                     "modif" : "argent"
                 }
             ]
+        },
+        {
+            "id" : 1,
+            "difficulty" : 1,
+            "name" : "Banquiers Rapetout",
+            "img" : "../img/banquier.jpg",
+            "stats": [
+                {
+                    "modif" : "argent",
+                    "value" : 14
+                }
+            ],
+            "text" : [
+                {
+                    "condition" : "intro",
+                    "value" : "Alors je vous appelle parce que j’ai remarqué quelques irrégularités dans les mouvements de votre compte. Vous inquiétez pas on va tout arranger attendez… "
+                },
+                {
+                    "condition" : "victoire",
+                    "value" : " … Alors ensuite si on prends en compte les taux et les dividendes et qu’on y ajoute les intérêts… Ha voilà ! Bon en gros votre cul est en fin de crédit. Et on vient le prendre."
+                },
+                {
+                    "condition" : "defaite",
+                    "value" : "Une autre échéance ? Pourquoi pas mais réfléchissez aux nouveaux intérêts pondérées sur...",
+                    "modif" : "argent"
+                }
+            ]
         }
     ]
 }
