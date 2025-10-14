@@ -1,5 +1,5 @@
 import { getAdjacentCells } from "./main";
-import { defeat } from "./gameOver";
+import { defeat } from "./gameover";
 
 const nourritureDisplay: HTMLParagraphElement | null = document.getElementById(
   "nourritureDisplay"
