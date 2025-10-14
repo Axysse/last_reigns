@@ -1,6 +1,6 @@
 import { turn, invasionTurn, updateinvasion, updateLoop } from "./time";
 import { loop } from "./time";
-import { hideModal, showModal } from "./main";
+import { hideModal, showModal } from "./ui";
 import { argentNbr, armeeNbr, bonheurNbr, nourritureNbr } from "./stats";
 import { invasionDisplay } from "./time";
 

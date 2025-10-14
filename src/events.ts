@@ -7,8 +7,8 @@ import { updateStats } from "./stats";
 import { changeTurnPermission, updateinvasion } from "./time";
 import { canEndTurn } from "./time";
 import { invasionDisplay } from "./time";
-import { showModal } from "./main";
-import { hideModal } from "./main";
+import { showModal } from "./ui";
+import { hideModal } from "./ui";
 
 interface Effect {
   type: string;

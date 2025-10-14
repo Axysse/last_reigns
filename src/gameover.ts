@@ -1,4 +1,4 @@
-import { showModal } from "./main";
+import { showModal } from "./ui";
 
 const defeatModal: HTMLDivElement | null = document.getElementById(
   "defeatModal"

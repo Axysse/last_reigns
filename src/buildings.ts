@@ -1,4 +1,4 @@
-import { showModal } from "./main";
+import { showModal } from "./ui";
 import { currentProd, updateProdMax } from "./stats";
 import { updateNourriture } from "./stats";
 import { updateBonheur } from "./stats";
@@ -6,7 +6,7 @@ import { updateArmee } from "./stats";
 import { updateArgent } from "./stats";
 import { updateStats } from "./stats";
 import { argentNbr } from "./stats";
-import { hideModal } from "./main";
+import { hideModal } from "./ui";
 
 const buildings: HTMLDivElement | null = document.getElementById(
   "buildings"
