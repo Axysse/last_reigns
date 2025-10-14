@@ -1,4 +1,10 @@
-import { turn, invasionTurn, updateinvasion, updateLoop, addTurn } from "./time";
+import {
+  turn,
+  invasionTurn,
+  updateinvasion,
+  updateLoop,
+  addTurn,
+} from "./time";
 import { loop } from "./time";
 import { hideModal, showModal } from "./ui";
 import { argentNbr, armeeNbr, bonheurNbr, nourritureNbr } from "./stats";
@@ -84,8 +90,8 @@ export function getInvader() {
 }
 
 export function callInvasionEvent(invasion: Invasion) {
-    if (invasionModalContent) {
-    invasionModalContent.innerHTML = ""; 
+  if (invasionModalContent) {
+    invasionModalContent.innerHTML = "";
   }
   if (invasionModal) {
     showModal("invasionModal");
@@ -130,59 +136,58 @@ export function callInvasionEvent(invasion: Invasion) {
       invasionModalContent.appendChild(statsDiv);
 
       const resolution = document.createElement("p");
-resolution.textContent = "Résolution en cours...";
-resolution.classList.add("text-center", "mt-6", "italic");
-invasionModalContent.appendChild(resolution);
+      resolution.textContent = "Résolution en cours...";
+      resolution.classList.add("text-center", "mt-6", "italic");
+      invasionModalContent.appendChild(resolution);
 
-// Boucle sur les stats
-invasion.stats.forEach((stat) => {
-  const statContainer = document.createElement("div");
-  statContainer.classList.add("flex", "flex-col", "items-center", "gap-1");
+      invasion.stats.forEach((stat) => {
+        const statContainer = document.createElement("div");
+        statContainer.classList.add(
+          "flex",
+          "flex-col",
+          "items-center",
+          "gap-1"
+        );
 
-  let iconSrc = "";
-  let playerValue = 0;
+        let iconSrc = "";
+        let playerValue = 0;
 
-  // Sélection de l’icône et de la valeur du joueur
-  switch (stat.modif) {
-    case "armee":
-      iconSrc = "img/sword.png";
-      playerValue = armeeNbr;
-      break;
-    case "argent":
-      iconSrc = "img/dollar.png";
-      playerValue = argentNbr;
-      break;
-    default:
-      console.log("Cas non prévu :", stat.modif);
-      return;
-  }
+        switch (stat.modif) {
+          case "armee":
+            iconSrc = "img/sword.png";
+            playerValue = armeeNbr;
+            break;
+          case "argent":
+            iconSrc = "img/dollar.png";
+            playerValue = argentNbr;
+            break;
+          default:
+            console.log("Cas non prévu :", stat.modif);
+            return;
+        }
 
-  // Image de la stat
-  const statImg = document.createElement("img");
-  statImg.src = iconSrc;
-  statImg.classList.add("w-16", "mb-1");
+        const statImg = document.createElement("img");
+        statImg.src = iconSrc;
+        statImg.classList.add("w-16", "mb-1");
 
-  // Valeurs comparées
-  const vs = document.createElement("p");
-  vs.textContent = `${playerValue} VS ${stat.value}`;
-  vs.classList.add("font-semibold", "text-center");
+        const vs = document.createElement("p");
+        vs.textContent = `${playerValue} VS ${stat.value}`;
+        vs.classList.add("font-semibold", "text-center");
 
-  // Ajout à la modale
-  statContainer.appendChild(statImg);
-  statContainer.appendChild(vs);
-  statsDiv.appendChild(statContainer);
-});
+        statContainer.appendChild(statImg);
+        statContainer.appendChild(vs);
+        statsDiv.appendChild(statContainer);
+      });
 
-
-              setTimeout(() => {
-              if (resolveInvasion(invasion.stats)) {
-                console.log("victoire");
-                victory(invasion);
-              } else {
-                console.log("défaite");
-                lost(invasion);
-              }
-            }, 2000);
+      setTimeout(() => {
+        if (resolveInvasion(invasion.stats)) {
+          console.log("victoire");
+          victory(invasion);
+        } else {
+          console.log("défaite");
+          lost(invasion);
+        }
+      }, 2000);
     });
   }
 }
