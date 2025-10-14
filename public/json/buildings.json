@@ -5,7 +5,7 @@
       "name": "scierie",
       "text": "A placer dans une case fôret. Augmente de façon permanente la limite de production de 1, permettant ainsi d'accroitre le nombre de bâtiments construisible par tour.",
       "sprite": "../img/saw.png",
-      "cost": 14,
+      "cost": 12,
       "condition": "foret",
       "effects": [
         {
@@ -26,7 +26,7 @@
         {
           "type": "stats",
           "modif": "nourriture",
-          "value": 1
+          "value": 3
         }
       ]
     },
@@ -41,22 +41,22 @@
         {
           "type": "stats",
           "modif": "bonheur",
-          "value": 1
+          "value": 3
         }
       ]
     },
     {
       "id": 3,
       "name": "Poste de garde",
-      "text": "A placer dans une case prairie. Augmente la statistique armée de 2 à la construction.",
+      "text": "A placer dans une case montagne. Augmente la statistique armée de 2 à la construction.",
       "sprite": "../img/tower.png",
       "cost": 8,
-      "condition": "plaine",
+      "condition": "montagne",
       "effects": [
         {
           "type": "stats",
           "modif": "armee",
-          "value": 2
+          "value": 3
         }
       ]
     },
@@ -95,7 +95,7 @@
       "name": "Démolition",
       "text": "Démoli un bâtiment pour libérer la case.",
       "sprite": "../img/eraser.png",
-      "cost": 2,
+      "cost": 1,
       "condition" : "all",
       "effects": [
         {
@@ -110,7 +110,7 @@
       "name": "Bannière",
       "text": "Rajoute la case selectionnée à votre fief, augmentant son potentiel de production. Une case doit-être libre avant de pouvoir l'ajouter au fief.",
       "sprite": "../img/banner.png",
-      "cost": 12,
+      "cost": 10,
       "condition" : "any",
       "effects": [
         {
