@@ -25,7 +25,7 @@ let statMinLimit: number = 0;
 export let nourritureNbr: number = 3;
 export let bonheurNbr: number = 5;
 export let armeeNbr: number = 5;
-export let argentNbr: number = 8;
+export let argentNbr: number = 7;
 let maxProd: number = 1;
 export let currentProd: number = maxProd;
 

@@ -198,10 +198,6 @@
               "type": "stats",
               "modif": "armee",
               "value": -2
-            },
-            {
-              "type": "activate",
-              "target": "invasionNbrRecul"
             }
           ]
         },
