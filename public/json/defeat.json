@@ -59,6 +59,21 @@
                     "text" : "'Un gueux régnant sur les gueux'. C'est en ces mots qu'on parle de vous, puisqu'après tout vous n'êtes pas beaucoup plus riche que les plus modestes représentant de votre royaume. Et puis de toute façon plus personne ne vous écoute, vous portez les mêmes haillons misérables que tout les autres."
                 }
             ]
+        },
+        {
+            "id" : 4,
+            "type" : "invasion",
+            "img" : "../img/defeat.png",
+            "text" : [
+                {
+                    "condition" : "+",
+                    "text" : "Malchance, Inconsidérations, manque de support ou encore simple inconscience face au danger. Peu importe les raisons; non contents d'avoir fait chuter vôtre dynastie dans l'oubli, c'est tout le royaume qui sombre avec vous. L'histoire oubliera tout de vous, votre nom, vos décisions, vos luttes, votre trône."
+                },
+                {
+                    "condition" : "-",
+                    "text" : "Malchance, Inconsidérations, manque de support ou encore simple inconscience face au danger. Peu importe les raisons; non contents d'avoir fait chuter vôtre dynastie dans l'oubli, c'est tout le royaume qui sombre avec vous. L'histoire oubliera tout de vous, votre nom, vos décisions, vos luttes, votre trône."
+                }
+            ]
         }
     ]
 }

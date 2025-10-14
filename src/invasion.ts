@@ -3,6 +3,7 @@ import { loop } from "./time";
 import { hideModal, showModal } from "./ui";
 import { argentNbr, armeeNbr, bonheurNbr, nourritureNbr } from "./stats";
 import { invasionDisplay } from "./time";
+import { defeat } from "./gameover";
 
 interface Stats {
   modif: string;
@@ -135,7 +136,7 @@ export function callInvasionEvent(invasion: Invasion) {
                 victory(invasion);
               } else {
                 console.log("défaite");
-                defeat(invasion);
+                lost(invasion);
               }
             }, 2000);
             break;
@@ -218,7 +219,7 @@ function victory(invasion: Invasion) {
   }
 }
 
-function defeat(invasion: Invasion) {
+function lost(invasion: Invasion) {
   if (invasionModalContent) {
     invasionModalContent.innerHTML = "";
 
@@ -244,8 +245,7 @@ function defeat(invasion: Invasion) {
 
     nextBttn.addEventListener("click", () => {
       hideModal("invasionModal");
-      alert("GAMEOVER");
-      window.location.reload();
+      defeat("invasion", 0)
     });
   }
 }
