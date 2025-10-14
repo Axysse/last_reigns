@@ -1,4 +1,4 @@
-import { turn, invasionTurn, updateinvasion, updateLoop } from "./time";
+import { turn, invasionTurn, updateinvasion, updateLoop, addTurn } from "./time";
 import { loop } from "./time";
 import { hideModal, showModal } from "./ui";
 import { argentNbr, armeeNbr, bonheurNbr, nourritureNbr } from "./stats";
@@ -6,6 +6,11 @@ import { invasionDisplay, invasionNameDisplay } from "./time";
 import { defeat } from "./gameover";
 import { getRandomInt } from "./main";
 import { refreshEvents } from "./events";
+import { callEvent } from "./events";
+import { resetProd } from "./stats";
+import { updateStats } from "./stats";
+import { refreshBuildings } from "./buildings";
+import { changeTurnPermission } from "./time";
 
 interface Stats {
   modif: string;
@@ -79,6 +84,9 @@ export function getInvader() {
 }
 
 export function callInvasionEvent(invasion: Invasion) {
+    if (invasionModalContent) {
+    invasionModalContent.innerHTML = ""; 
+  }
   if (invasionModal) {
     showModal("invasionModal");
   }
@@ -230,6 +238,12 @@ function victory(invasion: Invasion) {
       updateinvasion(10);
       updateLoop(1);
       getInvader();
+      addTurn();
+      callEvent();
+      resetProd();
+      updateStats();
+      changeTurnPermission();
+      refreshBuildings();
       console.log("boucle de jeu :" + " " + loop);
     });
   }

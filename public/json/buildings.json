@@ -17,38 +17,48 @@
     },
     {
       "id": 1,
-      "name": "ferme",
-      "text": "A placer dans une case prairie. Augmente la statistique nourriture de 1 à la construction.",
-      "sprite": "../img/farm.png",
-      "cost": 5,
+      "name": "hameau",
+      "text": "A placer dans une case prairie. Augmente la statistique nourriture de 2 à la construction ainsi que le bonheur de 1.",
+      "sprite": "../img/house.png",
+      "cost": 4,
       "condition": "plaine",
       "effects": [
         {
           "type": "stats",
+          "modif": "bonheur",
+          "value": 1
+        },
+        {
+          "type": "stats",
           "modif": "nourriture",
-          "value": 3
+          "value": 2
         }
       ]
     },
     {
       "id": 2,
-      "name": "foire",
-      "text": "A placer dans une case prairie. Augmente la statistique bonheur de 1 à la construction.",
-      "sprite": "../img/fair.png",
-      "cost": 8,
+      "name": "brasserie",
+      "text": "A placer dans une case prairie. Augmente la statistique bonheur de 3 à la construction ainsi que la nourriture de 1.",
+      "sprite": "../img/barrel.png",
+      "cost": 7,
       "condition": "plaine",
       "effects": [
         {
           "type": "stats",
           "modif": "bonheur",
           "value": 3
+        },
+                {
+          "type": "stats",
+          "modif": "nourriture",
+          "value": 1
         }
       ]
     },
     {
       "id": 3,
       "name": "Poste de garde",
-      "text": "A placer dans une case montagne. Augmente la statistique armée de 2 à la construction.",
+      "text": "A placer dans une case montagne. Augmente la statistique armée de 4 à la construction et augmente le bonheur de 1.",
       "sprite": "../img/tower.png",
       "cost": 8,
       "condition": "montagne",
@@ -56,7 +66,12 @@
         {
           "type": "stats",
           "modif": "armee",
-          "value": 3
+          "value": 4
+        },
+        {
+          "type": "stats",
+          "modif": "bonheur",
+          "value": 1
         }
       ]
     },
@@ -78,7 +93,7 @@
     {
       "id": 5,
       "name": "Académie des fonctionnaires",
-      "text": "A placer dans une case de prairie. Augmente la statistique argent de 1 à la construction. Ne rapporte pas grand chose et occupe une case pour peu de bénefice, à utiliser en cas d'urgence.",
+      "text": "A placer dans une case de prairie. Augmente la statistique argent de 1 à la construction MAIS diminue le bonheur de 1. Ne rapporte pas grand chose et occupe une case pour peu de bénefice, à utiliser en cas d'urgence.",
       "sprite": "../img/student.png",
       "cost": 0,
       "condition": "plaine",
@@ -87,6 +102,11 @@
           "type": "stats",
           "modif": "argent",
           "value": 1
+        },
+                {
+          "type": "stats",
+          "modif": "bonheur",
+          "value": -1
         }
       ]
     },
