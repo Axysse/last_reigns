@@ -78,7 +78,7 @@
     {
       "id": 5,
       "name": "bureau des taxes",
-      "text": "A placer dans une case de prairie. Augmente la statistique argent de 1 à la construction MAIS diminue le bonheur de 1. Ne rapporte pas grand chose et occupe une case pour peu de bénefice, à utiliser en cas d'urgence.",
+      "text": "A placer dans une case de prairie. Augmente la statistique argent de 3 à la construction MAIS diminue le bonheur de 1. Ne rapporte pas grand chose et occupe une case pour peu de bénefice, à utiliser en cas d'urgence.",
       "sprite": "../img/tax.png",
       "cost": 0,
       "condition": "plaine",
