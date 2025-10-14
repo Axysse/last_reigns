@@ -127,27 +127,44 @@ export function callInvasionEvent(invasion: Invasion) {
         "gap-4",
         "justify-center"
       );
+      invasionModalContent.appendChild(statsDiv);
 
-      invasion.stats.forEach((stat) => {
-        switch (stat.modif) {
-          case "armee":
-            const statImg = document.createElement("img");
-            statImg.src = "img/sword.png";
-            statImg.classList.add("mt-8", "w-24");
+      const resolution = document.createElement("p");
+resolution.textContent = "Résolution en cours...";
+resolution.classList.add("text-center", "mt-6", "italic");
+invasionModalContent.appendChild(resolution);
 
-            const vs = document.createElement("p");
-            vs.textContent =
-              armeeNbr.toString() + " " + "VS" + " " + stat.value.toString();
+invasion.stats.forEach((stat) => {
+  const statContainer = document.createElement("div");
+  statContainer.classList.add("flex", "flex-col", "items-center");
 
-            const resolution = document.createElement("p");
-            resolution.textContent = "résolution en cours...";
+  let iconSrc = "";
+  switch (stat.modif) {
+    case "armee":
+      iconSrc = "img/sword.png";
+      break;
+    case "argent":
+      iconSrc = "img/dollar.png";
+      break;
+    default:
+      console.log("Cas non prévu :", stat.modif);
+      return;
+  }
 
-            invasionModalContent.appendChild(statImg);
-            invasionModalContent.appendChild(statsDiv);
-            statsDiv.appendChild(vs);
-            invasionModalContent.appendChild(resolution);
+  const statImg = document.createElement("img");
+  statImg.src = iconSrc;
+  statImg.classList.add("w-20", "mb-2");
 
-            setTimeout(() => {
+  const vs = document.createElement("p");
+  vs.textContent = `${armeeNbr} VS ${stat.value}`;
+  vs.classList.add("font-semibold");
+
+  statContainer.appendChild(statImg);
+  statContainer.appendChild(vs);
+  statsDiv.appendChild(statContainer);
+});
+
+              setTimeout(() => {
               if (resolveInvasion(invasion.stats)) {
                 console.log("victoire");
                 victory(invasion);
@@ -156,11 +173,6 @@ export function callInvasionEvent(invasion: Invasion) {
                 lost(invasion);
               }
             }, 2000);
-            break;
-          default:
-            console.log("le cas n'est pas encore prévu");
-        }
-      });
     });
   }
 }

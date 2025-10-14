@@ -29,6 +29,37 @@
         },
         {
             "id" : 1,
+            "difficulty" : 0,
+            "name" : "Barbares du Nord",
+            "img" : "../img/viking.jpg",
+            "stats": [
+                {
+                    "modif" : "argent",
+                    "value" : 8
+                },
+                {
+                    "modif" : "armee",
+                    "value" : 8
+                }
+            ],
+            "text" : [
+                {
+                    "condition" : "intro",
+                    "value" : "Il est temps de pratiquer le commerce à la mode du grand Nord. A GRANDS COUPS DE HACHES!"
+                },
+                {
+                    "condition" : "victoire",
+                    "value" : "Je vois que les marchés sont déjà saturés par ici. Nous irons développer des partenariats plus fructueux ailleurs."
+                },
+                {
+                    "condition" : "defaite",
+                    "value" : "Bon alors, tu achètes mon mouton !? Tu veux pas ? TU VEUX PAS?!… Ha voilà qui est plus raisonnable ! T’as encore du pognon ?",
+                    "modif" : "argent"
+                }
+            ]
+        },
+        {
+            "id" : 2,
             "difficulty" : 1,
             "name" : "Banquiers Rapetout",
             "img" : "../img/banquier.jpg",
