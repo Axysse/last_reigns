@@ -187,7 +187,7 @@ export function callInvasionEvent(invasion: Invasion) {
           console.log("défaite");
           lost(invasion);
         }
-      }, 2000);
+      }, 8000);
     });
   }
 }
