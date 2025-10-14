@@ -25,9 +25,7 @@ let invasionNbr: HTMLSpanElement | null = document.getElementById(
 export const invasionNameDisplay: HTMLParagraphElement | null =
   document.getElementById("invasionName") as HTMLParagraphElement;
 
-let invasionNameValue: HTMLSpanElement | null = document.getElementById(
-  "invasionNameValue"
-) as HTMLSpanElement;  
+
 
 export let loop: number = 0;
 export let turn: number = 0;
