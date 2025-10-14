@@ -22,6 +22,13 @@ let invasionNbr: HTMLSpanElement | null = document.getElementById(
   "invasionNbr"
 ) as HTMLSpanElement;
 
+export const invasionNameDisplay: HTMLParagraphElement | null =
+  document.getElementById("invasionName") as HTMLParagraphElement;
+
+let invasionNameValue: HTMLSpanElement | null = document.getElementById(
+  "invasionNameValue"
+) as HTMLSpanElement;  
+
 export let loop: number = 0;
 export let turn: number = 0;
 export let invasionTurn: number = 10;

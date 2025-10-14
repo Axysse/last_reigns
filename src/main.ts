@@ -149,7 +149,6 @@ async function createGrid() {
               callEvent()
               // changeTurnPermission()
               newGame = false;
-              
             }
           }
           if(!selectedBuilding){

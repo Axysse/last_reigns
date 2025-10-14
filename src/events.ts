@@ -1,14 +1,16 @@
+import { currentInvasion } from "./invasion";
 import { getRandomInt } from "./main";
 import { checkDefeatConditions, updateNourriture } from "./stats";
 import { updateBonheur } from "./stats";
 import { updateArmee } from "./stats";
 import { updateArgent } from "./stats";
 import { updateStats } from "./stats";
-import { changeTurnPermission, updateinvasion } from "./time";
+import { changeTurnPermission, invasionNameDisplay, updateinvasion } from "./time";
 import { canEndTurn } from "./time";
 import { invasionDisplay } from "./time";
 import { showModal } from "./ui";
 import { hideModal } from "./ui";
+
 
 interface Effect {
   type: string;
@@ -40,7 +42,9 @@ let choice2: HTMLDivElement | null = document.getElementById(
 const dialog: HTMLDivElement | null = document.getElementById(
   "dialog"
 ) as HTMLDivElement;
-
+export let invasionNameValue: HTMLSpanElement | null = document.getElementById(
+  "invasionNameValue"
+) as HTMLSpanElement;  
 let allEvents: Event[] = [];
 let cleanEvents : Event[] = []
 
@@ -160,6 +164,8 @@ function setupChoice1(chosenEvent: Event) {
       suppText.innerHTML = "Tour de l'attaque connu.";
     } else if(effect.type == "activate" && effect.target == "invasionNbrRecul"){
       suppText.innerHTML = "Tour de l'attaque reculé.";
+    } else if(effect.type == "activate" && effect.target == "invasionName"){
+      suppText.innerHTML = "Attaquant identifié";
     }
   });
 
@@ -225,6 +231,8 @@ function setupChoice2(chosenEvent: Event) {
       suppText.innerHTML = "Tour de l'attaque connu.";
     } else if(effect.type == "activate" && effect.target == "invasionNbrRecul"){
       suppText.innerHTML = "Tour de l'attaque reculé.";
+    } else if(effect.type == "activate" && effect.target == "invasionName"){
+      suppText.innerHTML = "Attaquant identifié";
     }
   });
 
@@ -279,14 +287,19 @@ function resolveEvent(effects: Effect[], chosenEvent?: Event) {
             break;
         }
         break;
-
       case "activate":
         if(effect.target == "invasionDisplay"){
           invasionDisplay?.classList.remove("hidden")
-        } else if(effect.target = "invasionNbrRecul"){
+        } else if(effect.target == "invasionNbrRecul"){
           updateinvasion(1);
-        } else if(effect.target = "invasionNbrAvance"){
+        } else if(effect.target == "invasionNbrAvance"){
           updateinvasion(-1);
+        } else if(effect.target == "invasionName"){
+          if(invasionNameValue){
+            invasionNameValue.innerHTML = ''
+            invasionNameValue.innerHTML = currentInvasion.name
+          }
+          invasionNameDisplay?.classList.remove("hidden")
         }
         break;
       default:
@@ -311,4 +324,10 @@ function moveEventToClean(chosenEvent: Event) {
   if (!cleanEvents.some(event => event.id === chosenEvent.id)) {
     cleanEvents.push(chosenEvent);
   }
+}
+
+export function refreshEvents() {
+  allEvents = allEvents.concat(cleanEvents);
+  cleanEvents = [];
+  console.log("Événements réinitialisés :", allEvents);
 }

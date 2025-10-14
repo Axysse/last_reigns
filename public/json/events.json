@@ -473,6 +473,38 @@
           ]
         }
       ]
+    },
+    {
+      "id": 11,
+      "name": "TON NOMMMMMMM!",
+      "text": " Messire ! Nous avons interceptés des trainards de l’armée de l’envahisseur. Les soumettre à la question nous permettrait de glaner de précieuses informations !",
+      "img": "../img/eclaireur.jpg",
+      "choice": [
+        {
+          "text": "Dis moi tout ! Dis moi qui tu es ! Revèle moi tout tes secrets !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 2
+            },
+            {
+              "type": "activate",
+              "target": "invasionName"
+            }
+          ]
+        },
+        {
+          "text": "Baste ! Je suis bien au dessus de tout ça. Ma dignité royale en prendrait un coup. ",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 5
+            }
+          ]
+        }
+      ]
     }
   ]
 }

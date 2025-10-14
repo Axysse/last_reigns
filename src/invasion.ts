@@ -2,9 +2,10 @@ import { turn, invasionTurn, updateinvasion, updateLoop } from "./time";
 import { loop } from "./time";
 import { hideModal, showModal } from "./ui";
 import { argentNbr, armeeNbr, bonheurNbr, nourritureNbr } from "./stats";
-import { invasionDisplay } from "./time";
+import { invasionDisplay, invasionNameDisplay } from "./time";
 import { defeat } from "./gameover";
 import { getRandomInt } from "./main";
+import { refreshEvents } from "./events";
 
 interface Stats {
   modif: string;
@@ -220,6 +221,12 @@ function victory(invasion: Invasion) {
           invasionDisplay.classList.add("hidden");
         }
       }
+      if (invasionNameDisplay) {
+        if (!invasionNameDisplay?.classList.contains("hidden")) {
+          invasionNameDisplay.classList.add("hidden");
+        }
+      }
+      refreshEvents();
       updateinvasion(10);
       updateLoop(1);
       getInvader();
