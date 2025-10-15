@@ -16,6 +16,7 @@ import { refreshBuildings } from "./buildings";
 import { fetchInvasion, getInvader } from "./invasion";
 import { fetchDefeats } from "./gameover";
 import { chooseLeader, fetchLeaders } from "./leaders";
+import { resetProd } from "./stats";
 
 let grid: HTMLDivElement | null = document.getElementById(
   "grid"
@@ -146,6 +147,7 @@ async function createGrid() {
               updateStats()
               getInvader()
               refreshBuildings()
+              resetProd();
               addTurn()
               callEvent()
               // changeTurnPermission()
