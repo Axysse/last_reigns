@@ -95,10 +95,11 @@ function setupDialog(chosenEvent: Event) {
     dialog.innerHTML = " "
   }
   const dialogTitle = document.createElement("h2");
-  dialogTitle.classList.add("font-bold", "mb-4");
+  dialogTitle.classList.add("font-bold", "mb-4", "text-white");
   dialogTitle.textContent = chosenEvent.name;
 
   const dialogText = document.createElement("p");
+  dialogText.classList.add("text-white")
   dialogText.textContent = chosenEvent.text;
 
   const dialogImg = document.createElement("img");
@@ -124,14 +125,14 @@ function setupChoice1(chosenEvent: Event) {
   newChoice1.innerHTML = "";
 
   const choiceText = document.createElement("p");
-  choiceText.classList.add("h-[15%]");
+  choiceText.classList.add("h-[15%]", "w-[75%]", "mt-16", "text-xl", "font-semibold", "px-8", "text-center");
   choiceText.textContent = chosenEvent.choice[0].text;
 
   const effectsDiv = document.createElement("div");
-  effectsDiv.classList.add("mt-8", "h-[65%]");
+  effectsDiv.classList.add("mt-8", "h-[45%]");
 
   const suppText = document.createElement("p");
-  suppText.classList.add("h-[10%");
+  suppText.classList.add("h-[10%]", "w-[65%]", "font-semibold", "text-xl", "px-10");
   suppText.innerHTML = " ";
 
   const allEffects = document.createElement("div");
@@ -189,14 +190,14 @@ function setupChoice2(chosenEvent: Event) {
   newChoice2.innerHTML = "";
 
   const choiceText = document.createElement("p");
-  choiceText.classList.add("h-[15%]");
+  choiceText.classList.add("h-[15%]", "w-[75%]", "mt-16", "text-xl", "font-semibold", "px-8", "text-center");
   choiceText.textContent = chosenEvent.choice[1].text;
 
   const effectsDiv = document.createElement("div");
-  effectsDiv.classList.add("mt-8", "h-[65%]");
+  effectsDiv.classList.add("mt-8", "h-[45%]");
 
   const suppText = document.createElement("p");
-  suppText.classList.add("h-[10%");
+  suppText.classList.add("h-[10%]", "w-[65%]", "font-semibold", "text-xl", "px-10");
   suppText.innerHTML = " ";
 
   const allEffects = document.createElement("div");
