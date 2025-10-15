@@ -32,7 +32,7 @@
             "id" : 1,
             "img" : "../img/kinger.png",
             "name" : "Albert le Savant",
-            "text" : "Aussi intelligent que sensible et peu porté sur la violence malgrès sa noblesse, vous avez une flamme dans le regard et une fougue discrète qui ne demande qu'à être entretenue.",
+            "text" : "Aussi intelligent que sensible et peu porté sur la violence malgrè votre noble lignage, vous avez une flamme dans le regard et une fougue discrète qui ne demande qu'à être entretenue.",
             "stats" : [
                 {
                     "type" : "armee",
