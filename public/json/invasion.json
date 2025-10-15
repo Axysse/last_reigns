@@ -88,7 +88,7 @@
         {
             "id" : 3,
             "difficulty" : 2,
-            "name" : "Hippies vampires",
+            "name" : "Hippies huppés",
             "img" : "../img/hippie.png",
             "stats": [
                 {
@@ -103,7 +103,7 @@
             "text" : [
                 {
                     "condition" : "intro",
-                    "value" : "Imagine tout les gens du monde, vivants dans la paiiiiix… hou hou. C’est sympa ici ! On mange bien ?"
+                    "value" : "Imagine tout les gens du monde, vivants dans la paiiiiix… hou hou. C’est sympa ici ! On mange bien ? Je préfère prévenir, j'ai le palais délicat."
                 },
                 {
                     "condition" : "victoire",
@@ -111,7 +111,69 @@
                 },
                 {
                     "condition" : "defaite",
-                    "value" : "Ordure capitaliste fascisante ! Être un working class hero est préférable au mépris du capital ! Meurs mec pas cool !",
+                    "value" : "Ordure capitaliste fascisante ! Être un working class hero est préférable au mépris du capital ! Je vais laisser une revew assasine sur kingdom advisor! Ton petit royaume ne s'en remettra jamais!",
+                    "modif" : "argent"
+                }
+            ]
+        },
+        {
+            "id" : 4,
+            "difficulty" : 3,
+            "name" : "Infection d’outre-tombe",
+            "img" : "../img/zombie.jpg",
+            "stats": [
+                {
+                    "modif" : "armee",
+                    "value" : 13
+                },
+                {
+                    "modif" : "nourriture",
+                    "value" : 10
+                }
+            ],
+            "text" : [
+                {
+                    "condition" : "intro",
+                    "value" : "Beuuuuh ahhhhh graaaah…  (Subissez le premier fléau du chaos vous qui avez ignorés les signes !)"
+                },
+                {
+                    "condition" : "victoire",
+                    "value" : "Gaaaag, blaaaarg, heeeeu... (Ce n’est qu’un revers sans conséquences.)"
+                },
+                {
+                    "condition" : "defaite",
+                    "value" : "GAAAAAggaa… ouhhhhh… (Rejoins-là… Rejoins-nous...)",
+                    "modif" : "argent"
+                }
+            ]
+        },
+        {
+            "id" : 5,
+            "difficulty" : 4,
+            "name" : "Tribunal des âmes",
+            "img" : "../img/tribunal.jpg",
+            "stats": [
+                {
+                    "modif" : "armee",
+                    "value" : 13
+                },
+                {
+                    "modif" : "bonheur",
+                    "value" : 12
+                }
+            ],
+            "text" : [
+                {
+                    "condition" : "intro",
+                    "value" : "Faisant fi de nos multiples injonctions à comparaître, la justice du chaos est venu à l’accusé ici présent. Que le jugement soit rendu."
+                },
+                {
+                    "condition" : "victoire",
+                    "value" : " Vous êtes jugé digne d’un sursis, mais votre audience est reconduite… Retenez bien."
+                },
+                {
+                    "condition" : "defaite",
+                    "value" : "Sur la balance du chaos votre âme ne pèse pas bien lourd. Vous vous confondrez sans mal dans le voile des ténèbres.",
                     "modif" : "argent"
                 }
             ]

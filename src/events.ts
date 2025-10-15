@@ -152,6 +152,7 @@ function setupChoice1(chosenEvent: Event) {
       effectImg.src = returnStatImg(effect.modif);
       effectImg.classList.add("w-12");
       const effectDisplay = document.createElement("p");
+      effectDisplay.classList.add("font-semibold", "text-xl")
       effectDisplay.innerHTML = effect.modif + "  " + effect.value?.toString();
 
       effectDiv.appendChild(effectImg);
@@ -217,6 +218,7 @@ function setupChoice2(chosenEvent: Event) {
       effectImg.src = returnStatImg(effect.modif);
       effectImg.classList.add("w-12");
       const effectDisplay = document.createElement("p");
+      effectDisplay.classList.add("font-semibold", "text-xl")
       effectDisplay.innerHTML = effect.modif + "  " + effect.value?.toString();
 
       effectDiv.appendChild(effectImg);
