@@ -6,6 +6,7 @@ import { updateArmee } from "./stats";
 import { updateArgent } from "./stats";
 import { updateStats } from "./stats";
 import { argentNbr } from "./stats";
+import { updateCurrentProd } from "./stats";
 import { hideModal } from "./ui";
 import { invasionNameDisplay, updateInvasionName } from "./time";
 
@@ -200,6 +201,13 @@ export function applyBuildingEffetcs(
             updateProdMax(effect.value ?? 0);
           }
           break;
+        case "currentProd":
+            if (cell.getAttribute("owned") == "true") {
+            updateCurrentProd(effect.value * 2);
+          } else {
+            updateCurrentProd(effect.value ?? 0);
+          }
+          break;  
         default:
           console.log("Aucun effet correspondant");
           break;
