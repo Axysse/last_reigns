@@ -7,6 +7,7 @@ import { updateArgent } from "./stats";
 import { updateStats } from "./stats";
 import { argentNbr } from "./stats";
 import { hideModal } from "./ui";
+import { invasionNameDisplay, updateInvasionName } from "./time";
 
 const buildings: HTMLDivElement | null = document.getElementById(
   "buildings"
@@ -207,6 +208,8 @@ export function applyBuildingEffetcs(
       destroyBuilding(cell)
     } else if(effect.type == "add"){
       addToFief(cell)
+    } else if(effect.type == "invasionName"){
+      revealName()
     }
   });
   updateStats();
@@ -275,5 +278,11 @@ function addToFief(cell : HTMLDivElement){
     cell.setAttribute("owned", "true");
     cell.classList.add("territory")
   }
-  
+}
+
+function revealName(){
+  if(invasionNameDisplay?.classList.contains("hidden")){
+    invasionNameDisplay.classList.remove("hidden")
+  }
+  updateInvasionName()
 }

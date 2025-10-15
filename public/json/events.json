@@ -472,38 +472,6 @@
     },
     {
       "id": 11,
-      "name": "TON NOMMMMMMM!",
-      "text": " Messire ! Nous avons interceptés des traînards de l’armée de l’envahisseur. Les soumettre à la question nous permettrait de glaner de précieuses informations !",
-      "img": "../img/eclaireur.jpg",
-      "choice": [
-        {
-          "text": "Dis moi tout ! Dis moi qui tu es ! Revèle moi tout tes secrets !",
-          "effects": [
-            {
-              "type": "stats",
-              "modif": "armee",
-              "value": 2
-            },
-            {
-              "type": "activate",
-              "target": "invasionName"
-            }
-          ]
-        },
-        {
-          "text": "Baste ! Je suis bien au dessus de tout ça. Ma dignité royale en prendrait un coup. ",
-          "effects": [
-            {
-              "type": "stats",
-              "modif": "bonheur",
-              "value": 5
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 12,
       "name": "De blésotto en moisi.",
       "text": "Une étrange moisissure a frappé les champs de blé. Les paysans hurlent au maléfice, les érudits parlent d’un simple champignon. Que faire ? ",
       "img": "../img/gueux.jpg",
@@ -551,7 +519,7 @@
       ]
     },
     {
-      "id": 13,
+      "id": 12,
       "name": "la lice des mendiants.",
       "text": "Les chevaliers réclament un grand tournoi pour montrer leur bravoure. Mais organiser cela coûte cher... ",
       "img": "../img/eclaireur.jpg",
@@ -604,7 +572,7 @@
       ]
     },
     {
-      "id": 14,
+      "id": 13,
       "name": "Aya yayaaaaaaa",
       "text": "Des guerriers du Sud offrent leurs services en tant que mercenaires. Ce sont des guerriers et des stratèges redoutables, mais leur loyauté n’est pas donnée.",
       "img": "../img/eclaireur.jpg",

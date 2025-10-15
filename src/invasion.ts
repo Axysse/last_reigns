@@ -4,11 +4,12 @@ import {
   updateinvasion,
   updateLoop,
   addTurn,
+  updateInvasionName,
 } from "./time";
 import { loop } from "./time";
 import { hideModal, showModal } from "./ui";
 import { argentNbr, armeeNbr, bonheurNbr, nourritureNbr } from "./stats";
-import { invasionDisplay, invasionNameDisplay } from "./time";
+import { invasionDisplay} from "./time";
 import { defeat } from "./gameover";
 import { getRandomInt } from "./main";
 import { refreshEvents } from "./events";
@@ -187,7 +188,7 @@ export function callInvasionEvent(invasion: Invasion) {
           console.log("défaite");
           lost(invasion);
         }
-      }, 8000);
+      }, 6000);
     });
   }
 }
@@ -256,15 +257,11 @@ function victory(invasion: Invasion) {
           invasionDisplay.classList.add("hidden");
         }
       }
-      if (invasionNameDisplay) {
-        if (!invasionNameDisplay?.classList.contains("hidden")) {
-          invasionNameDisplay.classList.add("hidden");
-        }
-      }
       refreshEvents();
       updateinvasion(10);
       updateLoop(1);
       getInvader();
+      updateInvasionName();
       addTurn();
       callEvent();
       resetProd();

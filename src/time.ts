@@ -25,6 +25,10 @@ let invasionNbr: HTMLSpanElement | null = document.getElementById(
 export const invasionNameDisplay: HTMLParagraphElement | null =
   document.getElementById("invasionName") as HTMLParagraphElement;
 
+  export let invasionNameValue: HTMLSpanElement | null = document.getElementById(
+  "invasionNameValue"
+) as HTMLSpanElement;  
+
 
 
 export let loop: number = 0;
@@ -61,6 +65,7 @@ if (timeBttn) {
         updateStats();
         changeTurnPermission();
         refreshBuildings();
+        updateInvasionName()
         console.log(canEndTurn);
       }
     }
@@ -80,4 +85,11 @@ export function updateinvasion(value: number) {
 
 export function updateLoop(value : number){
   loop += value;
+}
+
+export function updateInvasionName(){
+  if(invasionNameValue){
+    invasionNameValue.innerHTML = ''
+    invasionNameValue.innerHTML = currentInvasion.name
+  }
 }

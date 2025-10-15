@@ -115,13 +115,27 @@
       "name": "Bannière",
       "text": "Rajoute la case selectionnée à votre fief, augmentant son potentiel de production. Une case doit-être libre avant de pouvoir l'ajouter au fief.",
       "sprite": "../img/banner.png",
-      "cost": 10,
+      "cost": 8,
       "condition" : "any",
       "effects": [
         {
           "type": "add",
           "modif": "argent",
           "value": 0
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Tour de guet",
+      "text": "Identifie les vagues d'invasion. VOus n'êtes jamais pris par surprise.",
+      "sprite": "../img/watchtower.png",
+      "cost": 12,
+      "condition" : "any",
+      "effects": [
+        {
+              "type": "invasionName",
+              "target": "invasionName"
         }
       ]
     }

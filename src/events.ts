@@ -1,11 +1,10 @@
-import { currentInvasion } from "./invasion";
 import { getRandomInt } from "./main";
 import { checkDefeatConditions, updateNourriture } from "./stats";
 import { updateBonheur } from "./stats";
 import { updateArmee } from "./stats";
 import { updateArgent } from "./stats";
 import { updateStats } from "./stats";
-import { changeTurnPermission, invasionNameDisplay, updateinvasion } from "./time";
+import { changeTurnPermission, updateinvasion } from "./time";
 import { canEndTurn } from "./time";
 import { invasionDisplay } from "./time";
 import { showModal } from "./ui";
@@ -42,9 +41,8 @@ let choice2: HTMLDivElement | null = document.getElementById(
 const dialog: HTMLDivElement | null = document.getElementById(
   "dialog"
 ) as HTMLDivElement;
-export let invasionNameValue: HTMLSpanElement | null = document.getElementById(
-  "invasionNameValue"
-) as HTMLSpanElement;  
+
+
 let allEvents: Event[] = [];
 let cleanEvents : Event[] = []
 
@@ -164,9 +162,7 @@ function setupChoice1(chosenEvent: Event) {
       suppText.innerHTML = "Tour de l'attaque connu.";
     } else if(effect.type == "activate" && effect.target == "invasionNbrRecul"){
       suppText.innerHTML = "Tour de l'attaque reculé.";
-    } else if(effect.type == "activate" && effect.target == "invasionName"){
-      suppText.innerHTML = "Attaquant identifié";
-    }
+    } 
   });
 
 
@@ -231,8 +227,6 @@ function setupChoice2(chosenEvent: Event) {
       suppText.innerHTML = "Tour de l'attaque connu.";
     } else if(effect.type == "activate" && effect.target == "invasionNbrRecul"){
       suppText.innerHTML = "Tour de l'attaque reculé.";
-    } else if(effect.type == "activate" && effect.target == "invasionName"){
-      suppText.innerHTML = "Attaquant identifié";
     }
   });
 
@@ -294,12 +288,6 @@ function resolveEvent(effects: Effect[], chosenEvent?: Event) {
           updateinvasion(1);
         } else if(effect.target == "invasionNbrAvance"){
           updateinvasion(-1);
-        } else if(effect.target == "invasionName"){
-          if(invasionNameValue){
-            invasionNameValue.innerHTML = ''
-            invasionNameValue.innerHTML = currentInvasion.name
-          }
-          invasionNameDisplay?.classList.remove("hidden")
         }
         break;
       default:
