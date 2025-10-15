@@ -4,6 +4,7 @@ import { returnStatImg } from "./events";
 import { updateStats } from "./stats";
 
 const leaderModal : HTMLDivElement | null = document.getElementById("leaderModal") as HTMLDivElement;
+const portrait : HTMLDivElement | null = document.getElementById("portrait") as HTMLDivElement;
 
 interface Stats {
     type: string;
@@ -97,6 +98,12 @@ export function chooseLeader(){
                 changeInitialValue(stat.type, stat.value)
             });
             updateStats()
+            if(portrait){
+              const leaderImg = document.createElement("img")
+              leaderImg.src = leader.img
+              leaderImg.classList.add("w-32")
+              portrait.appendChild(leaderImg)
+            }
             hideModal("leaderModal")
         })
     });
