@@ -2,7 +2,7 @@
     "leaders" : [
         {
             "id" : 0,
-            "img" : "../img/viking.jpg",
+            "img" : "../img/richard.png",
             "name" : "Richard Coeur-de-Chacal",
             "text" : "Prince redoutable et fils d’un roi qui l’était tout autant, vous héritez d’un royaume armé et stable économiquement mais ou les gens sourient peu. Sans doute la méteo.",
             "stats" : [
@@ -20,11 +20,39 @@
                 },
                 {
                     "type": "argent",
-                    "value": 7
+                    "value": 8
                 },
                 {
                     "type": "production",
                     "value": 1
+                }
+            ]
+        },
+                {
+            "id" : 1,
+            "img" : "../img/kinger.png",
+            "name" : "Albert le Savant",
+            "text" : "Aussi intelligent que sensible et peu porté sur la violence malgrès sa noblesse, vous avez une flamme dans le regard et une fougue discrète qui ne demande qu'à être entretenue.",
+            "stats" : [
+                {
+                    "type" : "armee",
+                    "value": 2
+                },
+                {
+                    "type": "bonheur",
+                    "value": 10
+                },
+                {
+                    "type": "nourriture",
+                    "value": 5
+                },
+                {
+                    "type": "argent",
+                    "value": 5
+                },
+                {
+                    "type": "production",
+                    "value": 2
                 }
             ]
         }
