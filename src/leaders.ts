@@ -50,7 +50,7 @@ export function chooseLeader(){
     }
     allLeaders.forEach(leader => {
         const newLeaderDiv = document.createElement("div")
-        newLeaderDiv.classList.add("flex", "flex-col", "items-center", "bg-[url(/img/parchemin-bg.png)]", "bg-cover", "bg-center", "w-[35%]", "h-[80%]", "text-black", "px-16", "choice")
+        newLeaderDiv.classList.add("flex", "flex-col", "items-center", "bg-[url(/img/parchemin-bg.png)]", "bg-cover", "bg-center", "w-[35%]", "h-[80%]", "text-black", "px-6", "choice", "overflow-hidden")
 
         const newLeaderName = document.createElement("h2")
         newLeaderName.classList.add("text-2xl", "font-bold", "mt-24")
@@ -63,7 +63,7 @@ export function chooseLeader(){
         newLeaderDiv.appendChild(newLeaderImg)
 
         const newLeaderText = document.createElement("p")
-        newLeaderText.classList.add("text-xl", "font-semibold", "text-center", "mt-8", "w-[70%]")
+        newLeaderText.classList.add("text-xl", "text-center", "mt-4", "w-[75%]")
         newLeaderText.textContent = leader.text
         newLeaderDiv.appendChild(newLeaderText)
 
@@ -77,7 +77,7 @@ export function chooseLeader(){
 
             const newStatImg = document.createElement("img")
             newStatImg.src = returnStatImg(stat.type);
-            newStatImg.classList.add("w-10")
+            newStatImg.classList.add("w-6", "2xl:w-12")
             newStatDiv.appendChild(newStatImg)
 
             const newStatName = document.createElement("p")
