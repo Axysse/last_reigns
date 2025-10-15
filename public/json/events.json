@@ -613,6 +613,59 @@
           ]
         }
       ]
+    },
+    {
+      "id": 14,
+      "name": "Les joeuurs du grenier",
+      "text": "Les greniers sont presque vides. Le peuple a faim et commence à s’agiter.",
+      "img": "../img/gueux.jpg",
+      "choice": [
+        {
+          "text": "Distribuez les réserves royales.",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": -3
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 3
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -1
+            }
+          ]
+        },
+        {
+          "text": "Priorité à l’armée. Le peuple survivra bien.",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -3
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": 1
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": -1
+            }
+          ]
+        }
+      ]
     }
   ]
 }

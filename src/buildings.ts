@@ -38,6 +38,8 @@ export interface Building {
 let allBuildings: Building[] = [];
 export let selectedBuilding: Building | null = null;
 
+let watchtower : boolean = false
+
 export async function fetchBuildings() {
   try {
     const response = await fetch("./json/buildings.json");
@@ -132,7 +134,10 @@ function selectTile(building: Building) {
 export function checkBuildCondition(building: Building) {
   const cost: number = building.cost;
   // const condition: string = building.condition;
-  if (currentProd > 0 && argentNbr >= cost) {
+  if (building.name == "Tour de guet" && watchtower === true) {
+    alert("batiment unique!");
+    return false;
+  } else if(currentProd > 0 && argentNbr >= cost){
     return true;
   } else {
     alert("tu ne peux plus construire ou tu n'as pas assez de MONEY!");
@@ -217,6 +222,7 @@ export function applyBuildingEffetcs(
     } else if(effect.type == "add"){
       addToFief(cell)
     } else if(effect.type == "invasionName"){
+      watchtower = true
       revealName()
     }
   });

@@ -155,7 +155,7 @@
       "name": "Tour de guet",
       "text": "Identifie les vagues d'invasion. Vous n'êtes jamais pris par surprise.",
       "sprite": "../img/watchtower.png",
-      "cost": 12,
+      "cost": 1,
       "condition" : "any",
       "effects": [
         {

@@ -104,7 +104,7 @@ function setupDialog(chosenEvent: Event) {
 
   const dialogImg = document.createElement("img");
   dialogImg.src = chosenEvent.img;
-  dialogImg.classList.add("mt-12", "w-[90%]", "h-[60%]");
+  dialogImg.classList.add("mt-12", "w-[90%]", "h-[60%]", "border-6", "border-[#4c3219]");
 
   if (dialog) {
     dialog.appendChild(dialogTitle);
