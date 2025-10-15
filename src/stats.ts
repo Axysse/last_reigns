@@ -22,11 +22,11 @@ const maxProductionDisplay: HTMLParagraphElement | null =
 let statMaxLimit: number = 20;
 let statMinLimit: number = 0;
 
-export let nourritureNbr: number = 3;
-export let bonheurNbr: number = 5;
-export let armeeNbr: number = 5;
-export let argentNbr: number = 7;
-let maxProd: number = 1;
+export let nourritureNbr: number = 0;
+export let bonheurNbr: number = 0;
+export let armeeNbr: number = 0;
+export let argentNbr: number = 0;
+let maxProd: number = 0;
 export let currentProd: number = maxProd;
 
 export function updateStats() {
@@ -85,6 +85,26 @@ export function resetProd() {
   currentProd = maxProd;
 }
 
+export function changeInitialValue(variable: string, value: number) {
+  switch (variable.toString()) {
+    case "nourriture":
+      nourritureNbr = value;
+      break;
+    case "armee":
+      armeeNbr = value;
+      break;
+    case "argent":
+      argentNbr = value;
+      break;
+    case "bonheur":
+      bonheurNbr = value;
+      break;
+    case "production":
+      maxProd = value;
+      break;      
+  }
+}
+
 export function setStartingStats(cell: HTMLDivElement) {
   console.log(getAdjacentCells(cell.id));
   const adjacentCells: (HTMLDivElement | null)[] = getAdjacentCells(cell.id);
@@ -115,16 +135,16 @@ export function setStartingStats(cell: HTMLDivElement) {
 
 export function checkDefeatConditions() {
   if (nourritureNbr <= statMinLimit || nourritureNbr >= statMaxLimit) {
-    defeat("nourriture", nourritureNbr)
+    defeat("nourriture", nourritureNbr);
     return false;
   } else if (bonheurNbr <= statMinLimit || bonheurNbr >= statMaxLimit) {
-    defeat("bonheur", bonheurNbr)
+    defeat("bonheur", bonheurNbr);
     return false;
   } else if (armeeNbr <= statMinLimit || armeeNbr >= statMaxLimit) {
-    defeat("armee", armeeNbr)
+    defeat("armee", armeeNbr);
     return false;
   } else if (argentNbr <= statMinLimit || argentNbr >= statMaxLimit) {
-    defeat("argent", argentNbr)
+    defeat("argent", argentNbr);
     return false;
   } else {
     return true;

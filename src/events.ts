@@ -247,7 +247,7 @@ function setupChoice2(chosenEvent: Event) {
   (window as any).choice2 = newChoice2;
 }
 
-function returnStatImg(modif: string): string {
+export function returnStatImg(modif: string): string {
   switch (modif) {
     case "nourriture":
       return "/img/apple.png";
@@ -257,7 +257,9 @@ function returnStatImg(modif: string): string {
       return "/img/sword.png";
     case "argent":
       return "/img/dollar.png";
-    default:
+    case "production":
+      return "/img/hammer.png";
+    default:  
       return "img/ecaireur.jpg";
   }
 }

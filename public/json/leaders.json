@@ -1,0 +1,32 @@
+{
+    "leaders" : [
+        {
+            "id" : 0,
+            "img" : "../img/viking.jpg",
+            "name" : "Richard Coeur-de-Chacal",
+            "text" : "Prince redoutable et fils d’un roi qui l’était tout autant, vous héritez d’un royaume armé et stable économiquement mais ou les gens sourient peu. Sans doute la méteo.",
+            "stats" : [
+                {
+                    "type" : "armee",
+                    "value": 12
+                },
+                {
+                    "type": "bonheur",
+                    "value": 2
+                },
+                {
+                    "type": "nourriture",
+                    "value": 0
+                },
+                {
+                    "type": "argent",
+                    "value": 7
+                },
+                {
+                    "type": "production",
+                    "value": 1
+                }
+            ]
+        }
+    ]
+}
