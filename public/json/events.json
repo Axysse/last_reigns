@@ -713,6 +713,58 @@
           ]
         }
       ]
+    },
+    {
+      "id": 16,
+      "name": "C'est nous les gars de la marine",
+      "text": "Il nous appartiens de savoir tirer le meilleur même des situations les plus désespérées. Ces vagues d’invasion sont le prétexte parfait pour mettre cette jeunesse de gueux au pas et éradiquer à tout jamais ce fléau qu’est l’oisiveté chez les jeunes !",
+      "img": "../img/juge.png",
+      "choice": [
+        {
+          "text": "Pourquoi suis-je si méchant ? Parce que.",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 3
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -4
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -1
+            },
+            {
+          "type": "activate",
+          "target": "increaseArmeePerTurn"
+        }
+          ]
+        },
+        {
+          "text": "Et engrosser la liste des infortunés anonymes qui cracheront à jamais sur mon nom et mon héritage ? Non.",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": -1
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": 1
+            }
+          ]
+        }
+      ]
     }
   ]
 }

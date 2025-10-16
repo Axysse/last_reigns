@@ -173,6 +173,8 @@ function setupChoice1(chosenEvent: Event) {
       suppText.innerHTML = "Tour de l'attaque reculé.";
     } else if(effect.type == "activate" && effect.target == "increaseBonheurPerTurn"){
       suppText.innerHTML = "+ 1 Bonheur par tour";
+    } else if(effect.type == "activate" && effect.target == "increaseArmeePerTurn"){
+      suppText.innerHTML = "+ 1 Armée par tour";
     }
   });
 
@@ -241,6 +243,8 @@ function setupChoice2(chosenEvent: Event) {
       suppText.innerHTML = "Tour de l'attaque reculé.";
     } else if(effect.type == "activate" && effect.target == "increaseBonheurPerTurn"){
       suppText.innerHTML = "+ 1 Bonheur par tour";
+    } else if(effect.type == "activate" && effect.target == "increaseArmeePerTurn"){
+      suppText.innerHTML = "+ 1 Armée par tour";
     }
   });
 
@@ -306,6 +310,8 @@ function resolveEvent(effects: Effect[], chosenEvent?: Event) {
           updateinvasion(-1);
         } else if(effect.target == "increaseBonheurPerTurn"){
           changeBooleanState("increaseBonheurPerTurn")
+        }  else if(effect.target == "increaseArmeePerTurn"){
+          changeBooleanState("increaseArmeePerTurn")
         }
         break;
       default:
@@ -333,12 +339,12 @@ function moveEventToClean(chosenEvent: Event) {
 }
 
 export function refreshEvents() {
-  const eventToExclude : number = 15
+  const excludedIds = [15, 16];
   let eventsToAdd;
 
-  if (eventToExclude !== undefined && eventToExclude !== null) {
+if (excludedIds.length > 0) {
     eventsToAdd = cleanEvents.filter(event => 
-      event.id !== eventToExclude && event.id !== eventToExclude
+      !excludedIds.includes(event.id)
     );
   } else {
     eventsToAdd = cleanEvents;
@@ -347,5 +353,5 @@ export function refreshEvents() {
   cleanEvents = [];
 
   console.log("Événements réinitialisés :", allEvents);
-  console.log("Événement exclu (si défini) avec ID/Nom :", eventToExclude);
+  console.log("Événements exclus (par ID) :", excludedIds);
 }
