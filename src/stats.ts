@@ -199,7 +199,25 @@ switch(variableName){
     break;
   case "decreaseNourriturePerTurn":
       decreaseNourriturePerTurn = !decreaseNourriturePerTurn;
-      break;  
+      break;
+  case "increaseBonheurPerTurn":
+    increaseBonheurPerTurn = !increaseBonheurPerTurn;
+    break;
+  case "decreaseBonheurPerTurn":
+      decreaseBonheurPerTurn = !decreaseBonheurPerTurn;
+      break;   
+  case "increaseArmeePerTurn":
+    increaseArmeePerTurn = !increaseArmeePerTurn;
+    break;
+  case "decreaseArmeePerTurn":
+      decreaseArmeePerTurn = !decreaseArmeePerTurn;
+      break;
+  case "increaseArgentPerTurn":
+    increaseArgentPerTurn = !increaseArgentPerTurn;
+    break;
+  case "decreaseArgentPerTurn":
+      decreaseArgentPerTurn = !decreaseArgentPerTurn;
+      break;               
   default:
       console.warn(`Boolean variable ${variableName} not found.`);
       break;    

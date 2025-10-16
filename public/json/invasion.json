@@ -93,11 +93,11 @@
             "stats": [
                 {
                     "modif" : "bonheur",
-                    "value" : 15
+                    "value" : 12
                 },
                 {
                     "modif" : "nourriture",
-                    "value" : 13
+                    "value" : 12
                 }
             ],
             "text" : [

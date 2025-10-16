@@ -1,4 +1,4 @@
-import { showModal } from "./ui";
+import { showModal, updateUi } from "./ui";
 import { changeBooleanState, currentProd, updateProdMax } from "./stats";
 import { updateNourriture } from "./stats";
 import { updateBonheur } from "./stats";
@@ -285,6 +285,10 @@ function destroyBuilding(cell : HTMLDivElement){
   const cellImg : HTMLImageElement | null = cell.querySelector("img") as HTMLImageElement
   if(cellImg){
     cell.removeChild(cellImg)
+    if(cell.dataset.building="Moulin"){
+      changeBooleanState("increaseNourriturePerTurn")
+      updateUi();
+    }
     delete cell.dataset.building
   }
 }

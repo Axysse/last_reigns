@@ -101,7 +101,7 @@ export function chooseLeader(){
             if(portrait){
               const leaderImg = document.createElement("img")
               leaderImg.src = leader.img
-              leaderImg.classList.add("w-32")
+              leaderImg.classList.add("w-24")
               portrait.appendChild(leaderImg)
             }
             hideModal("leaderModal")
