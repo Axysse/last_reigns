@@ -1,5 +1,6 @@
 import { getAdjacentCells } from "./main";
 import { defeat } from "./gameover";
+import { updateUi } from "./ui";
 
 const nourritureDisplay: HTMLParagraphElement | null = document.getElementById(
   "nourritureDisplay"
@@ -28,6 +29,16 @@ export let armeeNbr: number = 0;
 export let argentNbr: number = 0;
 let maxProd: number = 0;
 export let currentProd: number = maxProd;
+
+export let increaseNourriturePerTurn : boolean = false;
+export let increaseBonheurPerTurn : boolean = false;
+export let increaseArmeePerTurn : boolean = false;
+export let increaseArgentPerTurn : boolean = false;
+
+export let decreaseNourriturePerTurn : boolean = false;
+export let decreaseBonheurPerTurn : boolean = false;
+export let decreaseArmeePerTurn : boolean = false;
+export let decreaseArgentPerTurn : boolean = false;
 
 export function updateStats() {
   if (nourritureDisplay) {
@@ -149,4 +160,49 @@ export function checkDefeatConditions() {
   } else {
     return true;
   }
+}
+
+export function checkIncreasePerTurn(){
+  if(increaseNourriturePerTurn){
+    updateNourriture(1)
+  } 
+  if(increaseBonheurPerTurn){
+    updateBonheur(1)
+  }
+  if(increaseArmeePerTurn){
+    updateArmee(1)
+  }
+  if(increaseArgentPerTurn){
+    updateArgent(1)
+  }
+}
+
+  export function checkDecreasePerTurn(){
+  if(decreaseNourriturePerTurn){
+    updateNourriture(-1)
+  } 
+  if(decreaseBonheurPerTurn){
+    updateBonheur(-1)
+  }
+  if(decreaseArmeePerTurn){
+    updateArmee(-1)
+  }
+  if(decreaseArgentPerTurn){
+    updateArgent(-1)
+  }
+}
+
+export function changeBooleanState(variableName : string){
+switch(variableName){
+  case "increaseNourriturePerTurn":
+    increaseNourriturePerTurn = !increaseNourriturePerTurn;
+    break;
+  case "decreaseNourriturePerTurn":
+      decreaseNourriturePerTurn = !decreaseNourriturePerTurn;
+      break;  
+  default:
+      console.warn(`Boolean variable ${variableName} not found.`);
+      break;    
+}
+updateUi();
 }

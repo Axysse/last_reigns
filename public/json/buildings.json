@@ -113,7 +113,7 @@
           "modif": "argent",
           "value": 2
         },
-                {
+        {
           "type": "stats",
           "modif": "bonheur",
           "value": -1
@@ -152,6 +152,21 @@
     },
     {
       "id": 8,
+      "name": "Moulin",
+      "text": " + 1 de Nourriture à chaque tour. Le bâtiment ne doublera pas sa production si placé sur une case de fief.",
+      "sprite": "../img/windmill.png",
+      "cost": 10,
+      "condition" : "any",
+      "effects": [
+        {
+          "type": "increaseNourriturePerTurn",
+          "modif": "argent",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": 9,
       "name": "Tour de guet",
       "text": "Identifie les vagues d'invasion. Vous n'êtes jamais pris par surprise.",
       "sprite": "../img/watchtower.png",

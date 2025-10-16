@@ -1,5 +1,5 @@
 import { showModal } from "./ui";
-import { currentProd, updateProdMax } from "./stats";
+import { changeBooleanState, currentProd, updateProdMax } from "./stats";
 import { updateNourriture } from "./stats";
 import { updateBonheur } from "./stats";
 import { updateArmee } from "./stats";
@@ -224,6 +224,8 @@ export function applyBuildingEffetcs(
     } else if(effect.type == "invasionName"){
       watchtower = true
       revealName()
+    } else if(effect.type == "increaseNourriturePerTurn"){
+      changeBooleanState("increaseNourriturePerTurn")
     }
   });
   updateStats();

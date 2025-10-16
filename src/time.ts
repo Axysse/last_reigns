@@ -1,4 +1,4 @@
-import { checkDefeatConditions, updateStats } from "./stats";
+import { changeBooleanState, checkDecreasePerTurn, checkDefeatConditions, checkIncreasePerTurn, updateStats } from "./stats";
 import { callEvent } from "./events";
 import { refreshBuildings } from "./buildings";
 import { resetProd } from "./stats";
@@ -7,6 +7,7 @@ import {
   callInvasionEvent,
   currentInvasion,
 } from "./invasion";
+
 
 const timeBttn: HTMLButtonElement | null = document.getElementById(
   "timeBttn"
@@ -63,6 +64,8 @@ if (timeBttn) {
         callEvent();
         resetProd();
         updateStats();
+        checkIncreasePerTurn();
+        checkDecreasePerTurn();
         changeTurnPermission();
         refreshBuildings();
         updateInvasionName()
