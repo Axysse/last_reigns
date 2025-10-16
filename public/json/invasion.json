@@ -35,11 +35,11 @@
             "stats": [
                 {
                     "modif" : "argent",
-                    "value" : 8
+                    "value" : 7
                 },
                 {
                     "modif" : "armee",
-                    "value" : 8
+                    "value" : 7
                 }
             ],
             "text" : [

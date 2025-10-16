@@ -97,11 +97,10 @@ function setupDialog(chosenEvent: Event) {
   }
 
   const textDiv = document.createElement("div")
-  textDiv.classList.add("h-[30%]", "flex", "flex-col", "gap-4", "items-center")
-
+  textDiv.classList.add("h-[40%]", "flex", "flex-col", "gap-4", "items-center")
 
   const dialogTitle = document.createElement("h2");
-  dialogTitle.classList.add("font-bold", "mb-4", "text-white");
+  dialogTitle.classList.add("font-bold", "mb-2", "text-white");
   dialogTitle.textContent = chosenEvent.name;
 
   const dialogText = document.createElement("p");
@@ -110,7 +109,7 @@ function setupDialog(chosenEvent: Event) {
 
   const dialogImg = document.createElement("img");
   dialogImg.src = chosenEvent.img;
-  dialogImg.classList.add("mt-12", "w-[75%]", "h-[60%]", "border-6", "border-[#4c3219]");
+  dialogImg.classList.add("mt-10", "w-[75%]", "max-xl:h-[45%]", "h-[60%]", "border-6", "border-[#4c3219]");
 
   if (dialog) {
     dialog.appendChild(textDiv)
