@@ -1,4 +1,4 @@
-import { changeBooleanState, checkDecreasePerTurn, checkDefeatConditions, checkIncreasePerTurn, updateStats } from "./stats";
+import { checkDecreasePerTurn, checkDefeatConditions, checkIncreasePerTurn, updateStats } from "./stats";
 import { callEvent } from "./events";
 import { refreshBuildings } from "./buildings";
 import { resetProd } from "./stats";
