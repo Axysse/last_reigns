@@ -4,7 +4,7 @@
       "id": 0,
       "name": "INVASION",
       "text": "Messire, les nouvelles sont alarmantes! L'ennemi n'est plus très loin!",
-      "img": "../img/eclaireur.jpg",
+      "img": "../img/blob.png",
       "choice": [
         {
           "text": "Alarme! Etat d'urgence! Tous aux abris! Moi d'abord! La garde!!!",
@@ -179,7 +179,7 @@
       "id": 4,
       "name": "L'art de la fourbe",
       "text": " Messire, nous avons reperé le campement de l’armée de l’outre-monde. Ces chiens ont montés un campement pour piller nos campagnes! Profitons de leur repos, alors qu’ils se seront enivrés de leur prétendue victoire, pour mener une attaque surprise ! Bien sûr cela veut dire laisser nos campagnes à leur merci...",
-      "img": "../img/eclaireur.jpg",
+      "img": "../img/blob.png",
       "choice": [
         {
           "text": "Et qu’ils s’emparent de MON pain ? Non, envoyez des troupes TOUT DE SUITE !",
@@ -231,7 +231,7 @@
       "id": 5,
       "name": "Quelque chose en toi",
       "text": "Les rues seraient presque tranquille la nuit si on faisait abstraction de cette jeunesse aussi insouciante que bruyante. Pourquoi ne se contentent-ils pas de névroser gentiment dans leur coin en attendant la horde d’outre-monde ? Je pense qu’un couvre-feu devrait rétablir un peu d’ordre.",
-      "img": "../img/juge.jpeg",
+      "img": "../img/juge.png",
       "choice": [
         {
           "text": "Comment ? Des jeunes ? Est-ce que je suis à jour de mon vaccin ? Ha, j'ai peur!",
@@ -269,7 +269,7 @@
       "id": 6,
       "name": "Justice rustique",
       "text": "Les tribunaux c’est bien, mais ça coûte cher. Surtout ceux à disposition du peuple. Laissons-les se débrouiller entre eux comme au bon vieux temps. Si ils sont toujours là c’est que ça devait pas si mal marcher à l'époque.",
-      "img": "../img/juge.jpeg",
+      "img": "../img/juge.png",
       "choice": [
         {
           "text": "Scandaleux ! Et notre mission civilisatrice ?",
@@ -307,7 +307,7 @@
       "id": 7,
       "name": "Fin d'année pour le bon roi",
       "text": " La fin de l’année approche et il est de coutume lors des vœux du roi de faire montre de ses bonnes grâces envers le bon peuple. Cependant ce n’est pas tout les ans qu’une menace existentielle inter-dimensionnelle menaçant toute vie d’extinction  pointe le bout de son nez! Passons l’éponge pour ce coup-ci, les gens seront compréhensifs.",
-      "img": "../img/juge.jpeg",
+      "img": "../img/juge.png",
       "choice": [
         {
           "text": "On ne lâche rien ! Je veux qu’on m’aime et qu’on m’admire ! Même au fin fond des plus profondes des abysses !",
@@ -355,7 +355,7 @@
       "id": 8,
       "name": "un pont trop loin",
       "text": "Le guet de la rivière a subi les affres de la dernière crue hivernale ! L’endroit est impraticable et plus personne ne peux franchir le cours d’eau en sécurité. Il nous faut un nouveau pont ou a défaut assainir la rivière.",
-      "img": "../img/bourgmestre.jpg",
+      "img": "../img/bourgmestre.png",
       "choice": [
         {
           "text": "Un pont ? Des semelles trempées n’ont jamais tuées personne.",
@@ -398,7 +398,7 @@
       "id": 9,
       "name": "Guilde dans le besoin",
       "text": "Une nouvelle guilde de marchands veut s’installer dans notre belle cité. Cependant elle manque d’effectifs et nous demande un « prêt » en capacité militaire pour défendre ses caravanes. Elle nous promet un retour sur investissement en échange.",
-      "img": "../img/bourgmestre.jpg",
+      "img": "../img/bourgmestre.png",
       "choice": [
         {
           "text": "Ces maudits usuriers n’auront jamais mon aide ! ",
@@ -436,7 +436,7 @@
       "id": 10,
       "name": "J'ai glissé chef!",
       "text": "Ces mous du genoux de la caserne ne se contentent pas seulement d’être des incapables, ils ont aussi la fâcheuse tendance à mourir prématurément. Nous avons un besoin de nouvelles recrues urgent. Augmentons le budget de l’armée !",
-      "img": "../img/eclaireur.jpg",
+      "img": "../img/blob.png",
       "choice": [
         {
           "text": "Les temps sont durs pour tout le monde. Get good noobz.",
@@ -522,7 +522,7 @@
       "id": 12,
       "name": "la lice des mendiants.",
       "text": "Les chevaliers réclament un grand tournoi pour montrer leur bravoure. Mais organiser cela coûte cher... ",
-      "img": "../img/eclaireur.jpg",
+      "img": "../img/blob.png",
       "choice": [
         {
           "text": "Faites sonnez les trompettes ! J’adore les fêtes ! Du pain et des jeux !",
@@ -575,7 +575,7 @@
       "id": 13,
       "name": "Aya yayaaaaaaa",
       "text": "Des guerriers du Sud offrent leurs services en tant que mercenaires. Ce sont des guerriers et des stratèges redoutables, mais leur loyauté n’est pas donnée.",
-      "img": "../img/eclaireur.jpg",
+      "img": "../img/blob.png",
       "choice": [
         {
           "text": "On ne peux se passer d’hommes compétents, ça nous changeras !!",
