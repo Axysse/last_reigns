@@ -177,6 +177,41 @@
                     "modif" : "argent"
                 }
             ]
+        },
+        {
+            "id" : 6,
+            "difficulty" : 5,
+            "name" : "Empereur-Dieu du chaos ",
+            "img" : "../img/emperor.png",
+            "stats": [
+                {
+                    "modif" : "armee",
+                    "value" : 15
+                },
+                {
+                    "modif" : "bonheur",
+                    "value" : 14
+                },
+                {
+                    "modif" : "argent",
+                    "value" : 13
+                }
+            ],
+            "text" : [
+                {
+                    "condition" : "intro",
+                    "value" : "..."
+                },
+                {
+                    "condition" : "victoire",
+                    "value" : "GG WELL PLAY"
+                },
+                {
+                    "condition" : "defaite",
+                    "value" : "Il ne pouvait en être autrement.",
+                    "modif" : "argent"
+                }
+            ]
         }
     ]
 }
