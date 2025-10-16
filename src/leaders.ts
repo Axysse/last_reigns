@@ -83,10 +83,12 @@ export function chooseLeader(){
 
             const newStatName = document.createElement("p")
             newStatName.innerText = stat.type;
+            newStatName.classList.add("font-semibold")
             newStatDiv.appendChild(newStatName)
 
             const newStatValue = document.createElement("p")
-            newStatValue.innerText = stat.value.toString()
+            newStatValue.innerText = `${(stat.value ?? 0) >= 0 ? "+" : ""}${stat.value}`;
+            newStatValue.classList.add("font-bold")
             newStatDiv.appendChild(newStatValue)
 
             newLeaderStatsDiv.appendChild(newStatDiv)

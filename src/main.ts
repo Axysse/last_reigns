@@ -81,7 +81,7 @@ async function createGrid() {
   allBiomes.forEach((b) => (biomeCounts[b.name] = 0));
 
   //  Placer des seeds
-  let seeds = 10;
+  let seeds = 12;
   for (let i = 0; i < seeds; i++) {
     let x = getRandomInt(columnNbr);
     let y = getRandomInt(rowNbr);
@@ -203,6 +203,10 @@ function placeCity(cell: HTMLDivElement) {
 
 export function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
+}
+
+export function getRandomIntBetween(min : number, max: number) {
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 export function getAdjacentCells(cellId: string): (HTMLDivElement | null)[] {

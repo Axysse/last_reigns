@@ -39,6 +39,7 @@ let allBuildings: Building[] = [];
 export let selectedBuilding: Building | null = null;
 
 let watchtower : boolean = false
+let moulin : boolean = false
 
 export async function fetchBuildings() {
   try {
@@ -134,7 +135,7 @@ function selectTile(building: Building) {
 export function checkBuildCondition(building: Building) {
   const cost: number = building.cost;
   // const condition: string = building.condition;
-  if (building.name == "Tour de guet" && watchtower === true) {
+  if (building.name == "Tour de guet" && watchtower === true || building.name == "Moulin" && moulin === true) {
     alert("batiment unique!");
     return false;
   } else if(currentProd > 0 && argentNbr >= cost){
@@ -225,6 +226,7 @@ export function applyBuildingEffetcs(
       watchtower = true
       revealName()
     } else if(effect.type == "increaseNourriturePerTurn"){
+      moulin = true
       changeBooleanState("increaseNourriturePerTurn")
     }
   });
@@ -252,17 +254,17 @@ function showBuildModal(building: Building) {
 
     const buildTitle = document.createElement("h3");
     buildTitle.textContent = building.name;
-    buildTitle.classList.add("text-3xl", "font-bold");
+    buildTitle.classList.add("text-2xl", "font-bold", "mt-18");
     buildModalContent.appendChild(buildTitle);
 
     const buildImg = document.createElement("img");
     buildImg.src = building.sprite;
-    buildImg.classList.add("w-48", "mt-8");
+    buildImg.classList.add("max-2xl:w-12","w-32", "mt-4");
     buildModalContent.appendChild(buildImg);
 
     const buildText = document.createElement("p");
     buildText.textContent = building.text;
-    buildText.classList.add("mt-8");
+    buildText.classList.add("mt-8", "w-[65%]", "font-semibold");
     buildModalContent.appendChild(buildText);
 
     const buildCost = document.createElement("p");
@@ -272,7 +274,7 @@ function showBuildModal(building: Building) {
 
     building.effects.forEach((effect: Effect) => {
       const buildEffect = document.createElement("p");
-      buildEffect.textContent = effect.modif + " : " + effect.value;
+      buildEffect.textContent = `${effect.modif} : ${(effect.value ?? 0) >= 0 ? "+" : ""}${effect.value}`;
       buildEffect.classList.add("text-xl");
       buildEffectDiv.appendChild(buildEffect);
     });
@@ -285,9 +287,10 @@ function destroyBuilding(cell : HTMLDivElement){
   const cellImg : HTMLImageElement | null = cell.querySelector("img") as HTMLImageElement
   if(cellImg){
     cell.removeChild(cellImg)
-    if(cell.dataset.building="Moulin"){
+    if(cell.dataset.building=="Moulin"){
       changeBooleanState("increaseNourriturePerTurn")
       updateUi();
+      moulin = false
     }
     delete cell.dataset.building
   }

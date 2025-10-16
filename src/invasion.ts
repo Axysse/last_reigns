@@ -11,7 +11,7 @@ import { hideModal, showModal } from "./ui";
 import { argentNbr, armeeNbr, bonheurNbr, nourritureNbr } from "./stats";
 import { invasionDisplay} from "./time";
 import { defeat } from "./gameover";
-import { getRandomInt } from "./main";
+import { getRandomInt, getRandomIntBetween } from "./main";
 import { refreshEvents } from "./events";
 import { callEvent } from "./events";
 import { resetProd } from "./stats";
@@ -258,7 +258,7 @@ function victory(invasion: Invasion) {
         }
       }
       refreshEvents();
-      updateinvasion(10);
+      updateinvasion(getRandomIntBetween(8, 12));
       updateLoop(1);
       getInvader();
       updateInvasionName();

@@ -9,6 +9,7 @@ import { canEndTurn } from "./time";
 import { invasionDisplay } from "./time";
 import { showModal } from "./ui";
 import { hideModal } from "./ui";
+import { changeBooleanState } from "./stats";
 
 
 interface Effect {
@@ -159,7 +160,7 @@ function setupChoice1(chosenEvent: Event) {
       effectImg.classList.add("w-12");
       const effectDisplay = document.createElement("p");
       effectDisplay.classList.add("font-semibold", "text-xl")
-      effectDisplay.innerHTML = effect.modif + "  " + effect.value?.toString();
+      effectDisplay.innerHTML = `${effect.modif} ${(effect.value ?? 0) >= 0 ? "+" : ""}${effect.value}`;
 
       effectDiv.appendChild(effectImg);
       effectDiv.appendChild(effectDisplay);
@@ -170,7 +171,9 @@ function setupChoice1(chosenEvent: Event) {
       suppText.innerHTML = "Tour de l'attaque connu.";
     } else if(effect.type == "activate" && effect.target == "invasionNbrRecul"){
       suppText.innerHTML = "Tour de l'attaque reculé.";
-    } 
+    } else if(effect.type == "activate" && effect.target == "increaseBonheurPerTurn"){
+      suppText.innerHTML = "+ 1 Bonheur par tour";
+    }
   });
 
 
@@ -225,7 +228,7 @@ function setupChoice2(chosenEvent: Event) {
       effectImg.classList.add("w-12");
       const effectDisplay = document.createElement("p");
       effectDisplay.classList.add("font-semibold", "text-xl")
-      effectDisplay.innerHTML = effect.modif + "  " + effect.value?.toString();
+      effectDisplay.innerHTML = `${effect.modif} ${(effect.value ?? 0) >= 0 ? "+" : ""}${effect.value}`;
 
       effectDiv.appendChild(effectImg);
       effectDiv.appendChild(effectDisplay);
@@ -236,6 +239,8 @@ function setupChoice2(chosenEvent: Event) {
       suppText.innerHTML = "Tour de l'attaque connu.";
     } else if(effect.type == "activate" && effect.target == "invasionNbrRecul"){
       suppText.innerHTML = "Tour de l'attaque reculé.";
+    } else if(effect.type == "activate" && effect.target == "increaseBonheurPerTurn"){
+      suppText.innerHTML = "+ 1 Bonheur par tour";
     }
   });
 
@@ -299,6 +304,8 @@ function resolveEvent(effects: Effect[], chosenEvent?: Event) {
           updateinvasion(1);
         } else if(effect.target == "invasionNbrAvance"){
           updateinvasion(-1);
+        } else if(effect.target == "increaseBonheurPerTurn"){
+          changeBooleanState("increaseBonheurPerTurn")
         }
         break;
       default:
@@ -326,7 +333,19 @@ function moveEventToClean(chosenEvent: Event) {
 }
 
 export function refreshEvents() {
-  allEvents = allEvents.concat(cleanEvents);
+  const eventToExclude : number = 15
+  let eventsToAdd;
+
+  if (eventToExclude !== undefined && eventToExclude !== null) {
+    eventsToAdd = cleanEvents.filter(event => 
+      event.id !== eventToExclude && event.id !== eventToExclude
+    );
+  } else {
+    eventsToAdd = cleanEvents;
+  }
+  allEvents = allEvents.concat(eventsToAdd);
   cleanEvents = [];
+
   console.log("Événements réinitialisés :", allEvents);
+  console.log("Événement exclu (si défini) avec ID/Nom :", eventToExclude);
 }

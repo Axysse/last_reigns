@@ -666,6 +666,53 @@
           ]
         }
       ]
+    },
+    {
+      "id": 15,
+      "name": "C'est la fête!",
+      "text": "Mais ou va le monde je vous le demande !? Ces enfants gâtés du peuple se sont rassemblés pour soumettre un réforme des plus fantasques. Ils réclament qu’une fête anuelle devienne… quotidienne !",
+      "img": "../img/bourgmestre.png",
+      "choice": [
+        {
+          "text": "Et… pourquoi pas ? Qu’on s’amuse !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -3
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 3
+            },
+            {
+          "type": "activate",
+          "target": "increaseBonheurPerTurn"
+        }
+          ]
+        },
+        {
+          "text": "Ces gueux ont besoin d’un peu plus de discipline.",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -2
+            },
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": 1
+            }
+          ]
+        }
+      ]
     }
   ]
 }

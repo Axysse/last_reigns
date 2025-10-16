@@ -155,7 +155,7 @@
       "name": "Moulin",
       "text": " + 1 de Nourriture à chaque tour. Le bâtiment ne doublera pas sa production si placé sur une case de fief.",
       "sprite": "../img/windmill.png",
-      "cost": 1,
+      "cost": 10,
       "condition" : "any",
       "effects": [
         {
