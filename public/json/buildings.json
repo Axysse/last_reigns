@@ -83,7 +83,7 @@
       "cost": [
         {
           "type": "argent",
-          "value": 7
+          "value": 6
         }
       ],
       "condition": "plaine",
@@ -156,14 +156,7 @@
           "value": 1
         }
       ],
-      "condition": "all",
-      "effects": [
-        {
-          "type": "destroy",
-          "modif": "argent",
-          "value": 0
-        }
-      ]
+      "condition": "all"
     },
     {
       "id": 7,
@@ -176,14 +169,7 @@
           "value": 4
         }
       ],
-      "condition": "any",
-      "effects": [
-        {
-          "type": "add",
-          "modif": "argent",
-          "value": 0
-        }
-      ]
+      "condition": "any"
     },
     {
       "id": 8,
@@ -196,14 +182,7 @@
           "value": 10
         }
       ],
-      "condition": "any",
-      "effects": [
-        {
-          "type": "increaseNourriturePerTurn",
-          "modif": "argent",
-          "value": 0
-        }
-      ]
+      "condition": "any"
     },
     {
       "id": 9,
@@ -216,14 +195,7 @@
           "value": 12
         }
       ],
-      "condition": "any",
-      "effects": [
-        {
-          "type": "invasionName",
-          "modif": "argent",
-          "value": 0
-        }
-      ]
+      "condition": "any"
     }
   ]
 }

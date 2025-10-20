@@ -350,7 +350,7 @@ function showBuildModal(building: Building) {
 
     const buildText = document.createElement("p");
     buildText.textContent = building.text;
-    buildText.classList.add("mt-8", "w-[65%]", "font-semibold");
+    buildText.classList.add("mt-8", "w-[65%]", "font-semibold", "px-6");
     buildModalContent.appendChild(buildText);
 
     const costContainer = document.createElement("div");
@@ -400,7 +400,8 @@ function showBuildModal(building: Building) {
 
     buildModalContent.appendChild(costContainer);
 
-    building.effects.forEach((effect: Effect) => {
+    if(building.effects){
+          building.effects.forEach((effect: Effect) => {
       const buildEffect = document.createElement("p");
       buildEffect.textContent = `${effect.modif} : ${
         (effect.value ?? 0) >= 0 ? "+" : ""
@@ -409,6 +410,8 @@ function showBuildModal(building: Building) {
       buildEffectDiv.appendChild(buildEffect);
     });
     buildModalContent.appendChild(buildEffectDiv);
+    }
+
   }
 }
 
