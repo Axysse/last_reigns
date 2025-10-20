@@ -4,7 +4,7 @@
             "id" : 0,
             "difficulty" : 0,
             "name" : "Messagers du chaos",
-            "img" : "../img/skeletor.jpg",
+            "img" : "../img/skeletor.png",
             "stats": [
                 {
                     "modif" : "armee",
@@ -31,7 +31,7 @@
             "id" : 1,
             "difficulty" : 0,
             "name" : "Barbares du Nord",
-            "img" : "../img/viking.jpg",
+            "img" : "../img/viking.png",
             "stats": [
                 {
                     "modif" : "argent",
@@ -62,7 +62,7 @@
             "id" : 2,
             "difficulty" : 1,
             "name" : "Banquiers Rapetout",
-            "img" : "../img/banquier.jpg",
+            "img" : "../img/banquier.png",
             "stats": [
                 {
                     "modif" : "argent",

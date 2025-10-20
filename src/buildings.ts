@@ -1,11 +1,16 @@
 import { showModal, updateUi } from "./ui";
-import { changeBooleanState, currentProd, decreaseNourriturePerTurn, updateProdMax } from "./stats";
+import {
+  changeBooleanState,
+  currentProd,
+  decreaseNourriturePerTurn,
+  updateProdMax,
+} from "./stats";
 import { updateNourriture } from "./stats";
 import { updateBonheur } from "./stats";
 import { updateArmee } from "./stats";
 import { updateArgent } from "./stats";
 import { updateStats } from "./stats";
-import { argentNbr, nourritureNbr } from "./stats";
+import { argentNbr, nourritureNbr, bonheurNbr } from "./stats";
 import { updateCurrentProd } from "./stats";
 import { hideModal } from "./ui";
 import { invasionNameDisplay, updateInvasionName } from "./time";
@@ -27,7 +32,7 @@ interface Effect {
 
 interface Cost {
   type: string;
-  value: number
+  value: number;
 }
 
 export interface Building {
@@ -43,8 +48,8 @@ export interface Building {
 let allBuildings: Building[] = [];
 export let selectedBuilding: Building | null = null;
 
-let watchtower : boolean = false
-let moulin : boolean = false
+let watchtower: boolean = false;
+let moulin: boolean = false;
 
 export async function fetchBuildings() {
   try {
@@ -95,7 +100,7 @@ export function refreshBuildings() {
     buildName.textContent = building.name;
     buildName.classList.add("text-xl", "font-semibold", "ml-2");
 
-    const cost = building.cost[0]; 
+    const cost = building.cost[0];
     const buildCost = document.createElement("p");
     buildCost.textContent = `${cost.value > 0 ? "-" : ""}${cost.value}`;
     buildCost.classList.add(
@@ -105,7 +110,6 @@ export function refreshBuildings() {
       cost.type === "argent" ? "text-yellow-300" : "text-green-400"
     );
 
-   
     let costIcon: HTMLImageElement | null = null;
 
     switch (cost.type) {
@@ -119,11 +123,15 @@ export function refreshBuildings() {
         costIcon.src = "/img/apple.png";
         costIcon.classList.add("w-4", "ml-2");
         break;
+      case "bonheur":
+        costIcon = document.createElement("img");
+        costIcon.src = "/img/happy.png";
+        costIcon.classList.add("w-4", "ml-2");
+        break;
       default:
         console.warn(`Type de coût inconnu pour ${building.name}`);
         break;
     }
-
 
     const buyBttn = document.createElement("button");
     buyBttn.textContent = "ACHETER";
@@ -132,8 +140,8 @@ export function refreshBuildings() {
     buildDivChild.appendChild(buildImg);
     buildDivChild.appendChild(buildName);
     buildDivChild.appendChild(buildCost);
-if (costIcon) buildDivChild.appendChild(costIcon);
-    
+    if (costIcon) buildDivChild.appendChild(costIcon);
+
     newBuildingDiv.appendChild(buildDivChild);
     newBuildingDiv.appendChild(buyBttn);
 
@@ -164,11 +172,21 @@ export function checkBuildCondition(building: Building) {
     return false;
   }
 
-  const argentCost = building.cost.find(c => c.type === "argent");
-  const nourritureCost = building.cost.find(c => c.type === "nourriture");
+  const argentCost = building.cost.find((c) => c.type === "argent");
+  const nourritureCost = building.cost.find((c) => c.type === "nourriture");
+  const bonheurCost = building.cost.find((c) => c.type === "bonheur");
 
   if (argentCost) {
     if (currentProd > 0 && argentNbr >= argentCost.value) {
+      return true;
+    } else {
+      alert("Tu n'as pas assez d'argent ou la production est nulle.");
+      return false;
+    }
+  }
+
+  if (bonheurCost) {
+    if (currentProd > 0 && bonheurNbr >= bonheurCost.value) {
       return true;
     } else {
       alert("Tu n'as pas assez d'argent ou la production est nulle.");
@@ -189,7 +207,7 @@ export function checkBuildCondition(building: Building) {
 }
 
 export function placeBuilding(cell: HTMLDivElement, building: Building) {
-  const cost = building.cost[0]; 
+  const cost = building.cost[0];
   if (!cost) {
     console.warn(`Aucun coût défini pour le bâtiment ${building.name}`);
     return;
@@ -201,13 +219,15 @@ export function placeBuilding(cell: HTMLDivElement, building: Building) {
     case "nourriture":
       updateNourriture(-cost.value);
       break;
+    case "bonheur":
+      updateBonheur(-cost.value);
+      break;
     default:
       console.warn(`Type de coût inconnu : ${cost.type}`);
       break;
   }
- 
-  if (building.name === "Démolition" || building.name === "Bannière") {
 
+  if (building.name === "Démolition" || building.name === "Bannière") {
     return;
   }
   const buildImg = document.createElement("img");
@@ -216,7 +236,7 @@ export function placeBuilding(cell: HTMLDivElement, building: Building) {
 
   cell.appendChild(buildImg);
   cell.dataset.building = building.name;
-  }
+}
 
 export function applyBuildingEffetcs(
   building: Building | null,
@@ -266,29 +286,29 @@ export function applyBuildingEffetcs(
           }
           break;
         case "currentProd":
-            if (cell.getAttribute("owned") == "true") {
+          if (cell.getAttribute("owned") == "true") {
             updateCurrentProd(effect.value * 2);
           } else {
             updateCurrentProd(effect.value ?? 0);
           }
-          break;  
+          break;
         default:
           console.log("Aucun effet correspondant");
           break;
       }
-    } else if(effect.type == "destroy"){
-      destroyBuilding(cell)
-    } else if(effect.type == "add"){
-      addToFief(cell)
-    } else if(effect.type == "invasionName"){
-      watchtower = true
-      revealName()
-    } else if(effect.type == "increaseNourriturePerTurn"){
-      if(decreaseNourriturePerTurn){
-        changeBooleanState("decreaseNourriturePerTurn")
+    } else if (effect.type == "destroy") {
+      destroyBuilding(cell);
+    } else if (effect.type == "add") {
+      addToFief(cell);
+    } else if (effect.type == "invasionName") {
+      watchtower = true;
+      revealName();
+    } else if (effect.type == "increaseNourriturePerTurn") {
+      if (decreaseNourriturePerTurn) {
+        changeBooleanState("decreaseNourriturePerTurn");
       }
-      moulin = true
-      changeBooleanState("increaseNourriturePerTurn")
+      moulin = true;
+      changeBooleanState("increaseNourriturePerTurn");
     }
   });
   updateStats();
@@ -320,7 +340,7 @@ function showBuildModal(building: Building) {
 
     const buildImg = document.createElement("img");
     buildImg.src = building.sprite;
-    buildImg.classList.add("max-2xl:w-12","w-32", "mt-4");
+    buildImg.classList.add("max-2xl:w-12", "w-32", "mt-4");
     buildModalContent.appendChild(buildImg);
 
     const buildText = document.createElement("p");
@@ -343,14 +363,30 @@ function showBuildModal(building: Building) {
       const costValue = document.createElement("p");
       costValue.textContent = `${cost.value > 0 ? "" : ""}${cost.value}`;
       costValue.classList.add(
-        "text-3xl", "font-bold",
+        "text-3xl",
+        "font-bold",
         cost.type === "argent" ? "text-yellow-600" : "text-green-400"
       );
 
       const costIcon = document.createElement("img");
-      costIcon.src =
-        cost.type === "argent" ? "/img/dollar.png" : "/img/apple.png";
-      costIcon.classList.add("w-5", "ml-1");
+      switch (cost.type) {
+        case "argent":
+          costIcon.src = "/img/dollar.png";
+          costIcon.classList.add("w-5", "ml-1");
+          break;
+        case "nourriture":
+          costIcon.src = "/img/apple.png";
+          costIcon.classList.add("w-5", "ml-1");
+          break;
+        case "bonheur":
+          costIcon.src = "/img/happy.png";
+          costIcon.classList.add("w-5", "ml-1");
+          break;
+        default:
+          costIcon.src = "/img/question.png"; 
+          costIcon.classList.add("w-5", "ml-1");
+          break;
+      }
 
       costDiv.appendChild(costValue);
       costDiv.appendChild(costIcon);
@@ -361,7 +397,9 @@ function showBuildModal(building: Building) {
 
     building.effects.forEach((effect: Effect) => {
       const buildEffect = document.createElement("p");
-      buildEffect.textContent = `${effect.modif} : ${(effect.value ?? 0) >= 0 ? "+" : ""}${effect.value}`;
+      buildEffect.textContent = `${effect.modif} : ${
+        (effect.value ?? 0) >= 0 ? "+" : ""
+      }${effect.value}`;
       buildEffect.classList.add("text-xl");
       buildEffectDiv.appendChild(buildEffect);
     });
@@ -369,29 +407,31 @@ function showBuildModal(building: Building) {
   }
 }
 
-function destroyBuilding(cell : HTMLDivElement){
-  const cellImg : HTMLImageElement | null = cell.querySelector("img") as HTMLImageElement
-  if(cellImg){
-    cell.removeChild(cellImg)
-    if(cell.dataset.building=="Moulin"){
-      changeBooleanState("increaseNourriturePerTurn")
+function destroyBuilding(cell: HTMLDivElement) {
+  const cellImg: HTMLImageElement | null = cell.querySelector(
+    "img"
+  ) as HTMLImageElement;
+  if (cellImg) {
+    cell.removeChild(cellImg);
+    if (cell.dataset.building == "Moulin") {
+      changeBooleanState("increaseNourriturePerTurn");
       updateUi();
-      moulin = false
+      moulin = false;
     }
-    delete cell.dataset.building
+    delete cell.dataset.building;
   }
 }
 
-function addToFief(cell : HTMLDivElement){
-  if(!cell.getAttribute("owned")){
+function addToFief(cell: HTMLDivElement) {
+  if (!cell.getAttribute("owned")) {
     cell.setAttribute("owned", "true");
-    cell.classList.add("territory")
+    cell.classList.add("territory");
   }
 }
 
-function revealName(){
-  if(invasionNameDisplay?.classList.contains("hidden")){
-    invasionNameDisplay.classList.remove("hidden")
+function revealName() {
+  if (invasionNameDisplay?.classList.contains("hidden")) {
+    invasionNameDisplay.classList.remove("hidden");
   }
-  updateInvasionName()
+  updateInvasionName();
 }

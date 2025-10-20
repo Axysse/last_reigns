@@ -53,7 +53,7 @@
       "cost": [
         {
           "type": "argent",
-          "value": 5
+          "value": 4
         }
       ],
       "condition": "plaine",
@@ -132,8 +132,8 @@
       "sprite": "../img/tax.png",
       "cost": [
         {
-          "type": "argent",
-          "value": 0
+          "type": "bonheur",
+          "value": 1
         }
       ],
       "condition": "plaine",
@@ -142,11 +142,6 @@
           "type": "stats",
           "modif": "argent",
           "value": 2
-        },
-        {
-          "type": "stats",
-          "modif": "bonheur",
-          "value": -1
         }
       ]
     },
