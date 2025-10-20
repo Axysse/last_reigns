@@ -156,7 +156,14 @@
           "value": 1
         }
       ],
-      "condition": "all"
+      "condition": "all",
+      "effects": [
+        {
+          "type": "destroy",
+          "modif": "argent",
+          "value": 0
+        }
+      ]
     },
     {
       "id": 7,
@@ -182,7 +189,14 @@
           "value": 10
         }
       ],
-      "condition": "any"
+      "condition": "any",
+      "effects": [
+        {
+          "type": "increaseNourriturePerTurn",
+          "modif": "argent",
+          "value": 0
+        }
+      ]
     },
     {
       "id": 9,
@@ -195,7 +209,14 @@
           "value": 12
         }
       ],
-      "condition": "any"
+      "condition": "any",
+      "effects": [
+        {
+          "type": "invasionName",
+          "modif": "argent",
+          "value": 0
+        }
+      ]
     }
   ]
 }

@@ -854,7 +854,7 @@
     {
       "id": 18,
       "name": "La secte des oignons",
-      "text": "Une secte prêche depuis quelques jours que les oignons sont la clé du salut éternel. Les résezrves du royaume fondent à vue d'oeil mais étrangement, ça marche.",
+      "text": "Une secte prêche depuis quelques jours que les oignons sont la clé du salut éternel. Les réserves du royaume fondent à vue d'oeil mais étrangement, ça marche.",
       "img": "../img/gueux.png",
       "choice": [
         {
@@ -888,6 +888,100 @@
               "type": "stats",
               "modif": "nourriture",
               "value": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Champs expérimentaux",
+      "text": "Seigneur! Diablerie! Un prétendu savant affirme pouvoir faire pousser du blé plus vite grâce à une méthode révolutionnaire. Moi je dis, au bûcher les sorciers!",
+      "img": "../img/gueux.png",
+      "choice": [
+        {
+          "text": "Et si je... financeait ses recherches?",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -3
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -1
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "text": "Ah oui ça fait bader! Au secours!",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "La fourche et l'Epée.",
+      "text": "La fourche est plus forte que l’épée. Le royaume est déjà assez fort et est capable de se défendre. Mais les greniers sont vides… Du pain ! Du pain que diable ! C’est tout ce que demande votre peuple !",
+      "img": "../img/gueux.png",
+      "choice": [
+        {
+          "text": "J’imagine que certains soldats peuvent réfléchir à une « réorientation professionnelle » ?",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 5
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": 7
+            },
+            {
+              "type": "activate",
+              "target": "decreaseArmeePerTurn"
+            }
+          ]
+        },
+        {
+          "text": "Et dans un monde parfait moi je serais un saint. Sauf que je ne le suis pas. Au boulot les feignasses!",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 4
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -2
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": -1
+            },
+            {
+              "type": "activate",
+              "target": "decreaseNourriturePerTurn"
             }
           ]
         }

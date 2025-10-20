@@ -1,5 +1,10 @@
 import { getRandomInt } from "./main";
-import { checkDefeatConditions, increaseNourriturePerTurn, updateNourriture } from "./stats";
+import {
+  checkDefeatConditions,
+  increaseArmeePerTurn,
+  increaseNourriturePerTurn,
+  updateNourriture,
+} from "./stats";
 import { updateBonheur } from "./stats";
 import { updateArmee } from "./stats";
 import { updateArgent } from "./stats";
@@ -10,7 +15,6 @@ import { invasionDisplay } from "./time";
 import { showModal } from "./ui";
 import { hideModal } from "./ui";
 import { changeBooleanState } from "./stats";
-
 
 interface Effect {
   type: string;
@@ -43,9 +47,8 @@ const dialog: HTMLDivElement | null = document.getElementById(
   "dialog"
 ) as HTMLDivElement;
 
-
 let allEvents: Event[] = [];
-let cleanEvents : Event[] = []
+let cleanEvents: Event[] = [];
 
 export async function fetchEvents() {
   try {
@@ -82,7 +85,7 @@ export function callEvent() {
   console.log("Événement appelé :", chosenEvent.name);
 
   if (eventModal) {
-    showModal("eventModal")
+    showModal("eventModal");
     if (dialog) {
       setupDialog(chosenEvent);
       setupChoice1(chosenEvent);
@@ -92,28 +95,42 @@ export function callEvent() {
 }
 
 function setupDialog(chosenEvent: Event) {
-  if(dialog){
-    dialog.innerHTML = " "
+  if (dialog) {
+    dialog.innerHTML = " ";
   }
 
-  const textDiv = document.createElement("div")
-  textDiv.classList.add("h-[40%]", "flex", "flex-col", "gap-4", "items-center", "justify-center")
+  const textDiv = document.createElement("div");
+  textDiv.classList.add(
+    "h-[40%]",
+    "flex",
+    "flex-col",
+    "gap-4",
+    "items-center",
+    "justify-center"
+  );
 
   const dialogTitle = document.createElement("h2");
   dialogTitle.classList.add("font-bold", "mb-2", "text-white");
   dialogTitle.textContent = chosenEvent.name;
 
   const dialogText = document.createElement("p");
-  dialogText.classList.add("text-white")
+  dialogText.classList.add("text-white");
   dialogText.textContent = chosenEvent.text;
 
   const dialogImg = document.createElement("img");
   dialogImg.src = chosenEvent.img;
-  dialogImg.classList.add("mt-10", "w-[75%]", "max-xl:h-[45%]", "h-[60%]", "border-6", "border-[#4c3219]");
+  dialogImg.classList.add(
+    "mt-10",
+    "w-[75%]",
+    "max-xl:h-[45%]",
+    "h-[60%]",
+    "border-6",
+    "border-[#4c3219]"
+  );
 
   if (dialog) {
     dialog.appendChild(dialogTitle);
-    dialog.appendChild(textDiv)
+    dialog.appendChild(textDiv);
     textDiv.appendChild(dialogText);
     dialog.appendChild(dialogImg);
   }
@@ -123,22 +140,35 @@ function setupChoice1(chosenEvent: Event) {
   console.log(chosenEvent.choice[0]);
   if (!choice1) return;
 
-
- choice1.innerHTML = "";
+  choice1.innerHTML = "";
   const newChoice1 = choice1.cloneNode(false) as HTMLDivElement;
   choice1.parentNode?.replaceChild(newChoice1, choice1);
 
   newChoice1.innerHTML = "";
 
   const choiceText = document.createElement("p");
-  choiceText.classList.add("h-[15%]", "w-[75%]", "mt-16", "text-xl", "font-semibold", "px-8", "text-center");
+  choiceText.classList.add(
+    "h-[15%]",
+    "w-[75%]",
+    "mt-16",
+    "text-xl",
+    "font-semibold",
+    "px-8",
+    "text-center"
+  );
   choiceText.textContent = chosenEvent.choice[0].text;
 
   const effectsDiv = document.createElement("div");
   effectsDiv.classList.add("mt-8", "h-[45%]");
 
   const suppText = document.createElement("p");
-  suppText.classList.add("h-[10%]", "w-[65%]", "font-semibold", "text-xl", "px-10");
+  suppText.classList.add(
+    "h-[10%]",
+    "w-[65%]",
+    "font-semibold",
+    "text-xl",
+    "px-10"
+  );
   suppText.innerHTML = " ";
 
   const allEffects = document.createElement("div");
@@ -158,8 +188,10 @@ function setupChoice1(chosenEvent: Event) {
       effectImg.src = returnStatImg(effect.modif);
       effectImg.classList.add("w-12");
       const effectDisplay = document.createElement("p");
-      effectDisplay.classList.add("font-semibold", "text-xl")
-      effectDisplay.innerHTML = `${effect.modif} ${(effect.value ?? 0) >= 0 ? "+" : ""}${effect.value}`;
+      effectDisplay.classList.add("font-semibold", "text-xl");
+      effectDisplay.innerHTML = `${effect.modif} ${
+        (effect.value ?? 0) >= 0 ? "+" : ""
+      }${effect.value}`;
 
       effectDiv.appendChild(effectImg);
       effectDiv.appendChild(effectDisplay);
@@ -168,30 +200,48 @@ function setupChoice1(chosenEvent: Event) {
     effectsDiv.appendChild(allEffects);
     if (effect.type == "activate" && effect.target == "invasionDisplay") {
       suppText.innerHTML = "Tour de l'attaque connu.";
-    } else if(effect.type == "activate" && effect.target == "invasionNbrRecul"){
+    } else if (
+      effect.type == "activate" &&
+      effect.target == "invasionNbrRecul"
+    ) {
       suppText.innerHTML = "Tour de l'attaque reculé.";
-    } else if(effect.type == "activate" && effect.target == "increaseBonheurPerTurn"){
+    } else if (
+      effect.type == "activate" &&
+      effect.target == "increaseBonheurPerTurn"
+    ) {
       suppText.innerHTML = "+ 1 Bonheur par tour";
-    } else if(effect.type == "activate" && effect.target == "increaseArmeePerTurn"){
+    } else if (
+      effect.type == "activate" &&
+      effect.target == "increaseArmeePerTurn"
+    ) {
       suppText.innerHTML = "+ 1 Armée par tour";
-    } else if(effect.type == "activate" && effect.target == "increaseArgentPerTurn"){
+    } else if (
+      effect.type == "activate" &&
+      effect.target == "increaseArgentPerTurn"
+    ) {
       suppText.innerHTML = "+ 1 Argent par tour";
-    }else if(effect.type == "activate" && effect.target == "decreaseNourriturePerTurn"){
+    } else if (
+      effect.type == "activate" &&
+      effect.target == "decreaseNourriturePerTurn"
+    ) {
       suppText.innerHTML = "- 1 Nourriture par tour";
+    } else if (
+      effect.type == "activate" &&
+      effect.target == "decreaseArmeePerTurn"
+    ) {
+      suppText.innerHTML = "- 1 Armée par tour";
     }
   });
-
 
   newChoice1.appendChild(choiceText);
   newChoice1.appendChild(effectsDiv);
   newChoice1.appendChild(suppText);
 
-   choice1 = newChoice1;
+  choice1 = newChoice1;
 
-    newChoice1.addEventListener("click", () => {
-      resolveEvent(chosenEvent.choice[0].effects, chosenEvent);
-    });
-  
+  newChoice1.addEventListener("click", () => {
+    resolveEvent(chosenEvent.choice[0].effects, chosenEvent);
+  });
 }
 
 function setupChoice2(chosenEvent: Event) {
@@ -205,14 +255,28 @@ function setupChoice2(chosenEvent: Event) {
   newChoice2.innerHTML = "";
 
   const choiceText = document.createElement("p");
-  choiceText.classList.add("h-[15%]", "w-[75%]", "mt-16", "text-xl", "font-semibold", "px-8", "text-center");
+  choiceText.classList.add(
+    "h-[15%]",
+    "w-[75%]",
+    "mt-16",
+    "text-xl",
+    "font-semibold",
+    "px-8",
+    "text-center"
+  );
   choiceText.textContent = chosenEvent.choice[1].text;
 
   const effectsDiv = document.createElement("div");
   effectsDiv.classList.add("mt-8", "h-[45%]");
 
   const suppText = document.createElement("p");
-  suppText.classList.add("h-[10%]", "w-[65%]", "font-semibold", "text-xl", "px-10");
+  suppText.classList.add(
+    "h-[10%]",
+    "w-[65%]",
+    "font-semibold",
+    "text-xl",
+    "px-10"
+  );
   suppText.innerHTML = " ";
 
   const allEffects = document.createElement("div");
@@ -232,8 +296,10 @@ function setupChoice2(chosenEvent: Event) {
       effectImg.src = returnStatImg(effect.modif);
       effectImg.classList.add("w-12");
       const effectDisplay = document.createElement("p");
-      effectDisplay.classList.add("font-semibold", "text-xl")
-      effectDisplay.innerHTML = `${effect.modif} ${(effect.value ?? 0) >= 0 ? "+" : ""}${effect.value}`;
+      effectDisplay.classList.add("font-semibold", "text-xl");
+      effectDisplay.innerHTML = `${effect.modif} ${
+        (effect.value ?? 0) >= 0 ? "+" : ""
+      }${effect.value}`;
 
       effectDiv.appendChild(effectImg);
       effectDiv.appendChild(effectDisplay);
@@ -242,19 +308,38 @@ function setupChoice2(chosenEvent: Event) {
     effectsDiv.appendChild(allEffects);
     if (effect.type == "activate" && effect.target == "invasionDisplay") {
       suppText.innerHTML = "Tour de l'attaque connu.";
-    } else if(effect.type == "activate" && effect.target == "invasionNbrRecul"){
+    } else if (
+      effect.type == "activate" &&
+      effect.target == "invasionNbrRecul"
+    ) {
       suppText.innerHTML = "Tour de l'attaque reculé.";
-    } else if(effect.type == "activate" && effect.target == "increaseBonheurPerTurn"){
+    } else if (
+      effect.type == "activate" &&
+      effect.target == "increaseBonheurPerTurn"
+    ) {
       suppText.innerHTML = "+ 1 Bonheur par tour";
-    } else if(effect.type == "activate" && effect.target == "increaseArmeePerTurn"){
+    } else if (
+      effect.type == "activate" &&
+      effect.target == "increaseArmeePerTurn"
+    ) {
       suppText.innerHTML = "+ 1 Armée par tour";
-    } else if(effect.type == "activate" && effect.target == "increaseArgentPerTurn"){
+    } else if (
+      effect.type == "activate" &&
+      effect.target == "increaseArgentPerTurn"
+    ) {
       suppText.innerHTML = "+ 1 Argent par tour";
-    } else if(effect.type == "activate" && effect.target == "decreaseNourriturePerTurn"){
+    } else if (
+      effect.type == "activate" &&
+      effect.target == "decreaseNourriturePerTurn"
+    ) {
       suppText.innerHTML = "- 1 Nourriture par tour";
+    } else if (
+      effect.type == "activate" &&
+      effect.target == "decreaseArmeePerTurn"
+    ) {
+      suppText.innerHTML = "- 1 Armée par tour";
     }
   });
-
 
   newChoice2.appendChild(choiceText);
   newChoice2.appendChild(effectsDiv);
@@ -262,10 +347,10 @@ function setupChoice2(chosenEvent: Event) {
 
   choice2 = newChoice2;
 
-    newChoice2.addEventListener("click", () => {
-      console.log("coucou");
-      resolveEvent(chosenEvent.choice[1].effects, chosenEvent);
-    });
+  newChoice2.addEventListener("click", () => {
+    console.log("coucou");
+    resolveEvent(chosenEvent.choice[1].effects, chosenEvent);
+  });
   (window as any).choice2 = newChoice2;
 }
 
@@ -281,7 +366,7 @@ export function returnStatImg(modif: string): string {
       return "/img/dollar.png";
     case "production":
       return "/img/hammer.png";
-    default:  
+    default:
       return "img/ecaireur.jpg";
   }
 }
@@ -302,30 +387,35 @@ function resolveEvent(effects: Effect[], chosenEvent?: Event) {
             break;
           case "armee":
             updateArmee(effect.value ?? 0);
-            break;  
+            break;
           default:
             console.log("rien");
             break;
         }
         break;
       case "activate":
-        if(effect.target == "invasionDisplay"){
-          invasionDisplay?.classList.remove("hidden")
-        } else if(effect.target == "invasionNbrRecul"){
+        if (effect.target == "invasionDisplay") {
+          invasionDisplay?.classList.remove("hidden");
+        } else if (effect.target == "invasionNbrRecul") {
           updateinvasion(1);
-        } else if(effect.target == "invasionNbrAvance"){
+        } else if (effect.target == "invasionNbrAvance") {
           updateinvasion(-1);
-        } else if(effect.target == "increaseBonheurPerTurn"){
-          changeBooleanState("increaseBonheurPerTurn")
-        }  else if(effect.target == "increaseArmeePerTurn"){
-          changeBooleanState("increaseArmeePerTurn")
-        }  else if(effect.target == "increaseArgentPerTurn"){
-          changeBooleanState("increaseArgentPerTurn")
-        } else if(effect.target == "decreaseNourriturePerTurn"){
-          if(increaseNourriturePerTurn){
-            changeBooleanState("increaseBonheurPerTurn")
+        } else if (effect.target == "increaseBonheurPerTurn") {
+          changeBooleanState("increaseBonheurPerTurn");
+        } else if (effect.target == "increaseArmeePerTurn") {
+          changeBooleanState("increaseArmeePerTurn");
+        } else if (effect.target == "increaseArgentPerTurn") {
+          changeBooleanState("increaseArgentPerTurn");
+        } else if (effect.target == "decreaseNourriturePerTurn") {
+          if (increaseNourriturePerTurn) {
+            changeBooleanState("increaseNourriturePerTurn");
           }
-          changeBooleanState("decreaseNourriturePerTurn")
+          changeBooleanState("decreaseNourriturePerTurn");
+        } else if (effect.target == "decreaseArmeePerTurn") {
+          if (increaseArmeePerTurn) {
+            changeBooleanState("increaseArmeePerTurn");
+          }
+          changeBooleanState("decreaseArmeePerTurn");
         }
         break;
       default:
@@ -333,21 +423,21 @@ function resolveEvent(effects: Effect[], chosenEvent?: Event) {
         break;
     }
   });
-   if (chosenEvent) {
+  if (chosenEvent) {
     moveEventToClean(chosenEvent);
   }
   updateStats();
   if (eventModal) {
-    hideModal("eventModal")
+    hideModal("eventModal");
   }
   checkDefeatConditions();
   changeTurnPermission();
-  console.log(canEndTurn)
+  console.log(canEndTurn);
 }
 
 function moveEventToClean(chosenEvent: Event) {
-  allEvents = allEvents.filter(event => event.id !== chosenEvent.id);
-  if (!cleanEvents.some(event => event.id === chosenEvent.id)) {
+  allEvents = allEvents.filter((event) => event.id !== chosenEvent.id);
+  if (!cleanEvents.some((event) => event.id === chosenEvent.id)) {
     cleanEvents.push(chosenEvent);
   }
 }
@@ -356,9 +446,9 @@ export function refreshEvents() {
   const excludedIds = [15, 16, 17, 18];
   let eventsToAdd;
 
-if (excludedIds.length > 0) {
-    eventsToAdd = cleanEvents.filter(event => 
-      !excludedIds.includes(event.id)
+  if (excludedIds.length > 0) {
+    eventsToAdd = cleanEvents.filter(
+      (event) => !excludedIds.includes(event.id)
     );
   } else {
     eventsToAdd = cleanEvents;

@@ -401,7 +401,7 @@ function showBuildModal(building: Building) {
     buildModalContent.appendChild(costContainer);
 
     if(building.effects){
-          building.effects.forEach((effect: Effect) => {
+      building.effects.forEach((effect: Effect) => {
       const buildEffect = document.createElement("p");
       buildEffect.textContent = `${effect.modif} : ${
         (effect.value ?? 0) >= 0 ? "+" : ""
