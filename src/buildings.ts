@@ -5,7 +5,7 @@ import { updateBonheur } from "./stats";
 import { updateArmee } from "./stats";
 import { updateArgent } from "./stats";
 import { updateStats } from "./stats";
-import { argentNbr } from "./stats";
+import { argentNbr, nourritureNbr } from "./stats";
 import { updateCurrentProd } from "./stats";
 import { hideModal } from "./ui";
 import { invasionNameDisplay, updateInvasionName } from "./time";
@@ -25,12 +25,17 @@ interface Effect {
   value: number;
 }
 
+interface Cost {
+  type: string;
+  value: number
+}
+
 export interface Building {
   id: number;
   name: string;
   text: string;
   sprite: string;
-  cost: number;
+  cost: Cost[];
   condition: string;
   effects: Effect[];
 }
@@ -90,18 +95,35 @@ export function refreshBuildings() {
     buildName.textContent = building.name;
     buildName.classList.add("text-xl", "font-semibold", "ml-2");
 
+    const cost = building.cost[0]; 
     const buildCost = document.createElement("p");
-    buildCost.textContent = building.cost.toString();
+    buildCost.textContent = `${cost.value > 0 ? "-" : ""}${cost.value}`;
     buildCost.classList.add(
       "text-xl",
       "font-semibold",
       "ml-4",
-      "text-yellow-300"
+      cost.type === "argent" ? "text-yellow-300" : "text-green-400"
     );
 
-    const buildDollarImg = document.createElement("img");
-    buildDollarImg.src = "/img/dollar.png";
-    buildDollarImg.classList.add("w-4", "ml-2");
+   
+    let costIcon: HTMLImageElement | null = null;
+
+    switch (cost.type) {
+      case "argent":
+        costIcon = document.createElement("img");
+        costIcon.src = "/img/dollar.png";
+        costIcon.classList.add("w-4", "ml-2");
+        break;
+      case "nourriture":
+        costIcon = document.createElement("img");
+        costIcon.src = "/img/apple.png";
+        costIcon.classList.add("w-4", "ml-2");
+        break;
+      default:
+        console.warn(`Type de coût inconnu pour ${building.name}`);
+        break;
+    }
+
 
     const buyBttn = document.createElement("button");
     buyBttn.textContent = "ACHETER";
@@ -110,7 +132,8 @@ export function refreshBuildings() {
     buildDivChild.appendChild(buildImg);
     buildDivChild.appendChild(buildName);
     buildDivChild.appendChild(buildCost);
-    buildDivChild.appendChild(buildDollarImg);
+if (costIcon) buildDivChild.appendChild(costIcon);
+    
     newBuildingDiv.appendChild(buildDivChild);
     newBuildingDiv.appendChild(buyBttn);
 
@@ -133,24 +156,60 @@ function selectTile(building: Building) {
 }
 
 export function checkBuildCondition(building: Building) {
-  const cost: number = building.cost;
-  // const condition: string = building.condition;
-  if (building.name == "Tour de guet" && watchtower === true || building.name == "Moulin" && moulin === true) {
+  if (
+    (building.name === "Tour de guet" && watchtower === true) ||
+    (building.name === "Moulin" && moulin === true)
+  ) {
     alert("batiment unique!");
     return false;
-  } else if(currentProd > 0 && argentNbr >= cost){
-    return true;
-  } else {
-    alert("tu ne peux plus construire ou tu n'as pas assez de MONEY!");
-    return false;
   }
+
+  const argentCost = building.cost.find(c => c.type === "argent");
+  const nourritureCost = building.cost.find(c => c.type === "nourriture");
+
+  if (argentCost) {
+    if (currentProd > 0 && argentNbr >= argentCost.value) {
+      return true;
+    } else {
+      alert("Tu n'as pas assez d'argent ou la production est nulle.");
+      return false;
+    }
+  }
+
+  if (nourritureCost) {
+    if (currentProd > 0 && nourritureNbr >= nourritureCost.value) {
+      return true;
+    } else {
+      alert("Tu n'as pas assez de nourriture ou la production est nulle.");
+      return false;
+    }
+  }
+  alert("tu ne peux plus construire ou tu n'as pas assez de ressources!");
+  return false;
 }
 
 export function placeBuilding(cell: HTMLDivElement, building: Building) {
-  if(building.name == "Démolition" || building.name == "Bannière"){
-    updateArgent(-building.cost);
-  } else {
-  updateArgent(-building.cost);
+  const cost = building.cost[0]; 
+  if (!cost) {
+    console.warn(`Aucun coût défini pour le bâtiment ${building.name}`);
+    return;
+  }
+  switch (cost.type) {
+    case "argent":
+      updateArgent(-cost.value);
+      break;
+    case "nourriture":
+      updateNourriture(-cost.value);
+      break;
+    default:
+      console.warn(`Type de coût inconnu : ${cost.type}`);
+      break;
+  }
+ 
+  if (building.name === "Démolition" || building.name === "Bannière") {
+
+    return;
+  }
   const buildImg = document.createElement("img");
   buildImg.src = building.sprite;
   buildImg.classList.add("building-placed");
@@ -158,7 +217,6 @@ export function placeBuilding(cell: HTMLDivElement, building: Building) {
   cell.appendChild(buildImg);
   cell.dataset.building = building.name;
   }
-}
 
 export function applyBuildingEffetcs(
   building: Building | null,
@@ -270,10 +328,36 @@ function showBuildModal(building: Building) {
     buildText.classList.add("mt-8", "w-[65%]", "font-semibold");
     buildModalContent.appendChild(buildText);
 
-    const buildCost = document.createElement("p");
-    buildCost.textContent = "Coût : " + building.cost.toString();
-    buildCost.classList.add("text-xl", "mt-8");
-    buildModalContent.appendChild(buildCost);
+    const costContainer = document.createElement("div");
+    costContainer.classList.add("flex", "flex-row", "items-center", "mt-8");
+
+    const costLabel = document.createElement("p");
+    costLabel.textContent = "Coût : ";
+    costLabel.classList.add("text-xl", "font-semibold", "mr-2");
+    costContainer.appendChild(costLabel);
+
+    building.cost.forEach((cost) => {
+      const costDiv = document.createElement("div");
+      costDiv.classList.add("flex", "flex-row", "items-center", "mr-4");
+
+      const costValue = document.createElement("p");
+      costValue.textContent = `${cost.value > 0 ? "" : ""}${cost.value}`;
+      costValue.classList.add(
+        "text-3xl", "font-bold",
+        cost.type === "argent" ? "text-yellow-600" : "text-green-400"
+      );
+
+      const costIcon = document.createElement("img");
+      costIcon.src =
+        cost.type === "argent" ? "/img/dollar.png" : "/img/apple.png";
+      costIcon.classList.add("w-5", "ml-1");
+
+      costDiv.appendChild(costValue);
+      costDiv.appendChild(costIcon);
+      costContainer.appendChild(costDiv);
+    });
+
+    buildModalContent.appendChild(costContainer);
 
     building.effects.forEach((effect: Effect) => {
       const buildEffect = document.createElement("p");

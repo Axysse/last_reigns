@@ -5,7 +5,12 @@
       "name": "scierie",
       "text": "A placer dans une case fôret. Augmente de façon permanente la limite de production de 1, permettant ainsi d'accroitre le nombre de bâtiments construisible par tour.",
       "sprite": "../img/saw.png",
-      "cost": 10,
+      "cost": [
+        {
+          "type": "argent",
+          "value": 10
+        }
+      ],
       "condition": "foret",
       "effects": [
         {
@@ -20,7 +25,12 @@
       "name": "hameau",
       "text": "A placer dans une case prairie. Augmente la statistique nourriture de 2 à la construction ainsi que le bonheur de 1.",
       "sprite": "../img/house.png",
-      "cost": 4,
+      "cost": [
+        {
+          "type": "argent",
+          "value": 4
+        }
+      ],
       "condition": "plaine",
       "effects": [
         {
@@ -40,7 +50,12 @@
       "name": "forge",
       "text": "A placer dans une case prairie. Augmente la statistique armée de 2 à la construction ainsi que le bonheur de 1. Permets en outre de construire immédiatement un autre bâtiment.",
       "sprite": "../img/forge.png",
-      "cost": 5,
+      "cost": [
+        {
+          "type": "argent",
+          "value": 5
+        }
+      ],
       "condition": "plaine",
       "effects": [
         {
@@ -65,7 +80,12 @@
       "name": "brasserie",
       "text": "A placer dans une case prairie. Augmente la statistique bonheur de 3 à la construction ainsi que la nourriture de 1.",
       "sprite": "../img/barrel.png",
-      "cost": 7,
+      "cost": [
+        {
+          "type": "argent",
+          "value": 7
+        }
+      ],
       "condition": "plaine",
       "effects": [
         {
@@ -73,7 +93,7 @@
           "modif": "bonheur",
           "value": 3
         },
-                {
+        {
           "type": "stats",
           "modif": "nourriture",
           "value": 1
@@ -85,7 +105,12 @@
       "name": "Poste de garde",
       "text": "A placer dans une case montagne. Augmente la statistique armée de 4 à la construction et augmente le bonheur de 1.",
       "sprite": "../img/tower.png",
-      "cost": 8,
+      "cost": [
+        {
+          "type": "argent",
+          "value": 8
+        }
+      ],
       "condition": "montagne",
       "effects": [
         {
@@ -105,7 +130,12 @@
       "name": "bureau des taxes",
       "text": "A placer dans une case de prairie. Augmente la statistique argent de 2 à la construction MAIS diminue le bonheur de 1. Ne rapporte pas grand chose et occupe une case pour peu de bénefice, à utiliser en cas d'urgence.",
       "sprite": "../img/tax.png",
-      "cost": 0,
+      "cost": [
+        {
+          "type": "argent",
+          "value": 0
+        }
+      ],
       "condition": "plaine",
       "effects": [
         {
@@ -125,8 +155,13 @@
       "name": "Démolition",
       "text": "Démoli un bâtiment pour libérer la case.",
       "sprite": "../img/eraser.png",
-      "cost": 1,
-      "condition" : "all",
+      "cost": [
+        {
+          "type": "argent",
+          "value": 1
+        }
+      ],
+      "condition": "all",
       "effects": [
         {
           "type": "destroy",
@@ -140,8 +175,13 @@
       "name": "Bannière",
       "text": "Rajoute la case selectionnée à votre fief, augmentant son potentiel de production. Une case doit-être libre avant de pouvoir l'ajouter au fief.",
       "sprite": "../img/banner.png",
-      "cost": 4,
-      "condition" : "any",
+      "cost": [
+        {
+          "type": "nourriture",
+          "value": 4
+        }
+      ],
+      "condition": "any",
       "effects": [
         {
           "type": "add",
@@ -155,8 +195,13 @@
       "name": "Moulin",
       "text": " + 1 de Nourriture à chaque tour. Le bâtiment ne doublera pas sa production si placé sur une case de fief.",
       "sprite": "../img/windmill.png",
-      "cost": 10,
-      "condition" : "any",
+      "cost": [
+        {
+          "type": "argent",
+          "value": 10
+        }
+      ],
+      "condition": "any",
       "effects": [
         {
           "type": "increaseNourriturePerTurn",
@@ -170,13 +215,18 @@
       "name": "Tour de guet",
       "text": "Identifie les vagues d'invasion. Vous n'êtes jamais pris par surprise.",
       "sprite": "../img/watchtower.png",
-      "cost": 12,
-      "condition" : "any",
+      "cost": [
+        {
+          "type": "argent",
+          "value": 12
+        }
+      ],
+      "condition": "any",
       "effects": [
         {
-              "type": "invasionName",
-              "modif": "argent",
-              "value": 0    
+          "type": "invasionName",
+          "modif": "argent",
+          "value": 0
         }
       ]
     }
