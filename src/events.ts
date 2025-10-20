@@ -1,5 +1,5 @@
 import { getRandomInt } from "./main";
-import { checkDefeatConditions, updateNourriture } from "./stats";
+import { checkDefeatConditions, increaseNourriturePerTurn, updateNourriture } from "./stats";
 import { updateBonheur } from "./stats";
 import { updateArmee } from "./stats";
 import { updateArgent } from "./stats";
@@ -97,7 +97,7 @@ function setupDialog(chosenEvent: Event) {
   }
 
   const textDiv = document.createElement("div")
-  textDiv.classList.add("h-[40%]", "flex", "flex-col", "gap-4", "items-center")
+  textDiv.classList.add("h-[40%]", "flex", "flex-col", "gap-4", "items-center", "justify-center")
 
   const dialogTitle = document.createElement("h2");
   dialogTitle.classList.add("font-bold", "mb-2", "text-white");
@@ -112,8 +112,8 @@ function setupDialog(chosenEvent: Event) {
   dialogImg.classList.add("mt-10", "w-[75%]", "max-xl:h-[45%]", "h-[60%]", "border-6", "border-[#4c3219]");
 
   if (dialog) {
+    dialog.appendChild(dialogTitle);
     dialog.appendChild(textDiv)
-    textDiv.appendChild(dialogTitle);
     textDiv.appendChild(dialogText);
     dialog.appendChild(dialogImg);
   }
@@ -174,6 +174,10 @@ function setupChoice1(chosenEvent: Event) {
       suppText.innerHTML = "+ 1 Bonheur par tour";
     } else if(effect.type == "activate" && effect.target == "increaseArmeePerTurn"){
       suppText.innerHTML = "+ 1 Armée par tour";
+    } else if(effect.type == "activate" && effect.target == "increaseArgentPerTurn"){
+      suppText.innerHTML = "+ 1 Argent par tour";
+    }else if(effect.type == "activate" && effect.target == "decreaseNourriturePerTurn"){
+      suppText.innerHTML = "- 1 Nourriture par tour";
     }
   });
 
@@ -244,6 +248,10 @@ function setupChoice2(chosenEvent: Event) {
       suppText.innerHTML = "+ 1 Bonheur par tour";
     } else if(effect.type == "activate" && effect.target == "increaseArmeePerTurn"){
       suppText.innerHTML = "+ 1 Armée par tour";
+    } else if(effect.type == "activate" && effect.target == "increaseArgentPerTurn"){
+      suppText.innerHTML = "+ 1 Argent par tour";
+    } else if(effect.type == "activate" && effect.target == "decreaseNourriturePerTurn"){
+      suppText.innerHTML = "- 1 Nourriture par tour";
     }
   });
 
@@ -311,6 +319,13 @@ function resolveEvent(effects: Effect[], chosenEvent?: Event) {
           changeBooleanState("increaseBonheurPerTurn")
         }  else if(effect.target == "increaseArmeePerTurn"){
           changeBooleanState("increaseArmeePerTurn")
+        }  else if(effect.target == "increaseArgentPerTurn"){
+          changeBooleanState("increaseArgentPerTurn")
+        } else if(effect.target == "decreaseNourriturePerTurn"){
+          if(increaseNourriturePerTurn){
+            changeBooleanState("increaseBonheurPerTurn")
+          }
+          changeBooleanState("decreaseNourriturePerTurn")
         }
         break;
       default:
@@ -338,7 +353,7 @@ function moveEventToClean(chosenEvent: Event) {
 }
 
 export function refreshEvents() {
-  const excludedIds = [15, 16];
+  const excludedIds = [15, 16, 17, 18];
   let eventsToAdd;
 
 if (excludedIds.length > 0) {

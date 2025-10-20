@@ -1,5 +1,5 @@
 import { showModal, updateUi } from "./ui";
-import { changeBooleanState, currentProd, updateProdMax } from "./stats";
+import { changeBooleanState, currentProd, decreaseNourriturePerTurn, updateProdMax } from "./stats";
 import { updateNourriture } from "./stats";
 import { updateBonheur } from "./stats";
 import { updateArmee } from "./stats";
@@ -226,6 +226,9 @@ export function applyBuildingEffetcs(
       watchtower = true
       revealName()
     } else if(effect.type == "increaseNourriturePerTurn"){
+      if(decreaseNourriturePerTurn){
+        changeBooleanState("decreaseNourriturePerTurn")
+      }
       moulin = true
       changeBooleanState("increaseNourriturePerTurn")
     }
@@ -278,7 +281,6 @@ function showBuildModal(building: Building) {
       buildEffect.classList.add("text-xl");
       buildEffectDiv.appendChild(buildEffect);
     });
-
     buildModalContent.appendChild(buildEffectDiv);
   }
 }

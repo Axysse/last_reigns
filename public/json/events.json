@@ -55,7 +55,7 @@
       "id": 1,
       "name": "Confiscation des biens",
       "text": "A temps désespérés, mesures désespérées ! Si le peuple est décimé par l’invasion, il apparaît logique que son gouvernement lui survive. Prenons dans les réserves de quoi nous sustenter dans ces temps de crise.",
-      "img": "../img/noble.jpg",
+      "img": "../img/noble.png",
       "choice": [
         {
           "text": "Ma foi ce n’est que de la piétaille…",
@@ -108,7 +108,7 @@
       "id": 2,
       "name": "Mobilisation de la garde",
       "text": "Il nous faut plus d’hommes dans cet Ost de fainéant ! Piochons dans les forces du guet municipal ! Les rues sont sûres, ces gueux ne manqueront à personne.",
-      "img": "../img/noble.jpg",
+      "img": "../img/noble.png",
       "choice": [
         {
           "text": "Espérons qu’il n’arrive rien aux petites gens…",
@@ -141,7 +141,7 @@
       "id": 3,
       "name": "Du pain et des jeux",
       "text": "Messire, entre les famines, les récoltes désatreuses et les menaces existentielles de type outre-mondesque, le peuple est quelque peu moribond. Organisons une grande célébration pour le distraire des vrais prob… Je veux dire pour alléger le fardeau de ces pauvres hères.",
-      "img": "../img/noble.jpg",
+      "img": "../img/noble.png",
       "choice": [
         {
           "text": "Du pain et des jeux !",
@@ -472,9 +472,9 @@
     },
     {
       "id": 11,
-      "name": "De blésotto en moisi.",
+      "name": "De blésotto en riz moisi.",
       "text": "Une étrange moisissure a frappé les champs de blé. Les paysans hurlent au maléfice, les érudits parlent d’un simple champignon. Que faire ? ",
-      "img": "../img/gueux.jpg",
+      "img": "../img/gueux.png",
       "choice": [
         {
           "text": "Brûlez tout !  Pas de sorcellerie chez moi, ça file des maladies !",
@@ -618,7 +618,7 @@
       "id": 14,
       "name": "Les joueurs du grenier",
       "text": "Les greniers sont presque vides. Le peuple a faim et commence à s’agiter.",
-      "img": "../img/gueux.jpg",
+      "img": "../img/gueux.png",
       "choice": [
         {
           "text": "Distribuez les réserves royales.",
@@ -687,9 +687,9 @@
               "value": 3
             },
             {
-          "type": "activate",
-          "target": "increaseBonheurPerTurn"
-        }
+              "type": "activate",
+              "target": "increaseBonheurPerTurn"
+            }
           ]
         },
         {
@@ -739,9 +739,9 @@
               "value": -1
             },
             {
-          "type": "activate",
-          "target": "increaseArmeePerTurn"
-        }
+              "type": "activate",
+              "target": "increaseArmeePerTurn"
+            }
           ]
         },
         {
@@ -761,6 +761,133 @@
               "type": "stats",
               "modif": "argent",
               "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Des MONTAGNES d'or!",
+      "text": "Le royaume voisin sombre chaque jour un peu plus dans l’anarchie. Saisissons cette chance ! Achetons les riches mines de ces gueux et embauchons les locaux. Bientôt la mine gerbera de l’or (et des éclopés mais bon...)",
+      "img": "../img/noble.png",
+      "choice": [
+        {
+          "text": "De l’interventionnisme ? On a déjà assez de problèmes chez nous. Non. ",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "text": "Tu dis combien coco il paye !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -3
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -1
+            },
+            {
+              "type": "activate",
+              "target": "increaseArgentPerTurn"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Champs expérimentaux",
+      "text": "Seigneur! Diablerie! Un prétendu savant affirme pouvoir faire pousser du blé plus vite grâce à une méthode révolutionnaire. Moi je dis, au bûcher les sorciers!",
+      "img": "../img/gueux.png",
+      "choice": [
+        {
+          "text": "Et si je... financeait ses recherches?",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "argent",
+              "value": -3
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -1
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "text": "Ah oui ça fait bader! Au secours!",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "La secte des oignons",
+      "text": "Une secte prêche depuis quelques jours que les oignons sont la clé du salut éternel. Les résezrves du royaume fondent à vue d'oeil mais étrangement, ça marche.",
+      "img": "../img/gueux.png",
+      "choice": [
+        {
+          "text": "Bon ben puisque ça marche !",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": 6
+            },
+            {
+              "type": "activate",
+              "target": "decreaseNourriturePerTurn"
+            }
+          ]
+        },
+        {
+          "text": "Moi je n’aime l’oignon ni frit à l’huile, ni quand il est bon. Brûlez moi tout ça. Et puis l’odeur...",
+          "effects": [
+            {
+              "type": "stats",
+              "modif": "armee",
+              "value": 2
+            },
+            {
+              "type": "stats",
+              "modif": "bonheur",
+              "value": -2
+            },
+            {
+              "type": "stats",
+              "modif": "nourriture",
+              "value": -1
             }
           ]
         }
