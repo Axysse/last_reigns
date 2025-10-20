@@ -105,12 +105,16 @@ export function callInvasionEvent(invasion: Invasion) {
 
     const invasionText = document.createElement("p");
     invasionText.textContent = invasion.text[0].value;
-    invasionText.classList.add("mt-6");
+    invasionText.classList.add("mt-6" ,"px-6", "w-[50%]");
     invasionModalContent.appendChild(invasionText);
 
     const invasionImg = document.createElement("img");
     invasionImg.src = invasion.img;
-    invasionImg.classList.add("mt-8", "w-[90%]", "h-[60%]");
+    invasionImg.classList.add( "mt-10",
+    "w-[50%]",
+    "h-[45%]",
+    "border-6",
+    "border-[#4c3219]");
     invasionModalContent.appendChild(invasionImg);
 
     const nextBttn = document.createElement("button");
@@ -237,12 +241,16 @@ function victory(invasion: Invasion) {
 
     const invasionText = document.createElement("p");
     invasionText.textContent = invasion.text[1].value;
-    invasionText.classList.add("mt-6");
+    invasionText.classList.add("mt-6" ,"px-6", "w-[50%]");
     invasionModalContent.appendChild(invasionText);
 
     const invasionImg = document.createElement("img");
     invasionImg.src = invasion.img;
-    invasionImg.classList.add("mt-8", "w-[90%]", "h-[60%]");
+    invasionImg.classList.add("mt-10",
+    "w-[50%]",
+    "h-[45%]",
+    "border-6",
+    "border-[#4c3219]");
     invasionModalContent.appendChild(invasionImg);
 
     const nextBttn = document.createElement("button");
@@ -284,12 +292,16 @@ function lost(invasion: Invasion) {
 
     const invasionText = document.createElement("p");
     invasionText.textContent = invasion.text[2].value;
-    invasionText.classList.add("mt-6");
+    invasionText.classList.add("mt-6" ,"px-6", "w-[50%]");
     invasionModalContent.appendChild(invasionText);
 
     const invasionImg = document.createElement("img");
     invasionImg.src = invasion.img;
-    invasionImg.classList.add("mt-8", "w-[90%]", "h-[60%]");
+    invasionImg.classList.add("mt-10",
+    "w-[50%]",
+    "h-[45%]",
+    "border-6",
+    "border-[#4c3219]");
     invasionModalContent.appendChild(invasionImg);
 
     const nextBttn = document.createElement("button");

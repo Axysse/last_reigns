@@ -77,6 +77,26 @@
     },
     {
       "id": 3,
+      "name": "Four à pain",
+      "text": "A placer dans une case prairie. Construis un four à l'usage des gueux qui payent son utilisation. + 2 d'argent contre -2 de nourriture.",
+      "sprite": "../img/bread.png",
+      "cost": [
+        {
+          "type": "nourriture",
+          "value": 3
+        }
+      ],
+      "condition": "plaine",
+      "effects": [
+        {
+          "type": "stats",
+          "modif": "argent",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": 4,
       "name": "brasserie",
       "text": "A placer dans une case prairie. Augmente la statistique bonheur de 3 à la construction ainsi que la nourriture de 1.",
       "sprite": "../img/barrel.png",
@@ -101,7 +121,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 5,
       "name": "Poste de garde",
       "text": "A placer dans une case montagne. Augmente la statistique armée de 4 à la construction et augmente le bonheur de 1.",
       "sprite": "../img/tower.png",
@@ -126,14 +146,44 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
+      "name": "Aqueduc",
+      "text": "A placer dans une case montagne. Vous mobilisez votre armée pour rendre l'eau disponible aux geueux. Quel altruisme!",
+      "sprite": "../img/aqueduc.png",
+      "cost": [
+        {
+          "type": "armee",
+          "value": 4
+        }
+      ],
+      "condition": "montagne",
+      "effects": [
+        {
+          "type": "stats",
+          "modif": "argent",
+          "value": 2
+        },
+        {
+          "type": "stats",
+          "modif": "nourriture",
+          "value": 2
+        },
+        {
+          "type": "stats",
+          "modif": "bonheur",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": 7,
       "name": "bureau des taxes",
       "text": "A placer dans une case de prairie. Augmente la statistique argent de 2 à la construction MAIS diminue le bonheur de 1. Ne rapporte pas grand chose et occupe une case pour peu de bénefice, à utiliser en cas d'urgence.",
       "sprite": "../img/tax.png",
       "cost": [
         {
           "type": "bonheur",
-          "value": 2
+          "value": 1
         }
       ],
       "condition": "plaine",
@@ -146,7 +196,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 8,
       "name": "Démolition",
       "text": "Démoli un bâtiment pour libérer la case.",
       "sprite": "../img/eraser.png",
@@ -166,7 +216,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": 9,
       "name": "Bannière",
       "text": "Rajoute la case selectionnée à votre fief, augmentant son potentiel de production. Une case doit-être libre avant de pouvoir l'ajouter au fief.",
       "sprite": "../img/banner.png",
@@ -186,7 +236,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 10,
       "name": "Moulin",
       "text": " + 1 de Nourriture à chaque tour. Le bâtiment ne doublera pas sa production si placé sur une case de fief.",
       "sprite": "../img/windmill.png",
@@ -206,7 +256,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": 11,
       "name": "Tour de guet",
       "text": "Identifie les vagues d'invasion. Vous n'êtes jamais pris par surprise.",
       "sprite": "../img/watchtower.png",

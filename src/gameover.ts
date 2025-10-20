@@ -60,7 +60,11 @@ export function defeat(typeDefeat: string, Nbr: number) {
     if (defeat.type == typeDefeat) {
       const defeatImg = document.createElement("img");
       defeatImg.src = defeat.img;
-      defeatImg.classList.add("mt-8", "w-[90%]", "h-[60%]");
+      defeatImg.classList.add("mt-10",
+    "w-[50%]",
+    "h-[45%]",
+    "border-6",
+    "border-[#4c3219]");
       defeatModalContent?.appendChild(defeatImg);
 
       const defeatText = document.createElement("p");
@@ -69,7 +73,7 @@ export function defeat(typeDefeat: string, Nbr: number) {
       } else if (Nbr >= 1) {
         defeatText.innerText = defeat.text[0].text;
       }
-      defeatText.classList.add("mt-8");
+      defeatText.classList.add("mt-6" ,"px-4", "w-[50%]");
       defeatModalContent?.appendChild(defeatText);
     }
   });

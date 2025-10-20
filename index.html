@@ -110,19 +110,47 @@
       </section>
     </main>
     <footer></footer>
-    <div id="eventModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="flex-row justify-center items-center gap-22 modal">
-      <div id="choice1" class="bg-[url(/img/parchemin-bg.png)] bg-center bg-cover w-[40%] h-[75%] rounded-lg choice modal_text flex flex-col items-center justify-center text-center p-4"></div>
-      <div id="dialog" class="bg-[#7a5a50] w-[30%] h-[70%] 2xl:h-[55%] rounded-lg modal_text flex flex-col items-center text-center p-4 border-8 border-[#a16530]"></div>
-      <div id="choice2" class="bg-[url(/img/parchemin-bg.png)] bg-center bg-cover w-[40%] h-[75%] rounded-lg choice modal_text flex flex-col items-center justify-center text-center p-4"></div>
+    <div id="eventModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="flex flex-col justify-center items-center gap-4 modal">
+      <div class="bg-[#7A5A50] w-[85%] border-4 border-[#E48F45] rounded-lg flex flex-col sm:flex-row items-center justify-center sm:items-stretch p-2 sm:p-4 gap-12  h-[15vh]">
+
+         <div class="flex flex-col items-center justify-center">
+              <p class="text-lg sm:text-xl font-bold">Nourriture</p>
+              <img src="img/apple.png" class="w-12 sm:w-16" />
+              <p class="text-2xl sm:text-3xl font-bold text-green-600" id="nourritureModalDisplay">0</p>
+            </div>
+
+           <div class="flex flex-col items-center justify-center">
+              <p class="text-lg sm:text-xl font-bold">Bonheur</p>
+              <img src="img/happy.png" class="w-12 sm:w-16" />
+              <p class="text-2xl sm:text-3xl font-bold text-amber-600" id="bonheurModalDisplay">0</p>
+            </div>
+            
+           <div class="flex flex-col items-center justify-center">
+              <p class="text-lg sm:text-xl font-bold">Armée</p>
+              <img src="img/sword.png" class="w-12 sm:w-16" />
+              <p class="text-2xl sm:text-3xl font-bold text-red-600" id="armeeModalDisplay">0</p>
+            </div>
+            
+           <div class="flex flex-col items-center justify-center">
+              <p class="text-lg sm:text-xl font-bold">Argent</p>
+              <img src="img/dollar.png" class="w-12 sm:w-16" />
+              <p class="text-2xl sm:text-3xl font-bold text-yellow-300" id="argentModalDisplay">0</p>
+            </div>  
+      </div>
+      <div class="flex flex-row justify-center items-center gap-22">
+        <div id="choice1" class="bg-[url(/img/parchemin-bg.png)] bg-center bg-cover w-[40%] h-[95%] rounded-lg choice modal_text flex flex-col items-center justify-center text-center p-4"></div>
+        <div id="dialog" class="bg-[#7a5a50] w-[30%] 2xl:h-[85%] rounded-lg modal_text flex flex-col items-center text-center p-4 border-8 border-[#a16530]"></div>
+        <div id="choice2" class="bg-[url(/img/parchemin-bg.png)] bg-center bg-cover w-[40%] h-[95%] rounded-lg choice modal_text flex flex-col items-center justify-center text-center p-4"></div>
+      </div>
     </div>
     <div id="buildModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="bg-white w-[30%] h-[55%] rounded-lg  modal_text flex flex-col items-center text-center p-4 modal">
       <div id="buildModalContent" class="bg-[url(/img/parchemin-bg.png)] bg-center bg-cover w-[35%] h-[65%] rounded-lg  modal_text flex flex-col items-center text-center p-4"></div>
     </div>
     <div id="invasionModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="bg-white w-[35%] h-[45%] rounded-lg  modal_text flex flex-col items-center text-center p-4 modal">
-      <div id="invasionModalContent" class="bg-white w-[25vw] max-2xl:h-[75vh] h-[45vh] rounded-lg  modal_text flex flex-col items-center justify-center text-center p-4"></div>
+      <div id="invasionModalContent" class="bg-[url(/img/parchemin-bg.png)] bg-center bg-cover w-[40%] h-[75%] rounded-lg  modal_text flex flex-col items-center justify-center text-center p-4"></div>
     </div>
         <div id="defeatModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="bg-white w-[35%] h-[45%] rounded-lg  modal_text flex flex-col items-center text-center p-4 modal">
-      <div id="defeatModalContent" class="bg-white w-[25vw] max-2xl:h-[75vh] h-[45vh] rounded-lg  modal_text flex flex-col items-center justify-center text-center p-4"></div>
+      <div id="defeatModalContent" class="bg-[url(/img/parchemin-bg.png)] bg-center bg-cover w-[35%] h-[65%]  rounded-lg  modal_text flex flex-col items-center justify-center text-center p-4"></div>
     </div>
     <div id="leaderModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;" class="flex-row justify-center items-center gap-22 modal">
     </div>

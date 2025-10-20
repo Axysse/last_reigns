@@ -10,7 +10,7 @@ import { updateBonheur } from "./stats";
 import { updateArmee } from "./stats";
 import { updateArgent } from "./stats";
 import { updateStats } from "./stats";
-import { argentNbr, nourritureNbr, bonheurNbr } from "./stats";
+import { argentNbr, nourritureNbr, bonheurNbr, armeeNbr } from "./stats";
 import { updateCurrentProd } from "./stats";
 import { hideModal } from "./ui";
 import { invasionNameDisplay, updateInvasionName } from "./time";
@@ -97,7 +97,13 @@ export function refreshBuildings() {
     buildImg.classList.add("w-10");
 
     const buildInfo = document.createElement("div");
-    buildInfo.classList.add("flex", "flex-row", "items-center", "justify-between", "w-[100%]")
+    buildInfo.classList.add(
+      "flex",
+      "flex-row",
+      "items-center",
+      "justify-between",
+      "w-[100%]"
+    );
 
     const buildName = document.createElement("p");
     buildName.textContent = building.name;
@@ -110,7 +116,7 @@ export function refreshBuildings() {
       "text-xl",
       "font-semibold",
       "ml-4",
-      cost.type === "argent" ? "text-yellow-300" : "text-green-400"
+      "text-yellow-600"
     );
 
     let costIcon: HTMLImageElement | null = null;
@@ -131,6 +137,11 @@ export function refreshBuildings() {
         costIcon.src = "/img/happy.png";
         costIcon.classList.add("w-4", "ml-2");
         break;
+      case "armee":
+        costIcon = document.createElement("img");
+        costIcon.src = "/img/sword.png";
+        costIcon.classList.add("w-4", "ml-2");
+        break;  
       default:
         console.warn(`Type de coût inconnu pour ${building.name}`);
         break;
@@ -180,6 +191,7 @@ export function checkBuildCondition(building: Building) {
   const argentCost = building.cost.find((c) => c.type === "argent");
   const nourritureCost = building.cost.find((c) => c.type === "nourriture");
   const bonheurCost = building.cost.find((c) => c.type === "bonheur");
+   const armeeCost = building.cost.find((c) => c.type === "armee");
 
   if (argentCost) {
     if (currentProd > 0 && argentNbr >= argentCost.value) {
@@ -207,6 +219,15 @@ export function checkBuildCondition(building: Building) {
       return false;
     }
   }
+
+    if (armeeCost) {
+    if (currentProd > 0 && armeeNbr >= armeeCost.value) {
+      return true;
+    } else {
+      alert("Tu n'as pas assez de nourriture ou la production est nulle.");
+      return false;
+    }
+  }
   alert("tu ne peux plus construire ou tu n'as pas assez de ressources!");
   return false;
 }
@@ -227,6 +248,9 @@ export function placeBuilding(cell: HTMLDivElement, building: Building) {
     case "bonheur":
       updateBonheur(-cost.value);
       break;
+    case "armee":
+      updateArmee(-cost.value);
+      break;  
     default:
       console.warn(`Type de coût inconnu : ${cost.type}`);
       break;
@@ -336,7 +360,7 @@ function showBuildModal(building: Building) {
     buildModalContent.innerHTML = "";
 
     const buildEffectDiv = document.createElement("div");
-    buildEffectDiv.classList.add("mt-12");
+    buildEffectDiv.classList.add("mt-6");
 
     const buildTitle = document.createElement("h3");
     buildTitle.textContent = building.name;
@@ -354,7 +378,7 @@ function showBuildModal(building: Building) {
     buildModalContent.appendChild(buildText);
 
     const costContainer = document.createElement("div");
-    costContainer.classList.add("flex", "flex-row", "items-center", "mt-8");
+    costContainer.classList.add("flex", "flex-row", "items-center", "mt-2");
 
     const costLabel = document.createElement("p");
     costLabel.textContent = "Coût : ";
@@ -370,7 +394,7 @@ function showBuildModal(building: Building) {
       costValue.classList.add(
         "text-3xl",
         "font-bold",
-        cost.type === "argent" ? "text-yellow-600" : "text-green-400"
+        "text-yellow-600" 
       );
 
       const costIcon = document.createElement("img");
@@ -387,8 +411,12 @@ function showBuildModal(building: Building) {
           costIcon.src = "/img/happy.png";
           costIcon.classList.add("w-5", "ml-1");
           break;
+        case "armee":
+          costIcon.src = "/img/sword.png";
+          costIcon.classList.add("w-5", "ml-1");
+          break;  
         default:
-          costIcon.src = "/img/question.png"; 
+          costIcon.src = "/img/question.png";
           costIcon.classList.add("w-5", "ml-1");
           break;
       }
@@ -400,18 +428,23 @@ function showBuildModal(building: Building) {
 
     buildModalContent.appendChild(costContainer);
 
-    if(building.effects){
+    if (building.effects) {
       building.effects.forEach((effect: Effect) => {
-      const buildEffect = document.createElement("p");
-      buildEffect.textContent = `${effect.modif} : ${
-        (effect.value ?? 0) >= 0 ? "+" : ""
-      }${effect.value}`;
-      buildEffect.classList.add("text-xl");
-      buildEffectDiv.appendChild(buildEffect);
-    });
-    buildModalContent.appendChild(buildEffectDiv);
+        if (effect.value === 0) {
+          const buildEffect = document.createElement("p");
+          buildEffect.textContent = "";
+          buildEffectDiv.appendChild(buildEffect);
+        } else {
+          const buildEffect = document.createElement("p");
+          buildEffect.textContent = `${effect.modif} : ${
+            (effect.value ?? 0) >= 0 ? "+" : ""
+          }${effect.value}`;
+          buildEffect.classList.add("text-xl");
+          buildEffectDiv.appendChild(buildEffect);
+        }
+      });
+      buildModalContent.appendChild(buildEffectDiv);
     }
-
   }
 }
 

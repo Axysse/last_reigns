@@ -78,7 +78,7 @@ export function chooseLeader(){
 
             const newStatImg = document.createElement("img")
             newStatImg.src = returnStatImg(stat.type);
-            newStatImg.classList.add("w-6", "2xl:w-12")
+            newStatImg.classList.add("w-6")
             newStatDiv.appendChild(newStatImg)
 
             const newStatName = document.createElement("p")

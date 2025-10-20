@@ -5,6 +5,11 @@ import {
   increaseArmeePerTurn,
   increaseNourriturePerTurn,
   updateNourriture,
+  decreaseArmeePerTurn,
+  nourritureNbr,
+  bonheurNbr,
+  armeeNbr,
+  argentNbr
 } from "./stats";
 import { updateBonheur } from "./stats";
 import { updateArmee } from "./stats";
@@ -48,6 +53,18 @@ const dialog: HTMLDivElement | null = document.getElementById(
   "dialog"
 ) as HTMLDivElement;
 
+let nourritureModalDisplay: HTMLParagraphElement | null =
+  document.getElementById("nourritureModalDisplay") as HTMLParagraphElement;
+let bonheurModalDisplay: HTMLParagraphElement | null = document.getElementById(
+  "bonheurModalDisplay"
+) as HTMLParagraphElement;
+let armeeModalDisplay: HTMLParagraphElement | null = document.getElementById(
+  "armeeModalDisplay"
+) as HTMLParagraphElement;
+let argentModalDisplay: HTMLParagraphElement | null = document.getElementById(
+  "argentModalDisplay"
+) as HTMLParagraphElement;
+
 let allEvents: Event[] = [];
 let cleanEvents: Event[] = [];
 
@@ -78,6 +95,23 @@ export function callEvent() {
   if (allEvents.length === 0) {
     console.log("Tous les événements ont été joués !");
     return;
+  }
+
+  if (nourritureModalDisplay) {
+    nourritureModalDisplay.innerHTML = "";
+    nourritureModalDisplay.innerHTML = nourritureNbr.toString();
+  }
+  if (bonheurModalDisplay) {
+    bonheurModalDisplay.innerHTML = "";
+    bonheurModalDisplay.innerHTML = bonheurNbr.toString();
+  }
+  if (armeeModalDisplay) {
+    armeeModalDisplay.innerHTML = "";
+    armeeModalDisplay.innerHTML = armeeNbr.toString();
+  }
+  if (argentModalDisplay) {
+    argentModalDisplay.innerHTML = "";
+    argentModalDisplay.innerHTML = argentNbr.toString();
   }
 
   const randomIndex = getRandomInt(allEvents.length);
@@ -410,13 +444,15 @@ function resolveEvent(effects: Effect[], chosenEvent?: Event) {
         } else if (effect.target == "decreaseNourriturePerTurn") {
           if (increaseNourriturePerTurn) {
             changeBooleanState("increaseNourriturePerTurn");
-          } else if(decreaseNourriturePerTurn){
+          } else if (decreaseNourriturePerTurn) {
             break;
           }
           changeBooleanState("decreaseNourriturePerTurn");
         } else if (effect.target == "decreaseArmeePerTurn") {
           if (increaseArmeePerTurn) {
             changeBooleanState("increaseArmeePerTurn");
+          } else if (decreaseArmeePerTurn) {
+            break;
           }
           changeBooleanState("decreaseArmeePerTurn");
         }
