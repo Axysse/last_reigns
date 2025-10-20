@@ -1,6 +1,7 @@
 import { getRandomInt } from "./main";
 import {
   checkDefeatConditions,
+  decreaseNourriturePerTurn,
   increaseArmeePerTurn,
   increaseNourriturePerTurn,
   updateNourriture,
@@ -409,6 +410,8 @@ function resolveEvent(effects: Effect[], chosenEvent?: Event) {
         } else if (effect.target == "decreaseNourriturePerTurn") {
           if (increaseNourriturePerTurn) {
             changeBooleanState("increaseNourriturePerTurn");
+          } else if(decreaseNourriturePerTurn){
+            break;
           }
           changeBooleanState("decreaseNourriturePerTurn");
         } else if (effect.target == "decreaseArmeePerTurn") {

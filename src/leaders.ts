@@ -64,7 +64,7 @@ export function chooseLeader(){
         newLeaderDiv.appendChild(newLeaderImg)
 
         const newLeaderText = document.createElement("p")
-        newLeaderText.classList.add("text-xl", "text-center", "mt-4", "w-[75%]")
+        newLeaderText.classList.add("text-xl", "text-center", "mt-4", "w-[75%]", "px-6")
         newLeaderText.textContent = leader.text
         newLeaderDiv.appendChild(newLeaderText)
 

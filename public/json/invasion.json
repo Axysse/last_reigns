@@ -182,7 +182,7 @@
             "id" : 6,
             "difficulty" : 5,
             "name" : "Empereur-Dieu du chaos ",
-            "img" : "../img/emperor.png",
+            "img" : "../img/emperor.jpg",
             "stats": [
                 {
                     "modif" : "armee",

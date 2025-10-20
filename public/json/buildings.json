@@ -133,7 +133,7 @@
       "cost": [
         {
           "type": "bonheur",
-          "value": 1
+          "value": 2
         }
       ],
       "condition": "plaine",
@@ -176,7 +176,14 @@
           "value": 4
         }
       ],
-      "condition": "any"
+      "condition": "any",
+      "effects": [
+        {
+          "type": "add",
+          "modif": "argent",
+          "value": 0
+        }
+      ]
     },
     {
       "id": 8,
