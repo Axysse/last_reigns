@@ -96,6 +96,9 @@ export function refreshBuildings() {
     buildImg.src = building.sprite;
     buildImg.classList.add("w-10");
 
+    const buildInfo = document.createElement("div");
+    buildInfo.classList.add("flex", "flex-row", "items-center", "justify-between", "w-[100%]")
+
     const buildName = document.createElement("p");
     buildName.textContent = building.name;
     buildName.classList.add("text-xl", "font-semibold", "ml-2");
@@ -138,8 +141,10 @@ export function refreshBuildings() {
     buyBttn.classList.add("button", "ml-10");
 
     buildDivChild.appendChild(buildImg);
-    buildDivChild.appendChild(buildName);
-    buildDivChild.appendChild(buildCost);
+    buildInfo.appendChild(buildName);
+    buildInfo.appendChild(buildCost);
+    buildDivChild.appendChild(buildInfo);
+
     if (costIcon) buildDivChild.appendChild(costIcon);
 
     newBuildingDiv.appendChild(buildDivChild);
