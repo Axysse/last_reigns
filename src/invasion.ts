@@ -9,7 +9,7 @@ import {
 import { loop } from "./time";
 import { hideModal, showModal } from "./ui";
 import { argentNbr, armeeNbr, bonheurNbr, nourritureNbr } from "./stats";
-import { invasionDisplay} from "./time";
+import { invasionDisplay } from "./time";
 import { defeat } from "./gameover";
 import { getRandomInt, getRandomIntBetween } from "./main";
 import { refreshEvents } from "./events";
@@ -18,6 +18,8 @@ import { resetProd } from "./stats";
 import { updateStats } from "./stats";
 import { refreshBuildings } from "./buildings";
 import { changeTurnPermission } from "./time";
+import { stats } from "./stats";
+import { finalVictory } from "victory";
 
 interface Stats {
   modif: string;
@@ -105,16 +107,18 @@ export function callInvasionEvent(invasion: Invasion) {
 
     const invasionText = document.createElement("p");
     invasionText.textContent = invasion.text[0].value;
-    invasionText.classList.add("mt-6" ,"px-6", "w-[50%]");
+    invasionText.classList.add("mt-6", "px-6", "w-[50%]");
     invasionModalContent.appendChild(invasionText);
 
     const invasionImg = document.createElement("img");
     invasionImg.src = invasion.img;
-    invasionImg.classList.add( "mt-10",
-    "w-[50%]",
-    "h-[45%]",
-    "border-6",
-    "border-[#4c3219]");
+    invasionImg.classList.add(
+      "mt-10",
+      "w-[50%]",
+      "h-[45%]",
+      "border-6",
+      "border-[#4c3219]"
+    );
     invasionModalContent.appendChild(invasionImg);
 
     const nextBttn = document.createElement("button");
@@ -155,21 +159,25 @@ export function callInvasionEvent(invasion: Invasion) {
         );
 
         let iconSrc = "";
-        let playerValue = 0;
-
         switch (stat.modif) {
           case "armee":
             iconSrc = "img/sword.png";
-            playerValue = armeeNbr;
             break;
           case "argent":
             iconSrc = "img/dollar.png";
-            playerValue = argentNbr;
+            break;
+          case "bonheur":
+            iconSrc = "img/happy.png";
+            break;
+          case "nourriture":
+            iconSrc = "img/apple.png";
             break;
           default:
             console.log("Cas non prévu :", stat.modif);
             return;
         }
+
+        const playerValue = stats[stat.modif as keyof typeof stats];
 
         const statImg = document.createElement("img");
         statImg.src = iconSrc;
@@ -241,16 +249,18 @@ function victory(invasion: Invasion) {
 
     const invasionText = document.createElement("p");
     invasionText.textContent = invasion.text[1].value;
-    invasionText.classList.add("mt-6" ,"px-6", "w-[50%]");
+    invasionText.classList.add("mt-6", "px-6", "w-[50%]");
     invasionModalContent.appendChild(invasionText);
 
     const invasionImg = document.createElement("img");
     invasionImg.src = invasion.img;
-    invasionImg.classList.add("mt-10",
-    "w-[50%]",
-    "h-[45%]",
-    "border-6",
-    "border-[#4c3219]");
+    invasionImg.classList.add(
+      "mt-10",
+      "w-[50%]",
+      "h-[45%]",
+      "border-6",
+      "border-[#4c3219]"
+    );
     invasionModalContent.appendChild(invasionImg);
 
     const nextBttn = document.createElement("button");
@@ -259,24 +269,29 @@ function victory(invasion: Invasion) {
     invasionModalContent.appendChild(nextBttn);
 
     nextBttn.addEventListener("click", () => {
-      hideModal("invasionModal");
-      if (invasionDisplay) {
-        if (!invasionDisplay?.classList.contains("hidden")) {
-          invasionDisplay.classList.add("hidden");
+      if (loop == 4) {
+        hideModal("invasionModal");
+        finalVictory();
+      } else {
+        hideModal("invasionModal");
+        if (invasionDisplay) {
+          if (!invasionDisplay?.classList.contains("hidden")) {
+            invasionDisplay.classList.add("hidden");
+          }
         }
+        refreshEvents();
+        updateinvasion(getRandomIntBetween(8, 12));
+        updateLoop(1);
+        getInvader();
+        updateInvasionName();
+        addTurn();
+        callEvent();
+        resetProd();
+        updateStats();
+        changeTurnPermission();
+        refreshBuildings();
+        console.log("boucle de jeu :" + " " + loop);
       }
-      refreshEvents();
-      updateinvasion(getRandomIntBetween(8, 12));
-      updateLoop(1);
-      getInvader();
-      updateInvasionName();
-      addTurn();
-      callEvent();
-      resetProd();
-      updateStats();
-      changeTurnPermission();
-      refreshBuildings();
-      console.log("boucle de jeu :" + " " + loop);
     });
   }
 }
@@ -292,16 +307,18 @@ function lost(invasion: Invasion) {
 
     const invasionText = document.createElement("p");
     invasionText.textContent = invasion.text[2].value;
-    invasionText.classList.add("mt-6" ,"px-6", "w-[50%]");
+    invasionText.classList.add("mt-6", "px-6", "w-[50%]");
     invasionModalContent.appendChild(invasionText);
 
     const invasionImg = document.createElement("img");
     invasionImg.src = invasion.img;
-    invasionImg.classList.add("mt-10",
-    "w-[50%]",
-    "h-[45%]",
-    "border-6",
-    "border-[#4c3219]");
+    invasionImg.classList.add(
+      "mt-10",
+      "w-[50%]",
+      "h-[45%]",
+      "border-6",
+      "border-[#4c3219]"
+    );
     invasionModalContent.appendChild(invasionImg);
 
     const nextBttn = document.createElement("button");

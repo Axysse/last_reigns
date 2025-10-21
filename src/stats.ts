@@ -224,3 +224,18 @@ switch(variableName){
 }
 updateUi();
 }
+
+export const stats = {
+  get nourriture() {
+    return nourritureNbr;
+  },
+  get bonheur() {
+    return bonheurNbr;
+  },
+  get armee() {
+    return armeeNbr;
+  },
+  get argent() {
+    return argentNbr;
+  },
+};

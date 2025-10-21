@@ -118,7 +118,7 @@
         },
         {
             "id" : 4,
-            "difficulty" : 3,
+            "difficulty" : 2,
             "name" : "Infection d’outre-tombe",
             "img" : "../img/zombie.jpg",
             "stats": [
@@ -149,7 +149,7 @@
         },
         {
             "id" : 5,
-            "difficulty" : 4,
+            "difficulty" : 3,
             "name" : "Tribunal des âmes",
             "img" : "../img/tribunal.jpg",
             "stats": [
@@ -180,7 +180,7 @@
         },
         {
             "id" : 6,
-            "difficulty" : 5,
+            "difficulty" : 4,
             "name" : "Empereur-Dieu du chaos ",
             "img" : "../img/emperor.jpg",
             "stats": [
@@ -200,15 +200,15 @@
             "text" : [
                 {
                     "condition" : "intro",
-                    "value" : "..."
+                    "value" : "Alors même qu’ils recherchent la paix et la tranquillité, ils créent le terreau de la haine et de la violence. Je leur donnerais des éons de tranquillité pour qu’ils puissent exercer une haine libératrice sans bornes et génitrice du chaos !"
                 },
                 {
                     "condition" : "victoire",
-                    "value" : "GG WELL PLAY"
+                    "value" : "Ainsi va le sentier de briques d’or. Mon chemin pavé d’espoir répréssif ne connaître pas de fin. Je reviendrais, comme toujours."
                 },
                 {
                     "condition" : "defaite",
-                    "value" : "Il ne pouvait en être autrement.",
+                    "value" : "Un autre cycle de soumission aveugle… J’usqu’à la douce délivrance du chaos.",
                     "modif" : "argent"
                 }
             ]

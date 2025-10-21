@@ -948,12 +948,12 @@
             {
               "type": "stats",
               "modif": "bonheur",
-              "value": 4
+              "value": 3
             },
             {
               "type": "stats",
               "modif": "nourriture",
-              "value": 5
+              "value": 3
             },
             {
               "type": "activate",
