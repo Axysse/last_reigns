@@ -148,7 +148,7 @@
     {
       "id": 6,
       "name": "Aqueduc",
-      "text": "A placer dans une case montagne. Vous mobilisez votre armée pour rendre l'eau disponible aux geueux. Quel altruisme!",
+      "text": "A placer dans une case montagne. Vous mobilisez votre armée pour rendre l'eau disponible aux gueux. Quel altruisme!",
       "sprite": "../img/aqueduc.png",
       "cost": [
         {
