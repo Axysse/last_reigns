@@ -94,7 +94,7 @@ export function refreshBuildings() {
 
     const buildImg = document.createElement("img");
     buildImg.src = building.sprite;
-    buildImg.classList.add("w-10");
+    buildImg.classList.add("w-10", "hov");
 
     const buildInfo = document.createElement("div");
     buildInfo.classList.add(
