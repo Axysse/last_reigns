@@ -1,4 +1,4 @@
-import { showModal } from "ui";
+import { showModal } from "./ui";
 
 const victoryModal: HTMLDivElement | null = document.getElementById(
   "victoryModal"

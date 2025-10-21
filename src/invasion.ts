@@ -19,7 +19,7 @@ import { updateStats } from "./stats";
 import { refreshBuildings } from "./buildings";
 import { changeTurnPermission } from "./time";
 import { stats } from "./stats";
-import { finalVictory } from "victory";
+import { finalVictory } from "./victory";
 
 interface Stats {
   modif: string;
