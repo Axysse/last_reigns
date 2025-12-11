@@ -1,4 +1,4 @@
-# Last_Reigns
+# Last_Reigns :european_castle:
 
 ## C'est quoi Last-Reigns?
 
@@ -28,7 +28,7 @@ Si les statistiques sont bonnes, le jeu continue sur une autre boucle Choix/Gest
 
 Si le joueur surpasse la 5ème invasion c'est une victoire!
 
-##Illustrations
+## Illustrations
 
 N'étant pas graphiste, toutes les illustrations du jeu ont été génerées par IA, parfois en se basant sur des memes
 que vous ne manquerez pas de reconnaitre :wink: .
