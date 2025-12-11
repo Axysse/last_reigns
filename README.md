@@ -1,8 +1,8 @@
-# Last_Reigns :european_castle:
+# Last-Reigns :european_castle:
 
 ## C'est quoi Last-Reigns?
 
-Last-Reings est un jeu de type rogue-like (pas de sauvegarde et les progrès sont perdus à chaque défaite) 
+Last-Reigns est un jeu de type rogue-like (pas de sauvegarde et les progrès sont perdus à chaque défaite) 
 sur navigateur entièrement réalisé en HTML5/CSS et Typescript.
 Le jeu avait à la base pour unique ambition de m'exercer à Typescript, n'ayant jamais touché
 que du Javascript auparavant. L'exercice me plaisant, j'ai poursuivi jusqu'à "finir" le jeu.
