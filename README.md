@@ -1,6 +1,6 @@
 # last_reigns
 
-## C'est quoi Last-Reings?
+## C'est quoi Last-Reigns?
 
 Last-Reings est un jeu sur navigateur entièrement réalisé en HTML5/CSS et Typescript.
 Le jeu avait à la base pour unique ambition de m'exercer à Typescript, n'ayant jamais touché
