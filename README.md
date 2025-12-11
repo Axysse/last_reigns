@@ -14,7 +14,7 @@ arrivez jusque là.
 
 ## Gameplay
 
-le jeu tire son inspiration principale de "Reigns", jeu mobile dont la boucle de gameplay repose
+Le jeu tire son inspiration principale de "Reigns", jeu mobile dont la boucle de gameplay repose
 sur des dilemmes présentés au joueur auquel il peut répondre "oui" ou "non", les réponses influant l'état de 
 diverses statistiques. J'ai repris directement cette boucle de gameplay en y ajoutant une gestion minimaliste de royaume.
 
