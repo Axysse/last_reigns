@@ -19,7 +19,7 @@ sur des dilemmes présentés au joueur auquel il peut répondre "oui" ou "non", 
 diverses statistiques. J'ai repris directement cette boucle de gameplay en y ajoutant une gestion minimaliste de royaume.
 
 Après une phase de choix, le joueur se retrouve façe à une seconde phase de jeu centré sur de la gestion minimaliste.
-Le joeuur peut construire des batiments pour l'aider à gérer ses statistiques (ou aggraver les choses, c'est selon) moyennant
+Le joueur peut construire des batiments pour l'aider à gérer ses statistiques (ou aggraver les choses, c'est selon) moyennant
 certains coûts.
 Vient ensuite la dernière phase, les invasions. Si une invasion doit se produire ce tour (les espaces entre les invasions sont 
 aléatoires mais soumis à certaines conditions), on oppose les statistiques actuelles du joueur pour les opposer aux exigences 
