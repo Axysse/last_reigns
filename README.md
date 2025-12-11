@@ -1,10 +1,16 @@
-# last_reigns
+# Last_Reigns
 
 ## C'est quoi Last-Reigns?
 
-Last-Reings est un jeu sur navigateur entièrement réalisé en HTML5/CSS et Typescript.
+Last-Reings est un jeu de type rogue-like (pas de sauvegarde et les progrès sont perdus à chaque défaite) 
+sur navigateur entièrement réalisé en HTML5/CSS et Typescript.
 Le jeu avait à la base pour unique ambition de m'exercer à Typescript, n'ayant jamais touché
 que du Javascript auparavant. L'exercice me plaisant, j'ai poursuivi jusqu'à "finir" le jeu.
+
+Il n'y a pas vraiment d'histoire au jeu. Je me suis lancé avec seulement des concepts de gameplay.
+Alors vous serez juste un monarque, gérant tant bien que mal son royaume et qui devra faire
+façe a de multiples invasions jusqu'à repousser une menace inter-dimensionelle, enfin, si vous
+arrivez jusque là.
 
 ## Gameplay
 
@@ -21,4 +27,9 @@ de l'invasion.
 Si les statistiques sont bonnes, le jeu continue sur une autre boucle Choix/Gestion/Invasion.
 
 Si le joueur surpasse la 5ème invasion c'est une victoire!
+
+##Illustrations
+
+N'étant pas graphiste, toutes les illustrations du jeu ont été génerées par IA, parfois en se basant sur des memes
+que vous ne manquerez pas de reconnaitre :wink: .
 
