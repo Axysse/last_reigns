@@ -4,8 +4,8 @@
 
 Last-Reigns est un jeu de type rogue-like (pas de sauvegarde et les progrès sont perdus à chaque défaite) 
 sur navigateur entièrement réalisé en HTML5/CSS et Typescript.
-Le jeu avait à la base pour unique ambition de m'exercer à Typescript, n'ayant jamais touché
-que du Javascript auparavant. L'exercice me plaisant, j'ai poursuivi jusqu'à "finir" le jeu.
+ n'ayant jamais touché que du Javascript auparavant, Le jeu avait à la base pour unique ambition de m'exercer 
+ à Typescript. L'exercice me plaisant, j'ai poursuivi jusqu'à "finir" le jeu.
 
 Il n'y a pas vraiment d'histoire au jeu. Je me suis lancé avec seulement des concepts de gameplay.
 Alors vous serez juste un monarque, gérant tant bien que mal son royaume et qui devra faire
