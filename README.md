@@ -3,7 +3,7 @@
 <img width="1760" height="870" alt="start_screen" src="https://github.com/user-attachments/assets/b54a910d-07d8-4099-84e8-bcb2ad36e22d" />
 
 
-## C'est quoi Last-Reigns?
+## C'est quoi Last-Reigns? :crown:
 
 Last-Reigns est un jeu de type rogue-like (pas de sauvegarde et les progrès sont perdus à chaque défaite) 
 sur navigateur entièrement réalisé en HTML5/CSS et Typescript.
@@ -15,7 +15,7 @@ Alors vous serez juste un monarque, gérant tant bien que mal son royaume et qui
 façe a de multiples invasions jusqu'à repousser une menace inter-dimensionelle, enfin, si vous
 arrivez jusque là.
 
-## Gameplay
+## Gameplay :video_game:
 
 Le jeu tire son inspiration principale de "Reigns", jeu mobile dont la boucle de gameplay repose
 sur des dilemmes présentés au joueur auquel il peut répondre "oui" ou "non", les réponses influant l'état de 
@@ -31,7 +31,7 @@ Si les statistiques sont bonnes, le jeu continue sur une autre boucle Choix/Gest
 
 Si le joueur surpasse la 5ème invasion c'est une victoire!
 
-## Illustrations
+## Illustrations :pencil2:
 
 N'étant pas graphiste, toutes les illustrations du jeu ont été génerées par IA, parfois en se basant sur des memes
 que vous ne manquerez pas de reconnaitre :wink: .
