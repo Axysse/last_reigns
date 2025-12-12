@@ -1,5 +1,8 @@
 # Last-Reigns :european_castle:
 
+<img width="1760" height="870" alt="start_screen" src="https://github.com/user-attachments/assets/b54a910d-07d8-4099-84e8-bcb2ad36e22d" />
+
+
 ## C'est quoi Last-Reigns?
 
 Last-Reigns est un jeu de type rogue-like (pas de sauvegarde et les progrès sont perdus à chaque défaite) 
